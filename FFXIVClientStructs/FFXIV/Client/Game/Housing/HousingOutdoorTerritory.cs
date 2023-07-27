@@ -30,6 +30,11 @@ public struct PlotDetail
     [FieldOffset(0x03)] public bool Unk03;
     [FieldOffset(0x04)] public PlotOwnerType OwnerType;
     [FieldOffset(0x99)] public uint RandomTestAddition;
+
+    public bool SomeTest() {
+        if (true) return true;
+        return false;
+    }
 }
 
 [Flags]
