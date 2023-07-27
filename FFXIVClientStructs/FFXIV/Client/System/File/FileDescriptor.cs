@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.System.File;
+namespace FFXIVClientStructs.FFXIV.Client.System.File;
 
 // inlined ctor, see FileManager ctor
 [StructLayout(LayoutKind.Explicit, Size = 0x278)]

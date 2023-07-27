@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using FFXIVClientStructs.FFXIV.Client.System.Memory;
 
 namespace FFXIVClientStructs.FFXIV.Client.System.String;
@@ -31,7 +31,7 @@ public unsafe partial struct Utf8String : ICreatable
     {
         if (StringPtr == null || BufUsed <= 1)
             return string.Empty;
-        return Encoding.UTF8.GetString(StringPtr, (int) BufUsed - 1);
+        return Encoding.UTF8.GetString(StringPtr, (int)BufUsed - 1);
     }
 
     [MemberFunction("E8 ?? ?? ?? ?? 44 2B F7")]

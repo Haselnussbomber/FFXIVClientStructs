@@ -1,9 +1,10 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
-namespace FFXIVClientStructs.FFXIV.Client.UI; 
+namespace FFXIVClientStructs.FFXIV.Client.UI;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x248)]
-public unsafe partial struct AddonActionBarBase {
+public unsafe partial struct AddonActionBarBase
+{
     [FieldOffset(0x00)] public AtkUnitBase AtkUnitBase;
 
     [FieldOffset(0x220)] public ActionBarSlot* ActionBarSlots;
@@ -12,7 +13,7 @@ public unsafe partial struct AddonActionBarBase {
     /// Bitfield representing currently active pulses.
     /// </summary>
     [FieldOffset(0x238)] public short CurrentPulsingSlots;
-    
+
     /// <summary>
     /// The ID of the hotbar in RaptureHotbarModule that this ActionBar is currently referencing.
     /// </summary>
@@ -22,7 +23,7 @@ public unsafe partial struct AddonActionBarBase {
     [FieldOffset(0x23C)] public byte RaptureHotbarId;
 
     [FieldOffset(0x23E)] public byte SlotCount;
-    
+
     /// <summary>
     /// Whether the current hotbar is considered a "shared" hotbar or not.
     /// </summary>
@@ -43,7 +44,8 @@ public unsafe partial struct AddonActionBarBase {
 }
 
 [StructLayout(LayoutKind.Explicit, Size = 0xC8)]
-public unsafe struct ActionBarSlot {
+public unsafe struct ActionBarSlot
+{
     [FieldOffset(0x04)] public int ActionId;       // Not cleared when slot is emptied
     [FieldOffset(0x90)] public AtkComponentNode* Icon;
     [FieldOffset(0x98)] public AtkTextNode* ControlHintTextNode;

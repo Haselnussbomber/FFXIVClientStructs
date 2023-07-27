@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.Framework;
+using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -10,7 +10,7 @@ namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
 public unsafe partial struct AgentModule
 {
     public static AgentModule* Instance() => Framework.Instance()->GetUiModule()->GetAgentModule();
-    
+
     [FieldOffset(0x0)] public void* vtbl;
     [FieldOffset(0x8)] public UIModule* UIModule;
     [FieldOffset(0x10)] public byte Initialized;
@@ -29,57 +29,57 @@ public unsafe partial struct AgentModule
 
     public AgentInterface* GetAgentByInternalId(AgentId agentId)
     {
-        return GetAgentByInternalID((uint) agentId);
+        return GetAgentByInternalID((uint)agentId);
     }
 
     public AgentHUD* GetAgentHUD()
     {
-        return (AgentHUD*) GetAgentByInternalId(AgentId.Hud);
+        return (AgentHUD*)GetAgentByInternalId(AgentId.Hud);
     }
 
     public AgentHudLayout* GetAgentHudLayout()
     {
-        return (AgentHudLayout*) GetAgentByInternalId(AgentId.HudLayout);
+        return (AgentHudLayout*)GetAgentByInternalId(AgentId.HudLayout);
     }
 
     public AgentTeleport* GetAgentTeleport()
     {
-        return (AgentTeleport*) GetAgentByInternalId(AgentId.Teleport);
+        return (AgentTeleport*)GetAgentByInternalId(AgentId.Teleport);
     }
 
     public AgentLobby* GetAgentLobby()
     {
-        return (AgentLobby*) GetAgentByInternalId(AgentId.Lobby);
+        return (AgentLobby*)GetAgentByInternalId(AgentId.Lobby);
     }
 
     public AgentMap* GetAgentMap()
     {
-        return (AgentMap*) GetAgentByInternalId(AgentId.Map);
+        return (AgentMap*)GetAgentByInternalId(AgentId.Map);
     }
 
     public AgentScreenLog* GetAgentScreenLog()
     {
-        return (AgentScreenLog*) GetAgentByInternalId(AgentId.ScreenLog);
+        return (AgentScreenLog*)GetAgentByInternalId(AgentId.ScreenLog);
     }
 
     public AgentItemSearch* GetAgentItemSearch()
     {
-        return (AgentItemSearch*) GetAgentByInternalId(AgentId.ItemSearch);
+        return (AgentItemSearch*)GetAgentByInternalId(AgentId.ItemSearch);
     }
 
     public AgentRetainerList* GetAgentRetainerList()
     {
-        return (AgentRetainerList*) GetAgentByInternalId(AgentId.RetainerList);
+        return (AgentRetainerList*)GetAgentByInternalId(AgentId.RetainerList);
     }
 
     public AgentRevive* GetAgentRevive()
     {
-        return (AgentRevive*) GetAgentByInternalId(AgentId.Revive);
+        return (AgentRevive*)GetAgentByInternalId(AgentId.Revive);
     }
 
     public AgentSalvage* GetAgentSalvage()
     {
-        return (AgentSalvage*) GetAgentByInternalId(AgentId.Salvage);
+        return (AgentSalvage*)GetAgentByInternalId(AgentId.Salvage);
     }
 
     public AgentMonsterNote* GetAgentMonsterNote()
@@ -106,15 +106,15 @@ public unsafe partial struct AgentModule
     {
         return (AgentCraftActionSimulator*)GetAgentByInternalId(AgentId.CraftActionSimulator);
     }
-    
+
     public AgentDeepDungeonStatus* GetAgentDeepDungeonStatus()
     {
-	    return (AgentDeepDungeonStatus*)GetAgentByInternalId(AgentId.DeepDungeonStatus);
+        return (AgentDeepDungeonStatus*)GetAgentByInternalId(AgentId.DeepDungeonStatus);
     }
 
     public AgentDeepDungeonMap* GetAgentDeepDungeonMap()
     {
-	    return (AgentDeepDungeonMap*)GetAgentByInternalId(AgentId.DeepDungeonMap);
+        return (AgentDeepDungeonMap*)GetAgentByInternalId(AgentId.DeepDungeonMap);
     }
 
     public AgentMiragePrismPrismBox* GetAgentMiragePrismPrismBox()
@@ -128,7 +128,8 @@ public unsafe partial struct AgentModule
     }
 }
 
-public enum AgentId : uint {
+public enum AgentId : uint
+{
     Lobby = 0,
     CharaMake = 1,
     MovieStaffList = 2, // this is the addon name, no idea what the agent actually is, shows up when playing the EW cutscene in title
@@ -172,7 +173,7 @@ public enum AgentId : uint {
     Map = 39,
     Loot = 40, //NeedGreed
     Repair = 41,
-    
+
     Materialize = 43,
     MateriaAttach = 44,
     MiragePrism = 45,
@@ -224,7 +225,7 @@ public enum AgentId : uint {
     // FreeCompanyPetition = 85,
     ArmouryBoard = 88,
     HowtoList = 89,
-    Cabinet = 90, 
+    Cabinet = 90,
     LegacyItemStorage = 91,
     GrandCompanyRank = 92,
     GrandCompanySupply = 93,
@@ -274,7 +275,7 @@ public enum AgentId : uint {
     CursorRect = 137,
     RetainerStatus = 138,
     RetainerTask = 139,
-    
+
     RetainerItemTransfer = 142,
 
     RelicNotebook = 144,
@@ -290,7 +291,7 @@ public enum AgentId : uint {
     ArmouryNotebook = 155,
     MinionNotebook = 156,
     MountNotebook = 157,
-    ItemCompare = 158, 
+    ItemCompare = 158,
     DailyQuestSupply = 159,
     MobHunt = 160,
     PatchMark = 161, //SelectOk?
@@ -425,7 +426,7 @@ public enum AgentId : uint {
     MiragePrismENpcSatisfaction = 314,
     Description = 315, //Frontline/Bozja Description
     Alarm = 316,
-    
+
     FreeShop = 319,
     AozNotebook = 320, //Bluemage Spells
     RhythmAction = 321,
@@ -493,7 +494,7 @@ public enum AgentId : uint {
     BannerList = 393, // Portraits
     BannerEditor = 394, // Portrait Editor
     BannerUpdateView = 395,
-    
+
     CharaCard = 398, // AdventurerPlate
     CharaCardDesignSetting = 399,
     CharaCardProfileSetting = 400,
@@ -511,7 +512,7 @@ public enum AgentId : uint {
     MJIGatheringNoteBook = 412,
     MJIDisposeShop = 413,
     MJIMinionManagement = 414,
-    MJIMinionNoteBook = 415, 
+    MJIMinionNoteBook = 415,
     MJIBuildingMove = 416,
     MJIEntrance = 417,
     MJISettings = 418,
@@ -521,7 +522,7 @@ public enum AgentId : uint {
     VVDNotebook = 423,
     VVDFinder = 424,
     TofuList = 425,
-    
+
     BannerParty = 428,
     BannerMIP = 429,
 

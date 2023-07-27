@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Graphics;
+namespace FFXIVClientStructs.FFXIV.Client.Graphics;
 
 // common class representing colors that are 0-255 fields
 [StructLayout(LayoutKind.Explicit, Size = 0x4)]

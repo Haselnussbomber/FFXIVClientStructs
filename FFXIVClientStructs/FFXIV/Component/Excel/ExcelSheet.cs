@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Component.Excel;
+namespace FFXIVClientStructs.FFXIV.Component.Excel;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x110)]
 public unsafe struct ExcelSheet

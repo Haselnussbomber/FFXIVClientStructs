@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.Memory;
+using FFXIVClientStructs.FFXIV.Client.System.Memory;
 
 namespace FFXIVClientStructs.FFXIV.Component.GUI;
 
@@ -53,19 +53,20 @@ public unsafe partial struct AtkTooltipManager
         ushort parentID,
         AtkResNode* targetNode,
         AtkTooltipArgs* tooltipArgs,
-        delegate* unmanaged[Stdcall] <float*, float*, void*> unkDelegate = null,
+        delegate* unmanaged[Stdcall]<float*, float*, void*> unkDelegate = null,
         bool unk7 = false,
         bool unk8 = true);
-    
+
     [GenerateCStrOverloads] // cursed forced partial to make generator happy
     public partial void ShowTooltip(ushort parentId, AtkResNode* targetNode, byte* tooltipString);
-    public partial void ShowTooltip(ushort parentId, AtkResNode* targetNode, byte* tooltipString) {
+    public partial void ShowTooltip(ushort parentId, AtkResNode* targetNode, byte* tooltipString)
+    {
         var args = stackalloc AtkTooltipArgs[1];
         args->Ctor();
         args->Text = tooltipString;
         ShowTooltip(AtkTooltipType.Text, parentId, targetNode, args);
     }
-    
+
     [MemberFunction("E8 ?? ?? ?? ?? 41 F6 C5 20")]
     public partial void HideTooltip(ushort parentId, bool unk = false);
 }

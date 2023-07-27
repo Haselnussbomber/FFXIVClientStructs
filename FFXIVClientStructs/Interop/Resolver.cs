@@ -1,4 +1,4 @@
-﻿using Serilog;
+using Serilog;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
@@ -10,11 +10,11 @@ namespace FFXIVClientStructs.Interop;
 public sealed partial class Resolver
 {
     private static readonly Lazy<Resolver> Instance = new(() => new Resolver());
-    
+
     private Resolver()
     {
     }
-    
+
     public static Resolver GetInstance => Instance.Value;
 
     private readonly List<Address>?[] _preResolveArray = new List<Address>[256];
@@ -28,7 +28,7 @@ public sealed partial class Resolver
     private bool _cacheChanged = false;
 
     private nint _baseAddress;
-    
+
     private nint _targetSpace;
     private int _targetLength;
 
@@ -48,7 +48,7 @@ public sealed partial class Resolver
         ProcessModule? module = Process.GetCurrentProcess().MainModule;
         if (module == null)
             throw new Exception("[FFXIVClientStructs.Resolver] Unable to access process module.");
-        
+
         _baseAddress = module.BaseAddress;
 
         _targetSpace = moduleCopy == 0 ? _baseAddress : moduleCopy;
@@ -61,8 +61,8 @@ public sealed partial class Resolver
         SetupSections();
         _isSetup = true;
     }
-    
-    public void SetupSearchSpace(nint memoryPointer, int memorySize, int textSectionOffset, int textSectionSize, 
+
+    public void SetupSearchSpace(nint memoryPointer, int memorySize, int textSectionOffset, int textSectionSize,
         int dataSectionOffset, int dataSectionSize, int rdataSectionOffset, int rdataSectionSize, FileInfo? cacheFile = null)
     {
         if (_isSetup) return;
@@ -163,7 +163,7 @@ public sealed partial class Resolver
         {
             if (_textCache!.TryGetValue(address.String, out var offset))
             {
-                address.Value = (nuint) (offset + _baseAddress);
+                address.Value = (nuint)(offset + _baseAddress);
                 byte firstByte = (byte)address.Bytes[0];
                 _preResolveArray[firstByte]!.Remove(address);
                 if (_preResolveArray[firstByte]!.Count == 0)
@@ -182,7 +182,7 @@ public sealed partial class Resolver
     {
         if (_hasResolved)
             return;
-        
+
         if (_targetSpace == 0)
             throw new Exception("[FFXIVClientStructs.Resolver] Attempted to call Resolve() without initializing the search space.");
 
@@ -199,15 +199,15 @@ public sealed partial class Resolver
             if (_preResolveArray[targetSpan[location]] is not null)
             {
                 List<Address> availableAddresses = _preResolveArray[targetSpan[location]]!;
-                
+
                 ReadOnlySpan<ulong> targetLocationAsUlong = MemoryMarshal.Cast<byte, ulong>(targetSpan[location..]);
 
                 int avLen = availableAddresses.Count;
-                
-                for(int i = 0; i < avLen; i++)
+
+                for (int i = 0; i < avLen; i++)
                 {
                     Address address = availableAddresses[i];
-                    
+
                     int count;
                     int length = address.Bytes.Length;
 
@@ -221,7 +221,7 @@ public sealed partial class Resolver
                     {
                         int outLocation = location;
 
-                        byte firstByte = (byte) address.Bytes[0];
+                        byte firstByte = (byte)address.Bytes[0];
                         if (firstByte is 0xE8 or 0xE9)
                         {
                             var jumpOffset = BitConverter.ToInt32(targetSpan.Slice(outLocation + 1, 4));
@@ -235,7 +235,7 @@ public sealed partial class Resolver
                             outLocation = outLocation + staticAddress.Offset + 4 + accessOffset;
                         }
 
-                        address.Value = (nuint) (_baseAddress + _textSectionOffset + outLocation);
+                        address.Value = (nuint)(_baseAddress + _textSectionOffset + outLocation);
                         if (_textCache?.TryAdd(address.String, outLocation + _textSectionOffset) == true)
                             _cacheChanged = true;
                         availableAddresses.Remove(address);
@@ -252,17 +252,17 @@ public sealed partial class Resolver
                 }
             }
         }
-        outLoop: ;
+outLoop:;
 
         SaveCache();
         _hasResolved = true;
     }
-    
+
     private void RegisterAddress(Address address)
     {
         _addresses.Add(address);
 
-        byte firstByte = (byte) (address.Bytes[0]);
+        byte firstByte = (byte)(address.Bytes[0]);
 
         if (_preResolveArray[firstByte] is null)
         {

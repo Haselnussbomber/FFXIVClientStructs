@@ -32,7 +32,7 @@ public unsafe struct AstrologianGauge
     [FieldOffset(0x0D)] public byte Card;
     [FieldOffset(0x0E)] public byte Seals; // 6 bits, 0,1-3,1-3,1-3 depending on astrosign
 
-    public AstrologianCard CurrentCard => (AstrologianCard) Card;
+    public AstrologianCard CurrentCard => (AstrologianCard)Card;
 
     public AstrologianSeal[] CurrentSeals => new[]
     {
@@ -124,7 +124,7 @@ public unsafe struct DancerGauge
     [FieldOffset(0x0A)] public fixed byte DanceSteps[4];
     [FieldOffset(0x0E)] public byte StepIndex;
 
-    public DanceStep CurrentStep => (DanceStep) (StepIndex >= 4 ? 0 : DanceSteps[StepIndex]);
+    public DanceStep CurrentStep => (DanceStep)(StepIndex >= 4 ? 0 : DanceSteps[StepIndex]);
 }
 
 #endregion
@@ -148,7 +148,7 @@ public struct MonkGauge
     [FieldOffset(0x0C)] public NadiFlags Nadi; // LunarNadi = 2, SolarNadi = 4 (If both then 2+4=6)
     [FieldOffset(0x0E)] public ushort BlitzTimeRemaining; // 20 seconds
 
-    public BeastChakraType[] BeastChakra => new[] {BeastChakra1, BeastChakra2, BeastChakra3};
+    public BeastChakraType[] BeastChakra => new[] { BeastChakra1, BeastChakra2, BeastChakra3 };
 }
 
 [StructLayout(LayoutKind.Explicit, Size = 0x10)]

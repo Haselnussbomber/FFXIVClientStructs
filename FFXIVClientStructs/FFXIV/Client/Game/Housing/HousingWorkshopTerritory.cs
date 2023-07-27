@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.String;
+using FFXIVClientStructs.FFXIV.Client.System.String;
 
 namespace FFXIVClientStructs.FFXIV.Client.Game.Housing;
 
@@ -15,7 +15,7 @@ public unsafe partial struct HousingWorkshopAirshipData
 {
     [FixedSizeArray<HousingWorkshopAirshipSubData>(4)]
     [FieldOffset(0x0)] public fixed byte DataList[0x1C0 * 4];
-    
+
     [FieldOffset(0x770)] public byte ActiveAirshipId; // 0-3, 255 if none
     [FieldOffset(0x771)] public byte AirshipCount;
 

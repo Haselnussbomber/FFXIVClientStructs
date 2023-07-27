@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Graphics.Render;
+namespace FFXIVClientStructs.FFXIV.Client.Graphics.Render;
 // Client::Graphics::Render::OffscreenRenderingManager
 // renderer responsible for UI character models - tryon, inspect, etc
 

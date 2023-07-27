@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -7,7 +7,7 @@ namespace FFXIVClientStructs.FFXIV.Client.UI;
 public unsafe partial struct AddonGSInfoMinionBattle
 {
     [FieldOffset(0x00)] public AtkUnitBase AtkUnitBase;
-    
+
     [FieldOffset(0x220)] public AtkComponentBase* TournamentMatches;
     [FieldOffset(0x228)] public AtkComponentBase* TournamentWins;
     [FieldOffset(0x230)] public AtkComponentBase* TournamentPoints;

@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
+namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 // Client::Game::UI::Telepo
 
 // size = 0x58

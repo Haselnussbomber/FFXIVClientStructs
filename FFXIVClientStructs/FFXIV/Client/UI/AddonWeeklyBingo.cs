@@ -87,13 +87,16 @@ public unsafe struct StringThing
 {
     [FieldOffset(0x0)] public void* vtbl;
 
-    [FieldOffset(0x08)] public byte*
+    [FieldOffset(0x08)]
+    public byte*
         FullSealsText; // No more seals can be applied. Deliver the journal to Khloe Aliapoh to receive your reward.
 
-    [FieldOffset(0x10)] public byte*
+    [FieldOffset(0x10)]
+    public byte*
         OneOrMoreLinesText; // One or more lines of seals have been completed. Deliver the journal to Khloe Aliapoh to receive your reward or continue adventuring to add more seals.
 
-    [FieldOffset(0x18)] public byte*
+    [FieldOffset(0x18)]
+    public byte*
         SecondChancePointsText; // Second Chance points can be used to increase your chances of completing lines.
 
     [FieldOffset(0x20)] public byte* ReceiveSealCompleteText; // Select a completed duty to receive a seal.

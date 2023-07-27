@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.UI.Info;
+namespace FFXIVClientStructs.FFXIV.Client.UI.Info;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x18)]
 public unsafe partial struct InfoProxyInterface

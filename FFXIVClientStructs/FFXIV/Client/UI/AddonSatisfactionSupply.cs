@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -17,7 +17,7 @@ public unsafe partial struct AddonSatisfactionSupply
 public unsafe partial struct AddonDeliveryItemInfo
 {
     [FieldOffset(0x00)] public uint ItemId;
-    
+
     // The rest of this array are pointers to various other blocks of memory it seems.
     // These pointers don't seem to be vfuncs
 }

@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.Framework;
+using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc.UserFileManager;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Misc;
@@ -18,7 +18,7 @@ public unsafe partial struct RaptureGearsetModule
     [FieldOffset(0x0048)] public Gearsets Gearset;
 
     [FieldOffset(0xB434)] public int CurrentGearsetIndex;
-    
+
     /// <summary>
     /// Return a pointer to a <see cref="GearsetEntry"/> by index/ID.
     /// </summary>
@@ -89,14 +89,18 @@ public unsafe partial struct RaptureGearsetModule
     public partial int GetClassJobIconForGearset(int gearsetId);
 
     [StructLayout(LayoutKind.Sequential, Size = 0xAF2C)]
-    public struct Gearsets {
+    public struct Gearsets
+    {
         private fixed byte data[0x1C0 * 100];
 
-        public GearsetEntry* this[int i] {
-            get {
+        public GearsetEntry* this[int i]
+        {
+            get
+            {
                 if (i is < 0 or > 100) return null;
-                fixed (byte* p = data) {
-                    return (GearsetEntry*) (p + sizeof(GearsetEntry) * i);
+                fixed (byte* p = data)
+                {
+                    return (GearsetEntry*)(p + sizeof(GearsetEntry) * i);
                 }
             }
         }

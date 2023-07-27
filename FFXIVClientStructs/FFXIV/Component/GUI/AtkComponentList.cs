@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Component.GUI;
+namespace FFXIVClientStructs.FFXIV.Component.GUI;
 // Component::GUI::AtkComponentList
 //   Component::GUI::AtkComponentBase
 //     Component::GUI::AtkEventListener

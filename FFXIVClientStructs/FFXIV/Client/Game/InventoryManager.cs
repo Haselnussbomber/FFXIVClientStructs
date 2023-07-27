@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game;
+namespace FFXIVClientStructs.FFXIV.Client.Game;
 
 //ctor i guess 40 53 48 83 EC 20 48 8B D9 45 33 C9 B9
 [StructLayout(LayoutKind.Explicit, Size = 0x3620)]
@@ -30,7 +30,7 @@ public unsafe partial struct InventoryManager
 
     [MemberFunction("E8 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? 8B D8 E8 ?? ?? ?? ?? 8B 55 F7")]
     private partial int GetLimitedTomestoneCount(int a1);
-    
+
     [MemberFunction("E8 ?? ?? ?? ?? 8D 4F DD")]
     private static partial int GetSpecialItemId(byte switchCase);
 

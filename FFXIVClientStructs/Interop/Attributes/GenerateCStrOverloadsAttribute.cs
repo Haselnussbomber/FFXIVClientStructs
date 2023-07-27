@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.Interop.Attributes;
+namespace FFXIVClientStructs.Interop.Attributes;
 
 [AttributeUsage(AttributeTargets.Method)]
 public class GenerateCStrOverloadsAttribute : Attribute
@@ -7,6 +7,6 @@ public class GenerateCStrOverloadsAttribute : Attribute
     {
         this.IgnoreArgument = ignoreArgument;
     }
-    
+
     public string? IgnoreArgument { get; }
 }

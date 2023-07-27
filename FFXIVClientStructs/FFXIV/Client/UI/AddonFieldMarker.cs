@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -8,10 +8,10 @@ public unsafe partial struct AddonFieldMarker
 {
     [FieldOffset(0x00)] public AtkUnitBase AtkUnitBase;
     [FieldOffset(0x230)] public int HoveredButtonIndex; // Index 0-8 of the currently moused over button (A-D, 1-4, Clear)
-    
+
     [FixedSizeArray<AddonWaymarkInfo>(8)]
     [FieldOffset(0x238)] public fixed byte WaymarkInfo[0x18 * 8];
-    
+
     [FieldOffset(0x57C)] public int HoveredPresetIndex; // Index 0-4 of the currently moused over slot, -1 if not hovering over a slot
     [FieldOffset(0x580)] public byte SelectedPage;
 }

@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.String;
+using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -10,7 +10,7 @@ public unsafe struct AgentGcArmyExpedition
     [FieldOffset(0x00)] public AgentInterface AgentInterface;
 
     [FieldOffset(0x28)] public GcArmyExpeditionData* ExpeditionData;
-    
+
     [FieldOffset(0x40)] public int SelectedTab;
     [FieldOffset(0x44)] public int SelectedRow;
 }
@@ -19,7 +19,7 @@ public unsafe struct AgentGcArmyExpedition
 public unsafe partial struct GcArmyExpeditionData
 {
     [FieldOffset(0x10)] public int NumEntries;
-    
+
     [FixedSizeArray<MissionInfo>(50)]
     [FieldOffset(0x18)] public fixed byte MissionInfoArray[0x78 * 50];
 }

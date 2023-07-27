@@ -9,7 +9,8 @@ namespace FFXIVClientStructs.FFXIV.Client.Game.Character.Data;
  */
 
 [StructLayout(LayoutKind.Explicit, Size = 0x48)]
-public unsafe struct CharacterData {
+public unsafe struct CharacterData
+{
     [FieldOffset(0x0)] public void* VTable;
     [FieldOffset(0x8)] public float ModelScale;
     [FieldOffset(0xC)] public int ModelCharaId;

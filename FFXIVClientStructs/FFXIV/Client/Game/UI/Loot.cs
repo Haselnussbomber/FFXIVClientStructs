@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
+namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x6A0)]
 public unsafe partial struct Loot
@@ -7,14 +7,14 @@ public unsafe partial struct Loot
 
     [FixedSizeArray<LootItem>(16)]
     [FieldOffset(0x10)] public fixed byte ItemArray[16 * 0x40]; // 16 * LootItem
-    
+
     [FieldOffset(0x410)] public int SelectedIndex;
     [FieldOffset(0x418)] public uint UnkObjectId;
     [FieldOffset(0x678)] public uint UnkObjectId2;
 }
 
 [StructLayout(LayoutKind.Explicit, Size = 0x40)]
-public unsafe struct LootItem 
+public unsafe struct LootItem
 {
     [FieldOffset(0x00)] public uint ChestObjectId;
     [FieldOffset(0x04)] public uint ChestItemIndex; // This loot item's index in the chest it came from
@@ -28,7 +28,7 @@ public unsafe struct LootItem
     [FieldOffset(0x38)] public LootMode LootMode;
 }
 
-public enum RollState 
+public enum RollState
 {
     UpToNeed = 0, //Can roll up to Need
     UpToGreed = 1,//Can roll up to Gree

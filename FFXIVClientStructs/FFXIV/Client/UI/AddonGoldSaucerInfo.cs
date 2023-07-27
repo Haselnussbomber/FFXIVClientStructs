@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -10,7 +10,7 @@ public unsafe partial struct AddonGoldSaucerInfo
 
     [FieldOffset(0x220)] public int SelectedCategory;
     [FieldOffset(0x224)] public int SelectedSubCategory;
-    
+
     [FixedSizeArray<Pointer<AtkComponentRadioButton>>(6)]
     [FieldOffset(0x2A0)] public fixed byte CategoryRadioButtons[0x8 * 6]; // General/Chocobo/CardList/CardDecks/Verminion/Mahjong
 

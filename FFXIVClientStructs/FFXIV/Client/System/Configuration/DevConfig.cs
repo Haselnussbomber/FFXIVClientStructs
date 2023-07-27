@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.System.Configuration;
+namespace FFXIVClientStructs.FFXIV.Client.System.Configuration;
 // Client::System::Configuration::DevConfig
 //   Common::Configuration::DevConfig
 //     Common::Configuration::ConfigBase

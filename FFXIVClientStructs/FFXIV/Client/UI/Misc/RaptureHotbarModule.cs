@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.Framework;
+using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc.UserFileManager;
 
@@ -56,7 +56,7 @@ public unsafe struct HotBars
             if (i < 0 || i > 17) return null;
             fixed (byte* p = data)
             {
-                return (HotBar*) (p + sizeof(HotBar) * i);
+                return (HotBar*)(p + sizeof(HotBar) * i);
             }
         }
     }
@@ -82,7 +82,7 @@ public unsafe struct HotBarSlots
             if (i < 0 || i > 15) return null;
             fixed (byte* p = data)
             {
-                return (HotBarSlot*) (p + sizeof(HotBarSlot) * i);
+                return (HotBarSlot*)(p + sizeof(HotBarSlot) * i);
             }
         }
     }
@@ -92,37 +92,37 @@ public unsafe struct HotBarSlots
 public unsafe partial struct HotBarSlot
 {
     public const int Size = 0xE0;
-    
+
     /// The string that appears when a hotbar slot is hovered over.
     ///
     /// Calculated by concatenating GetDisplayNameForSlot with PopUpKeybindHint (in most cases).
     [FieldOffset(0x00)] public Utf8String PopUpHelp;
-    
+
     /// The "cost text" to display when 0xCB is in mode 2 or 4.
     ///
     /// This is generally filled with a flexible MP cost (e.g. "All" for certain BLM spells) or "x 123" for items.
     [FieldOffset(0x68)] public fixed byte CostText[0x20];
-    
+
     /// A human-friendly display of the keybind used for this hotbar slot.
     ///
     /// This text will generally lead with a space and have wrapping brackets, e.g. " [Ctrl-3]".
     [FieldOffset(0x88)] public fixed byte PopUpKeybindHint[0x20];
-    
+
     /// A less-friendly version of the keybind used for this hotbar slot.
     ///
     /// The actual use of this field is unknown, but it appears to be related to the hint in the top-left of the hotbar
     /// UI.
     [FieldOffset(0xA8)] public fixed byte KeybindHint[0x10];
-    
+
     /// The ID of the action that will be executed when this slot is triggered. Action type is determined by the
     /// CommandType field.
     [FieldOffset(0xB8)] public uint CommandId;
-    
+
     /// UNKNOWN. Appears to be the original action ID associated with this hotbar slot before adjustment.
     ///
     /// Note that this is *not* a reference to an icon ID; it must be combined with IconTypeA.
     [FieldOffset(0xBC)] public uint IconA;
-    
+
     /// Appears to be the action ID that will be used to generate this hotbar slot icon.
     ///
     /// This field exists to allow a hotbar slot to have the appearance of one action, but in reality trigger a
@@ -130,28 +130,28 @@ public unsafe partial struct HotBarSlot
     ///
     /// Note that this is *not* a reference to an icon directly.
     [FieldOffset(0xC0)] public uint IconB;
-    
+
     /// Unknown field with offset 0xC4 (196), possibly overloaded
     ///
     /// Appears to have relation to the following:
     /// - Lost Finds Items appear to set this value to 1
     /// - In PVP actions, the high byte controls combo icon and the low byte counts which action the combo is on
     [FieldOffset(0xC4)] public ushort UNK_0xC4;
-    
+
     // 0xC6 (198) does not appear to be referenced *anywhere*. Nothing ever reads or writes to it, save for a zero-out
     // operation. 
-    
+
     /// The HotbarSlotType of the action that will be executed when this hotbar slot is triggered.
     [FieldOffset(0xC7)] public HotbarSlotType CommandType;
-    
+
     /// UNKNOWN. Appears to be the original action type associated with this hotbar slot before adjustment/loading.
     [FieldOffset(0xC8)] public HotbarSlotType IconTypeA;
-    
+
     /// Appears to be the HotbarSlotType used to determine the icon to display on this hotbar slot.
     ///
     /// See notes on IconB for more information as to how this field is used.
     [FieldOffset(0xC9)] public HotbarSlotType IconTypeB;
-    
+
     /// Appears to be the "primary cost" of this action, mapping down to 0, 1, 2, 4, 5, 6, 7.
     ///
     /// Controls the color of the displayed cost when 0xCB is 1 or 2:
@@ -165,7 +165,7 @@ public unsafe partial struct HotBarSlot
     /// - 7: Bright Yellow (Rival Wings - CE)
     /// - All others: Grey
     [FieldOffset(0xCA)] public byte UNK_0xCA;
-    
+
     /// Appears to control display of the primary cost of the action (0xCA). 
     ///
     /// - 1: Displays action cost from 0xD0 in bottom left (e.g. for Actions or Craft Actions)
@@ -174,10 +174,10 @@ public unsafe partial struct HotBarSlot
     /// - 4: Mode 3, but display a custom string from CostText instead (generally "x {count}" for Items)
     /// - 0/255: No display, all other cases
     [FieldOffset(0xCB)] public byte UNK_0xCB;
-    
+
     /// The icon ID that is currently being displayed on this hotbar slot. 
     [FieldOffset(0xCC)] public int Icon;
-    
+
     /// UNKNOWN. Appears to be the "cost" of an action.
     ///
     /// For items, this field holds the number of items of that type currently present in inventory.
@@ -185,13 +185,13 @@ public unsafe partial struct HotBarSlot
     /// For actions that have some cost (MP, job bar, etc.), this appears to be the relevant value shown in the bottom
     /// left of the action.
     [FieldOffset(0xD0)] public uint UNK_0xD0;
-    
+
     /// UNKNOWN. Appears to be Recipe specific. References the resulting Item ID of the recipe on the hotbar slot.
     [FieldOffset(0xD4)] public uint UNK_0xD4;
-    
+
     /// UNKNOWN. Appears to be Recipe specific. References the CraftType for the recipe on the hotbar slot
     [FieldOffset(0xD8)] public uint UNK_0xD8;
-    
+
     /// UNKNOWN. Appears to be Recipe specific to check if a recipe is valid.
     ///
     /// Set to 1 when the recipe results in a nonzero number of items (???).
@@ -199,12 +199,12 @@ public unsafe partial struct HotBarSlot
     /// If 0, the tooltip for this slot will display message noting the recipe is deleted.
     /// If 1, the tooltip for this slot will display the name and crafting class for that recipe.
     [FieldOffset(0xDC)] public byte UNK_0xDC;
-    
+
     /// UNKNOWN. Appears to be Recipe specific.
     ///
     /// Always set to 1, apparently? 
     [FieldOffset(0xDD)] public byte UNK_0xDD;
-    
+
     /// UNKNOWN. Appears to control UI display mode (icon and displayed name) in some way
     ///
     /// Known values so far:
@@ -214,7 +214,7 @@ public unsafe partial struct HotBarSlot
     /// - 5: Set for Lost Finds Items (?)
     /// - 0/255: "generic"
     [FieldOffset(0xDE)] public byte UNK_0xDE;
-    
+
     /// <summary>
     /// A "boolean" representing if this specific hotbar slot has been fully loaded. False for empty slots and slots
     /// that have yet to be loaded in the UI.
@@ -241,7 +241,7 @@ public unsafe partial struct HotBarSlot
     {
         Set(Framework.Instance()->GetUiModule(), type, id);
     }
-    
+
     /// <summary>
     /// Populates HotBarSlot.Icon with information from IconB/IconTypeB. 
     /// </summary>
@@ -290,7 +290,7 @@ public unsafe struct SavedHotBars
             if (i is < 0 or > 60) return null;
             fixed (byte* p = savedHotBars)
             {
-                return (SavedHotBarClassJob*) (p + sizeof(SavedHotBarClassJob) * i);
+                return (SavedHotBarClassJob*)(p + sizeof(SavedHotBarClassJob) * i);
             }
         }
     }
@@ -313,7 +313,7 @@ public unsafe struct SavedHotBars
                 if (i is < 0 or > 18) return null;
                 fixed (byte* p = bars)
                 {
-                    return (SavedHotBarClassJobBar*) (p + sizeof(SavedHotBarClassJobBar) * i);
+                    return (SavedHotBarClassJobBar*)(p + sizeof(SavedHotBarClassJobBar) * i);
                 }
             }
         }
@@ -337,7 +337,7 @@ public unsafe struct SavedHotBars
                 if (i is < 0 or > 16) return null;
                 fixed (byte* p = slots)
                 {
-                    return (SavedHotBarClassJobSlot*) (p + sizeof(SavedHotBarClassJobSlot) * i);
+                    return (SavedHotBarClassJobSlot*)(p + sizeof(SavedHotBarClassJobSlot) * i);
                 }
             }
         }

@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -46,7 +46,7 @@ public unsafe partial struct AddonContentsFinder
     [FieldOffset(0x388)] public AtkTextNode* NumberSelectedTextNode;
     [FieldOffset(0x390)] public AtkTextNode* ObtainingDataTextNode;
     [FieldOffset(0x398)] public AtkTextNode* NumOtherPartiesRecruitingTextNode;
-    
+
     [FieldOffset(0x3A8)] public AtkImageNode* StarImageNode; // Image node next to ItemLevelTextNode
     [FieldOffset(0x3B0)] public AtkResNode* RoleIconResNode;
     [FieldOffset(0x3B8)] public AtkImageNode* RoleIconImageNode;

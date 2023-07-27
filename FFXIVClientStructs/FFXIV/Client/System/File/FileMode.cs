@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.System.File;
+namespace FFXIVClientStructs.FFXIV.Client.System.File;
 
 public enum FileMode : uint
 {

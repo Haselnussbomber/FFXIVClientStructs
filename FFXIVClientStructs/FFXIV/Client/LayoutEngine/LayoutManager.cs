@@ -1,8 +1,9 @@
-﻿
+
 namespace FFXIVClientStructs.FFXIV.Client.LayoutEngine;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x98)]
-public unsafe partial struct LayoutManager {
+public unsafe partial struct LayoutManager
+{
     [FieldOffset(0x20)] public uint TerritoryTypeId;
     [FieldOffset(0x38)] public uint FestivalStatus; // SetActiveFestivals will not allow a change when not 5 or 0
     [FieldOffset(0x40)] public fixed uint ActiveFestivals[4];
@@ -18,7 +19,8 @@ public unsafe partial struct LayoutManager {
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct IndoorAreaLayoutData {
+public unsafe struct IndoorAreaLayoutData
+{
     [FieldOffset(0x28)] public IndoorFloorLayoutData Floor0;
     [FieldOffset(0x3C)] public IndoorFloorLayoutData Floor1;
     [FieldOffset(0x50)] public IndoorFloorLayoutData Floor2;
@@ -26,7 +28,8 @@ public unsafe struct IndoorAreaLayoutData {
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct IndoorFloorLayoutData {
+public unsafe struct IndoorFloorLayoutData
+{
     [FieldOffset(0x00)] public int Part0;
     [FieldOffset(0x04)] public int Part1;
     [FieldOffset(0x08)] public int Part2;

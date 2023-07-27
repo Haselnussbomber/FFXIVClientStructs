@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.String;
+using FFXIVClientStructs.FFXIV.Client.System.String;
 
 namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 
@@ -20,7 +20,7 @@ public unsafe partial struct Map
 
                 fixed (byte* pointer = data)
                 {
-                    return (MapMarkerInfo*) (pointer + sizeof(MapMarkerInfo) * index);
+                    return (MapMarkerInfo*)(pointer + sizeof(MapMarkerInfo) * index);
                 }
             }
         }

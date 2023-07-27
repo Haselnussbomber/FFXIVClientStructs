@@ -1,6 +1,6 @@
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 
-namespace FFXIVClientStructs.FFXIV.Client.Game.Control; 
+namespace FFXIVClientStructs.FFXIV.Client.Game.Control;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x5A60)]
 public unsafe partial struct Control

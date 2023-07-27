@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.UI.Agent;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 
 namespace FFXIVClientStructs.FFXIV.Component.GUI;
 // Client::UI::Agent::AgentHudLayout

@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.UI.Misc.UserFileManager;
+namespace FFXIVClientStructs.FFXIV.Client.UI.Misc.UserFileManager;
 
 // Client::UI::Misc::UserFileManager::UserFileEvent
 // ctor inlined

@@ -1,6 +1,6 @@
-﻿namespace FFXIVClientStructs.FFXIV.Component.GUI;
+namespace FFXIVClientStructs.FFXIV.Component.GUI;
 
-[StructLayout(LayoutKind.Sequential, Size=0x18)]
+[StructLayout(LayoutKind.Sequential, Size = 0x18)]
 [Obsolete("Use StdLinkedList")]
 public unsafe struct AtkLinkedList<T> where T : unmanaged
 {

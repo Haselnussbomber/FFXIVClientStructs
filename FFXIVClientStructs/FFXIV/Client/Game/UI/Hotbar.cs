@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
+namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x08)]
 public partial struct Hotbar

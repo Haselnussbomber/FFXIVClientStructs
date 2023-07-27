@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.Character;
+namespace FFXIVClientStructs.FFXIV.Client.Game.Character;
 // Client::Game::Character::Ornament
 //   Client::Game::Character::Character
 //     Client::Game::Object::GameObject

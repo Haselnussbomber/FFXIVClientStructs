@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Graphics.Render;
+using FFXIVClientStructs.FFXIV.Client.Graphics.Render;
 
 namespace FFXIVClientStructs.FFXIV.Client.Graphics.Kernel;
 // Client::Graphics::Kernel::SwapChain

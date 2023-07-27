@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using FFXIVClientStructs.FFXIV.Client.System.Memory;
 
 namespace FFXIVClientStructs.FFXIV.Component.GUI;
@@ -42,7 +42,7 @@ public unsafe partial struct AtkImageNode : ICreatable
         var ptr = Marshal.AllocHGlobal(bytes.Length + 1);
         Marshal.Copy(bytes, 0, ptr, bytes.Length);
         Marshal.WriteByte(ptr, bytes.Length, 0);
-        LoadTexture((byte*) ptr.ToPointer(), version);
+        LoadTexture((byte*)ptr.ToPointer(), version);
         Marshal.FreeHGlobal(ptr);
     }
 

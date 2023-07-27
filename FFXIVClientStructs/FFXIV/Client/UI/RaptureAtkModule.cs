@@ -22,7 +22,7 @@ public unsafe partial struct RaptureAtkModule
     [FieldOffset(0x11910)] public RaptureAtkUnitManager RaptureAtkUnitManager;
 
     [FieldOffset(0x1B590), Obsolete("Use RaptureAtkUnitManager.Flags")] public RaptureAtkModuleFlags Flags; // TODO: this is actually at RaptureAtkUnitManager + 0x9C80
-    
+
     [FieldOffset(0x1B8A0)] public int NameplateInfoCount;
     [FieldOffset(0x1B8A8)] public NamePlateInfo NamePlateInfoArray; // 0-50, &NamePlateInfoArray[i]
 
@@ -35,11 +35,12 @@ public unsafe partial struct RaptureAtkModule
     public partial void SetUiVisibility(bool uiVisible);
 
     [Obsolete("Use RaptureAtkUnitManager.IsUiVisible")]
-    public bool IsUiVisible {
+    public bool IsUiVisible
+    {
         get => !RaptureAtkUnitManager.Flags.HasFlag(RaptureAtkModuleFlags.UiHidden);
         set => SetUiVisibility(value);
     }
-    
+
     [StructLayout(LayoutKind.Explicit, Size = 0x248)]
     public struct NamePlateInfo
     {
@@ -56,7 +57,8 @@ public unsafe partial struct RaptureAtkModule
 }
 
 [Flags]
-public enum RaptureAtkModuleFlags : byte {
+public enum RaptureAtkModuleFlags : byte
+{
     None = 0x00,
     Unk01 = 0x01,
     Unk02 = 0x02,

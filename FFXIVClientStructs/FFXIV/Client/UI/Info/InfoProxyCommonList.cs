@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.String;
+using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Info;
@@ -87,7 +87,7 @@ public unsafe partial struct InfoProxyCommonList
         [Obsolete("Use ClientLanguage")]
         [FieldOffset(0x25)] public byte MainLanguage;
         [FieldOffset(0x25)] public Language ClientLanguage;
-        
+
         /// <summary>
         /// Bitmask, Values in Dec
         /// 1 = JP
@@ -104,8 +104,9 @@ public unsafe partial struct InfoProxyCommonList
         [FieldOffset(0x4A)] public fixed byte FCTag[6];
         // 8 bytes
         [FieldOffset(0x58)] public CharIndexEntry* Index;
-        
-        public enum Language : byte {
+
+        public enum Language : byte
+        {
             JP = 0,
             EN = 1,
             DE = 2,
@@ -113,7 +114,8 @@ public unsafe partial struct InfoProxyCommonList
         }
 
         [Flags]
-        public enum LanguageMask : byte {
+        public enum LanguageMask : byte
+        {
             JP = 1,
             EN = 2,
             DE = 4,

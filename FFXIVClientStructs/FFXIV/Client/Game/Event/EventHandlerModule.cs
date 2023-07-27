@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
+namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
 
 [StructLayout(LayoutKind.Explicit, Size = 0xC0)]
 public struct EventHandlerModule

@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Common.Configuration;
+namespace FFXIVClientStructs.FFXIV.Common.Configuration;
 // Common::Configuration::SystemConfig
 //   Common::Configuration::ConfigBase
 //     Client::System::Common::NonCopyable

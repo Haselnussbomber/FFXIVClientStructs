@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.STD;
+namespace FFXIVClientStructs.STD;
 
 [StructLayout(LayoutKind.Sequential, Size = 0x28)]
 public unsafe struct StdDeque<T> where T : unmanaged
@@ -20,7 +20,7 @@ public unsafe struct StdDeque<T> where T : unmanaged
 
     private ulong GetBlock(ulong offset)
     {
-        return (offset / (ulong) BlockSize()) & (MapSize - 1);
+        return (offset / (ulong)BlockSize()) & (MapSize - 1);
     }
 
     public T Get(ulong index)
@@ -30,7 +30,7 @@ public unsafe struct StdDeque<T> where T : unmanaged
 
         var actualIndex = MyOff + index;
         var block = GetBlock(actualIndex);
-        var offset = actualIndex % (ulong) BlockSize();
+        var offset = actualIndex % (ulong)BlockSize();
         return Map[block][offset];
     }
 }

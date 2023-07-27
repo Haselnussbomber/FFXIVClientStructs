@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.System.Scheduler.Resource;
+namespace FFXIVClientStructs.FFXIV.Client.System.Scheduler.Resource;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x58)]
 public unsafe partial struct SchedulerResourceManagement

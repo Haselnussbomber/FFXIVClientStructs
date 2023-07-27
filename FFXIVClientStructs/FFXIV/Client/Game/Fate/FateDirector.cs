@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.Event;
+using FFXIVClientStructs.FFXIV.Client.Game.Event;
 
 namespace FFXIVClientStructs.FFXIV.Client.Game.Fate;
 

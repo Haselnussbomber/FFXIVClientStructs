@@ -40,7 +40,7 @@ public unsafe partial struct PlayerState
     [FieldOffset(0x139)] public byte FirstClass;
     [FieldOffset(0x13A)] public byte StartTown;
     [FieldOffset(0x13B)] public byte QuestSpecialFlags;
-    
+
     [FieldOffset(0x154)] public int BaseStrength;
     [FieldOffset(0x158)] public int BaseDexterity;
     [FieldOffset(0x15C)] public int BaseVitality;
@@ -131,7 +131,7 @@ public unsafe partial struct PlayerState
     [FieldOffset(0x74C)] public byte MentorVersion; // latest is 2
 
     [FieldOffset(0x750)] public fixed uint DesynthesisLevels[8];
-    
+
     [StaticAddress("48 8D 0D ?? ?? ?? ?? 4D 8B F9", 3)]
     public static partial PlayerState* Instance();
 
@@ -234,13 +234,14 @@ public unsafe partial struct PlayerState
     [MemberFunction("4C 8B C9 66 83 FA ?? 73")]
     public partial bool IsFramersKitUnlocked(uint kitId);
 
-    public bool IsAetherCurrentUnlocked(uint aetherCurrentId) {
+    public bool IsAetherCurrentUnlocked(uint aetherCurrentId)
+    {
         if (aetherCurrentId < 0x2B0000)
             return false;
         var id = aetherCurrentId - 0x2B0000;
         var idx = id >> 3;
-	    var flag = 1 << (byte)(id + idx * -8 & 0x1F);
-	    return (UnlockFlags[idx] & flag) != 0;
+        var flag = 1 << (byte)(id + idx * -8 & 0x1F);
+        return (UnlockFlags[idx] & flag) != 0;
     }
 
     /// <summary>

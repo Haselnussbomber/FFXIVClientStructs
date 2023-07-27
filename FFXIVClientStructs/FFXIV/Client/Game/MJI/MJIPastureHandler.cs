@@ -1,11 +1,12 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.MJI; 
+namespace FFXIVClientStructs.FFXIV.Client.Game.MJI;
 
 
 // ctor 1413EA840 ? - extends EventHandler
 [StructLayout(LayoutKind.Explicit, Size = 0xAE0)] // completely lost track of size
-public unsafe partial struct MJIPastureHandler {
+public unsafe partial struct MJIPastureHandler
+{
     [FieldOffset(0x0)] public void* vtbl;
-    
+
     /// <summary>
     /// An array representing all animals currently present in the pastures on the Island. 
     /// </summary>
@@ -24,7 +25,7 @@ public unsafe partial struct MJIPastureHandler {
     /// An array containing information on all the minion slots present on the Island Sanctuary.
     /// This array is indexed by an internal ID and does not appear to be grouped by location or similar.
     /// </summary>
-    [FixedSizeArray<MJIMinionSlot>(50)] 
+    [FixedSizeArray<MJIMinionSlot>(50)]
     [FieldOffset(0x8E8)] public fixed byte MinionSlots[50 * MJIMinionSlot.Size];
 
     /// <summary>
@@ -35,7 +36,8 @@ public unsafe partial struct MJIPastureHandler {
 }
 
 [StructLayout(LayoutKind.Explicit, Size = Size)]
-public unsafe struct MJIAnimal {
+public unsafe struct MJIAnimal
+{
     public const int Size = 0x34;
 
     [FieldOffset(0x00)] public byte SlotId;
@@ -49,7 +51,8 @@ public unsafe struct MJIAnimal {
 }
 
 [StructLayout(LayoutKind.Explicit, Size = Size)]
-public struct MJIMinionSlot {
+public struct MJIMinionSlot
+{
     public const int Size = 0xC;
 
     /// <summary>
@@ -59,10 +62,10 @@ public struct MJIMinionSlot {
     /// May be set to 40 if the slot is currently empty or uninitialized.
     /// </remarks>
     [FieldOffset(0x0)] public byte SlotId;
-    
+
     [FieldOffset(0x4)] public uint ObjectId;
     [FieldOffset(0x8)] public ushort MinionId;
-    
+
     /// <summary>
     /// The MJIMinionPopAreaId that this minion currently resides in.
     /// </summary>

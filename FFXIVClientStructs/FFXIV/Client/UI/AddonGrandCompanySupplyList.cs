@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -27,5 +27,5 @@ public unsafe struct AddonGrandCompanySupplyList
     [FieldOffset(0x2E8)] public int SelectedTab;
     [FieldOffset(0x2EC)] public int SelectedSortBy;
     [FieldOffset(0x2F0)] public int SelectedFilter;
-    
+
 }

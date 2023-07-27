@@ -10,7 +10,7 @@ public unsafe partial struct AgentInventoryContext
 {
     public static AgentInventoryContext* Instance()
     {
-        return (AgentInventoryContext*) Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(
+        return (AgentInventoryContext*)Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(
             AgentId.InventoryContext);
     }
 
@@ -69,7 +69,8 @@ public unsafe partial struct AgentInventoryContext
     [MemberFunction("83 B9 ?? ?? ?? ?? ?? 7E ?? 39 91")]
     public partial void OpenForItemSlot(uint inventory, int slot, int a4, uint addonId);
 
-    public void OpenForItemSlot(InventoryType inventory, int slot, uint addonId) {
+    public void OpenForItemSlot(InventoryType inventory, int slot, uint addonId)
+    {
         OpenForItemSlot((uint)inventory, slot, 0, addonId);
     }
 

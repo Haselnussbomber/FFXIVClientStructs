@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.Group;
+namespace FFXIVClientStructs.FFXIV.Client.Game.Group;
 
 // there are actually two copies of this back to back in the exe
 // maybe for 48 man raid support since the group manager can only hold 1 alliance worth of party members

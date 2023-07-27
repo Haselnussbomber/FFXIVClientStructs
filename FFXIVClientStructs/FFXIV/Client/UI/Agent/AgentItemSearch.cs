@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.Framework;
+using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -16,7 +16,7 @@ public unsafe struct AgentItemSearch
     // Market Board
     public static AgentItemSearch* Instance()
     {
-        return (AgentItemSearch*) Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(
+        return (AgentItemSearch*)Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(
             AgentId.ItemSearch);
     }
 

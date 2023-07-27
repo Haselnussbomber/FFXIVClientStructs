@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 // Client::UI::RaptureAtkUnitManager
@@ -21,6 +21,6 @@ public unsafe partial struct RaptureAtkUnitManager
 
     [MemberFunction("E8 ?? ?? ?? ?? 8B 6B 20")]
     public partial AtkUnitBase* GetAddonById(ushort id);
-    
+
     [VirtualFunction(11)] public partial void UpdateAddonByID(ushort addonId, NumberArrayData** numberArrayData, StringArrayData** stringArrayData, bool forced);
 }

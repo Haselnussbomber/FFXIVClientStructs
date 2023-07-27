@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc.UserFileManager;
 
@@ -21,11 +21,12 @@ public unsafe partial struct RetainerCommentModule
 
     [MemberFunction("32 C0 0F 1F 40 00 66 66 0F 1F 84 ?? 00 00 00 00 44 0F B6 C0 4C 8D 51")]
     public partial byte* GetComment(ulong retainerId);
-    
+
     [StructLayout(LayoutKind.Sequential, Size = 0x410)]
-    public struct RetainerCommentList {
+    public struct RetainerCommentList
+    {
         private fixed byte data[0x68 * 10];
-        
+
         public RetainerComment* this[int i]
         {
             get
@@ -33,26 +34,29 @@ public unsafe partial struct RetainerCommentModule
                 if (i is < 0 or > 9) return null;
                 fixed (byte* p = data)
                 {
-                    return (RetainerComment*) (p + sizeof(RetainerComment) * i);
+                    return (RetainerComment*)(p + sizeof(RetainerComment) * i);
                 }
             }
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Size = 0x68)]
-    public struct RetainerComment {
+    public struct RetainerComment
+    {
         public ulong ID;
-        public string Comment {
-            get {
+        public string Comment
+        {
+            get
+            {
                 var comment = Instance()->GetComment(ID);
                 if (comment == null || comment[0] == 0) return string.Empty;
                 int i;
                 for (i = 0; i < 0x5B; i++) if (comment[i] == 0) break;
                 return Encoding.UTF8.GetString(comment, i).TrimEnd('\0');
-                
+
             }
             set => Instance()->SetComment(ID, value);
         }
-        
+
     }
 }

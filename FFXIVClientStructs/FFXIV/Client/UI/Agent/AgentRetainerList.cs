@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.Framework;
+using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
@@ -15,7 +15,7 @@ public unsafe struct AgentRetainerList
 {
     public static AgentRetainerList* Instance()
     {
-        return (AgentRetainerList*) Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(
+        return (AgentRetainerList*)Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(
             AgentId.RetainerList);
     }
 
@@ -47,7 +47,7 @@ public unsafe struct AgentRetainerList
                 if (index is < 0 or >= 10) return null;
                 fixed (byte* p = Retainers)
                 {
-                    var r = (Retainer*) p;
+                    var r = (Retainer*)p;
                     return r + index;
                 }
             }

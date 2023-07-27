@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.UI.Info;
+namespace FFXIVClientStructs.FFXIV.Client.UI.Info;
 
 [InfoProxy(InfoProxyId.PlayerSearch)]
 [StructLayout(LayoutKind.Explicit, Size = 0x178)]

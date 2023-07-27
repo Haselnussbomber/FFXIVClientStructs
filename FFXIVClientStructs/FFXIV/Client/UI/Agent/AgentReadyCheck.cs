@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
 
@@ -9,13 +9,14 @@ public unsafe struct AgentReadyCheck
     [FieldOffset(0x00)] public AgentInterface AgentInterface;
 
     [FixedArray(typeof(ReadyCheckEntry), 48)]
-    [FieldOffset(0xB0)]  public fixed byte ReadyCheckEntries[16 * 48];
+    [FieldOffset(0xB0)] public fixed byte ReadyCheckEntries[16 * 48];
 
     public Span<ReadyCheckEntry> ReadyCheckEntrySpan
     {
         get
         {
-            fixed (byte* ptr = ReadyCheckEntries) {
+            fixed (byte* ptr = ReadyCheckEntries)
+            {
                 return new Span<ReadyCheckEntry>(ptr, 48);
             }
         }

@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Component.GUI.ULD;
+namespace FFXIVClientStructs.FFXIV.Component.GUI.ULD;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x24)]
 public unsafe struct AtkUldComponentDataTab

@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 
 namespace FFXIVClientStructs.STD;
 
@@ -18,15 +18,18 @@ public unsafe struct StdMap<TKey, TValue>
 
     public Enumerator GetEnumerator() => new(this);
 
-    public ref struct Enumerator {
-	    private readonly Node* _head;
-	    private Node* _current;
+    public ref struct Enumerator
+    {
+        private readonly Node* _head;
+        private Node* _current;
 
-	    internal Enumerator(StdMap<TKey, TValue> map) {
-		    _head = _current = map.Head;
-	    }
+        internal Enumerator(StdMap<TKey, TValue> map)
+        {
+            _head = _current = map.Head;
+        }
 
-        public bool MoveNext() {
+        public bool MoveNext()
+        {
             if (_current == null || _current == _head->Right)
                 return false;
             _current = _current == _head ? _head->Left : _current->Next();

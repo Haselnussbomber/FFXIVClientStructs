@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
+namespace FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x27D8)]
 public unsafe partial struct InstanceContentDeepDungeon

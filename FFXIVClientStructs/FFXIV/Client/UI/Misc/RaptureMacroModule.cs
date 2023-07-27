@@ -32,7 +32,7 @@ public unsafe partial struct RaptureMacroModule
                     if (i < 0 || i > 14) return null;
                     fixed (byte* p = data)
                     {
-                        return (Utf8String*) (p + sizeof(Utf8String) * i);
+                        return (Utf8String*)(p + sizeof(Utf8String) * i);
                     }
                 }
             }
@@ -52,7 +52,7 @@ public unsafe partial struct RaptureMacroModule
                 Macro* a;
                 fixed (byte* p = data)
                 {
-                    a = (Macro*) (p + 0x688 * i);
+                    a = (Macro*)(p + 0x688 * i);
                 }
 
                 return a;

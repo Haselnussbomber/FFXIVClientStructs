@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.UI;
+using FFXIVClientStructs.FFXIV.Client.UI;
 
 namespace FFXIVClientStructs.FFXIV.Component.GUI;
 // Client::UI::Agent::AgentInterface
@@ -16,7 +16,7 @@ public unsafe partial struct AgentInterface
 
     [VirtualFunction(0)]
     public partial void* ReceiveEvent(void* eventData, AtkValue* values, uint valueCount, ulong eventKind);
-    
+
     [VirtualFunction(3)]
     public partial void Show();
 

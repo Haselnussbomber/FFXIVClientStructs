@@ -33,7 +33,7 @@ public enum AtkEventType : byte
     IconTextRollOver = 56,
     IconTextRollOut = 57,
     IconTextClick = 58,
-    
+
     // AtkComponentWindow
     WindowRollOver = 67,
     WindowRollOut = 68,
@@ -51,7 +51,7 @@ public unsafe partial struct AtkEvent
     [FieldOffset(0x28)] public AtkEventType Type;
     [FieldOffset(0x29)] public byte Unk29;
     [FieldOffset(0x30)] public byte Flags; // 0: handled, 5: force handled (see AtkEvent::SetEventIsHandled)
-  
+
     [MemberFunction("E8 ?? ?? ?? ?? 8D 53 9C")]
     public partial void SetEventIsHandled(bool forced = false);
 }

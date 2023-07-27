@@ -108,7 +108,7 @@ public unsafe partial struct AtkResNode : ICreatable
     [FieldOffset(0xA0)] public uint DrawFlags;
 
     public bool IsVisible => NodeFlags.HasFlag(NodeFlags.Visible);
-    
+
     [MemberFunction("E9 ?? ?? ?? ?? 33 C0 48 83 C4 20 5B C3 66 90")]
     public partial void Ctor();
 
@@ -167,16 +167,16 @@ public unsafe partial struct AtkResNode : ICreatable
     public void AddEvent(AtkEventType eventType, uint eventParam, AtkEventListener* listener, AtkResNode* nodeParam,
         bool isSystemEvent)
     {
-        AddEvent((ushort) eventType, eventParam, listener, nodeParam, isSystemEvent);
+        AddEvent((ushort)eventType, eventParam, listener, nodeParam, isSystemEvent);
     }
-    
+
     [MemberFunction("E8 ?? ?? ?? ?? 44 38 7D 67")]
     public partial void RemoveEvent(ushort eventType, uint eventParam, AtkEventListener* listener,
         bool isSystemEvent);
 
     public void RemoveEvent(AtkEventType eventType, uint eventParam, AtkEventListener* listener, bool isSystemEvent)
     {
-        RemoveEvent((ushort) eventType, eventParam, listener, isSystemEvent);
+        RemoveEvent((ushort)eventType, eventParam, listener, isSystemEvent);
     }
 
     [MemberFunction("48 85 C9 74 0B 8B 41 44")]
@@ -190,7 +190,7 @@ public unsafe partial struct AtkResNode : ICreatable
 
     [MemberFunction("E8 ?? ?? ?? ?? 8D 56 B5")]
     public partial void SetPositionShort(short X, short Y);
-    
+
     [MemberFunction("48 85 C9 74 0B 8B 41 4C")]
     public partial void GetScale(float* outX, float* outY);
 

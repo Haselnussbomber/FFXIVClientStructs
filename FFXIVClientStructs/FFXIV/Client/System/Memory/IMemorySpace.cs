@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.System.Memory;
+namespace FFXIVClientStructs.FFXIV.Client.System.Memory;
 
 public interface ICreatable
 {
@@ -11,9 +11,9 @@ public unsafe partial struct IMemorySpace
 {
     public T* Create<T>() where T : unmanaged, ICreatable
     {
-        var memory = (T*) Malloc<T>();
+        var memory = (T*)Malloc<T>();
         if (memory is null) return null;
-        Memset(memory, 0, (ulong) sizeof(T));
+        Memset(memory, 0, (ulong)sizeof(T));
         memory->Ctor();
         return memory;
     }
@@ -44,11 +44,11 @@ public unsafe partial struct IMemorySpace
 
     public void* Malloc<T>(ulong alignment = 8) where T : unmanaged
     {
-        return Malloc((ulong) sizeof(T), alignment);
+        return Malloc((ulong)sizeof(T), alignment);
     }
 
     public static void Free<T>(T* ptr) where T : unmanaged
     {
-        Free(ptr, (ulong) sizeof(T));
+        Free(ptr, (ulong)sizeof(T));
     }
 }

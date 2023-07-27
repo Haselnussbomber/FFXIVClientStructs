@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Graphics.Scene;
+namespace FFXIVClientStructs.FFXIV.Client.Graphics.Scene;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x160)]
 public unsafe partial struct World

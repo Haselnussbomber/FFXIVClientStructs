@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
+namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x50)]
 public struct LuaActorModule

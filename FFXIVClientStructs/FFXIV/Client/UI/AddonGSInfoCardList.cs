@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -9,10 +9,10 @@ public unsafe partial struct AddonGSInfoCardList
     [FieldOffset(0x00)] public AtkUnitBase AtkUnitBase;
 
     [FieldOffset(0x348)] public AtkResNode* PageSelection;
-    
+
     [FixedSizeArray<Pointer<AtkComponentButton>>(9)]
     [FieldOffset(0x350)] public fixed byte PageButtons[0x8 * 9];
-    
+
     [FieldOffset(0x398)] public AtkComponentButton* GotoFirstPageButton;
     [FieldOffset(0x3A0)] public AtkComponentButton* GotoLastPageButton;
 

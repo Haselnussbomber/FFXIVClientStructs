@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Graphics.Render;
+namespace FFXIVClientStructs.FFXIV.Client.Graphics.Render;
 // Client::Graphics::Render::RenderTargetManager
 //   Client::Graphics::Singleton
 //   Client::Graphics::Kernel::Notifier

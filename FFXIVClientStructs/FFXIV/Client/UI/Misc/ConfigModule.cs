@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
@@ -17,7 +17,7 @@ public unsafe partial struct ConfigModule
     public const int ConfigOptionCount = 715;
     [FieldOffset(0x28)] public UIModule* UIModule;
     [FieldOffset(0x2C8)] private fixed byte options[Option.Size * ConfigOptionCount];
-    
+
     [FieldOffset(0x5C38)] private fixed byte values[0x10 * ConfigOptionCount];
 
     [MemberFunction("E8 ?? ?? ?? ?? C6 47 4D 00")]
@@ -29,7 +29,8 @@ public unsafe partial struct ConfigModule
     public partial int GetIntValue(uint index, int a3 = 2);
 
     [Obsolete("Use Framework.SystemConfig functions.", false)]
-    public uint? GetIndex(ConfigOption option) {
+    public uint? GetIndex(ConfigOption option)
+    {
         for (uint i = 0; i < ConfigOptionCount; i++)
         {
             var o = GetOption(i);
@@ -39,7 +40,7 @@ public unsafe partial struct ConfigModule
 
         return null;
     }
-    
+
     [Obsolete("Use Framework.SystemConfig functions.", false)]
     public void SetOption(ConfigOption option, int value)
     {
@@ -55,16 +56,18 @@ public unsafe partial struct ConfigModule
     [Obsolete("Use Framework.SystemConfig functions.", false)]
     public void SetOptionById(short optionId, int value)
     {
-        SetOption((ConfigOption) optionId, value);
+        SetOption((ConfigOption)optionId, value);
     }
 
     [Obsolete("Use Framework.SystemConfig functions.", false)]
-    public Option* GetOption(string name) {
+    public Option* GetOption(string name)
+    {
         if (string.IsNullOrEmpty(name)) return null;
         for (uint i = 0; i < ConfigOptionCount; i++)
         {
             var o = GetOption(i);
-            if (o->GetName() == name) {
+            if (o->GetName() == name)
+            {
                 return o;
             }
         }
@@ -77,7 +80,7 @@ public unsafe partial struct ConfigModule
     {
         fixed (byte* p = options)
         {
-            var o = (Option*) p;
+            var o = (Option*)p;
             return o + index;
         }
     }
@@ -97,7 +100,7 @@ public unsafe partial struct ConfigModule
     [Obsolete("Use Framework.SystemConfig functions.", false)]
     public Option* GetOptionById(short optionId)
     {
-        return GetOption((ConfigOption) optionId);
+        return GetOption((ConfigOption)optionId);
     }
 
     [Obsolete("Use Framework.SystemConfig functions.", false)]
@@ -105,7 +108,7 @@ public unsafe partial struct ConfigModule
     {
         fixed (byte* p = values)
         {
-            var v = (AtkValue*) p;
+            var v = (AtkValue*)p;
             return v + index;
         }
     }
@@ -125,7 +128,7 @@ public unsafe partial struct ConfigModule
     [Obsolete("Use Framework.SystemConfig functions.", false)]
     public AtkValue* GetValueById(short optionId)
     {
-        return GetValue((ConfigOption) optionId);
+        return GetValue((ConfigOption)optionId);
     }
 
     [Obsolete("Use Framework.SystemConfig functions.", false)]
@@ -143,7 +146,7 @@ public unsafe partial struct ConfigModule
     [Obsolete("Use Framework.SystemConfig functions.", false)]
     public int GetIntValue(short optionId)
     {
-        return GetIntValue((ConfigOption) optionId);
+        return GetIntValue((ConfigOption)optionId);
     }
 
     [StructLayout(LayoutKind.Explicit, Size = Size)]
@@ -157,7 +160,8 @@ public unsafe partial struct ConfigModule
         [FieldOffset(0x18)] public uint Unk18;
         [FieldOffset(0x1C)] public ushort Unk1C;
 
-        public string GetName() {
+        public string GetName()
+        {
             if ((short)OptionID < 0) return string.Empty;
             var sysConfig = Framework.Instance()->SystemConfig;
             var id = (uint)OptionID;

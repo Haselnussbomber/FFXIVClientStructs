@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Component.GUI;
+namespace FFXIVClientStructs.FFXIV.Component.GUI;
 
 public enum ComponentType : byte
 {
@@ -54,7 +54,7 @@ public unsafe partial struct AtkComponentBase
 
     [MemberFunction("E8 ?? ?? ?? ?? 8B 53 FC")]
     public partial AtkResNode* GetScrollBarNodeById(uint id);
-    
-    [VirtualFunction(10)] 
+
+    [VirtualFunction(10)]
     public partial void* SetEnabledState(bool enabled);
 }

@@ -1,6 +1,6 @@
-﻿namespace FFXIVClientStructs.Havok;
+namespace FFXIVClientStructs.Havok;
 
 public struct hkClass
 {
-	
+
 }

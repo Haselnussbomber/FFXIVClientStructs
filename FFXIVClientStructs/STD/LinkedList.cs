@@ -1,6 +1,6 @@
-﻿namespace FFXIVClientStructs.STD;
+namespace FFXIVClientStructs.STD;
 
-[StructLayout(LayoutKind.Sequential, Size=0x18)]
+[StructLayout(LayoutKind.Sequential, Size = 0x18)]
 public unsafe struct StdLinkedList<T> where T : unmanaged
 {
     [StructLayout(LayoutKind.Sequential)]

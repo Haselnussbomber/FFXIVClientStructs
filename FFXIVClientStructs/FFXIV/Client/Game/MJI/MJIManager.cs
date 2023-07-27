@@ -1,10 +1,11 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.MJI;
+namespace FFXIVClientStructs.FFXIV.Client.Game.MJI;
 
 /// <summary>
 /// Manager struct (?) for Island Sanctuary (internally MJI).
 /// </summary>
 [StructLayout(LayoutKind.Explicit, Size = 0x3F4)] // probably bigger
-public unsafe partial struct MJIManager {
+public unsafe partial struct MJIManager
+{
     /// <summary>
     /// Reports if the player is currently on the Island Sanctuary.
     /// </summary>
@@ -29,10 +30,10 @@ public unsafe partial struct MJIManager {
     [FieldOffset(0x1C)] public uint CurrentModeItem;
 
     [FieldOffset(0x28)] public IslandState IslandState;
-    
+
     [FieldOffset(0x110)] public MJIPastureHandler* PastureHandler;
     [FieldOffset(0x118)] public MJIFarmState* FarmState;
-    
+
     /// <summary>
     /// A struct representing landmark placements on the Island Sanctuary. Each index represents a specific landmark
     /// slot directly. Refer to <see cref="MJILandmarkPlacement"/> for more information.
@@ -44,7 +45,7 @@ public unsafe partial struct MJIManager {
     /// </remarks>
     [FixedSizeArray<MJILandmarkPlacement>(5)]
     [FieldOffset(0x1B4)] public fixed byte LandmarkPlacements[5 * MJILandmarkPlacement.Size]; // ??
-    
+
     /// <summary>
     /// A struct representing building placements on the Island Sanctuary. Each index represents a specific building
     /// slot directly. Refer to <see cref="MJIBuildingPlacement"/> for more information.
@@ -72,7 +73,7 @@ public unsafe partial struct MJIManager {
     /// </summary>
     [FixedSizeArray<MJIFarmPasturePlacement>(3)]
     [FieldOffset(0x260)] public fixed byte FarmPlacements[MJIFarmPasturePlacement.Size * 3];
-    
+
     /// <summary>
     /// A struct representing pasture placements on the current Island Sanctuary. Identical in behavior (hopefully)
     /// to that of <see cref="FarmPlacements"/>
@@ -100,7 +101,7 @@ public unsafe partial struct MJIManager {
     /// the lower half.
     /// </summary>
     [FieldOffset(0x2BA)] public fixed byte SupplyAndDemandShifts[81];
-    
+
     /// <summary>
     /// The current day in the Craftworks cycle, from 0 to 6.
     /// </summary>
@@ -108,7 +109,7 @@ public unsafe partial struct MJIManager {
     /// 0 represents reset day (Tuesday).
     /// </remarks>
     [FieldOffset(0x368)] public byte CurrentCycleDay;
-    
+
     /// <summary>
     /// An array containing the currently-configured rest days for the Isleworks. Contains values 0 - 13, and is
     /// always in order.
@@ -118,7 +119,7 @@ public unsafe partial struct MJIManager {
     /// populated until the Craftworks have been opened at least once.
     /// </remarks>
     [FieldOffset(0x369)] public fixed byte CraftworksRestDays[4];
-    
+
     /// <summary>
     /// The current groove level of the Isleworks.
     /// </summary>
@@ -205,7 +206,8 @@ public unsafe partial struct MJIManager {
     /// </remarks>
     /// <param name="keyItemId">The RowID of the MJIKeyItem to check.</param>
     /// <returns>Returns true if the key item is unlocked.</returns>
-    public bool IsKeyItemUnlocked(ushort keyItemId) {
+    public bool IsKeyItemUnlocked(ushort keyItemId)
+    {
         return ((1 << (keyItemId & 7)) & this.IslandState.UnlockedKeyItems[keyItemId >> 3]) > 0;
     }
 
@@ -214,8 +216,9 @@ public unsafe partial struct MJIManager {
     /// </summary>
     /// <param name="itemId">The Craftwork ID to look up</param>
     /// <returns>Returns an enum value.</returns>
-    public CraftworkSupply GetSupplyForCraftwork(uint itemId) {
-        return (CraftworkSupply) ((this.SupplyAndDemandShifts[itemId] & 0xF0) >> 4);
+    public CraftworkSupply GetSupplyForCraftwork(uint itemId)
+    {
+        return (CraftworkSupply)((this.SupplyAndDemandShifts[itemId] & 0xF0) >> 4);
     }
 
     /// <summary>
@@ -223,8 +226,9 @@ public unsafe partial struct MJIManager {
     /// </summary>
     /// <param name="itemId">The Craftwork ID to look up</param>
     /// <returns>Returns an enum value.</returns>
-    public CraftworkDemandShift GetDemandShiftForCraftwork(uint itemId) {
-        return (CraftworkDemandShift) (this.SupplyAndDemandShifts[itemId] & 0x0F);
+    public CraftworkDemandShift GetDemandShiftForCraftwork(uint itemId)
+    {
+        return (CraftworkDemandShift)(this.SupplyAndDemandShifts[itemId] & 0x0F);
     }
 }
 
@@ -232,9 +236,10 @@ public unsafe partial struct MJIManager {
 /// A record of building population information at a specific Site ID. 
 /// </summary>
 [StructLayout(LayoutKind.Explicit, Size = 0x10)]
-public struct MJIBuildingPlacement {
+public struct MJIBuildingPlacement
+{
     public const int Size = 0x10;
-    
+
     /// <summary>
     /// At load, the location of this specific building. Will update if a building is changed, but the exact
     /// mechanism of the update (and why it does such) is not currently known.
@@ -257,11 +262,12 @@ public struct MJIBuildingPlacement {
 /// A record of landmark population information at a specific Site ID. 
 /// </summary>
 [StructLayout(LayoutKind.Explicit, Size = Size)]
-public struct MJILandmarkPlacement {
+public struct MJILandmarkPlacement
+{
     public const int Size = 0xC;
 
     [FieldOffset(0x8)] public byte HoursToCompletion;
-    
+
     /// <summary>
     /// The RowID of the landmark currently present at the specified location.
     /// </summary>
@@ -274,16 +280,18 @@ public struct MJILandmarkPlacement {
 /// A record of landmark population information at a specific Site ID. 
 /// </summary>
 [StructLayout(LayoutKind.Explicit, Size = Size)]
-public struct MJIFarmPasturePlacement {
+public struct MJIFarmPasturePlacement
+{
     public const int Size = 0xC;
-    
+
     /// <summary>
     /// The SGB ID of the model to use for this location
     /// </summary>
     [FieldOffset(0x8)] public byte SgbId;
 }
 
-public enum CraftworkSupply {
+public enum CraftworkSupply
+{
     Nonexistent = 0,
     Insufficient = 1,
     Sufficient = 2,
@@ -291,7 +299,8 @@ public enum CraftworkSupply {
     Overflowing = 4
 }
 
-public enum CraftworkDemandShift {
+public enum CraftworkDemandShift
+{
     Skyrocketing = 0,
     Increasing = 1,
     None = 2,
@@ -300,14 +309,16 @@ public enum CraftworkDemandShift {
 }
 
 [Flags]
-public enum MJIAllowedVisitors : byte {
+public enum MJIAllowedVisitors : byte
+{
     Friends = 1,
     FreeCompany = 2,
     Party = 4
 }
 
 [Flags]
-public enum MJIMinimapIcons : byte {
+public enum MJIMinimapIcons : byte
+{
     Trees = 1,
     Vegetation = 2,
     Soils = 4,

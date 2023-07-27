@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.String;
+using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -11,7 +11,7 @@ public unsafe struct AgentGrandCompanySupply
 
     [FieldOffset(0x60)] public SupplyProvisioningData* SupplyProvisioningData;
     [FieldOffset(0x68)] public GrandCompanyItem* ItemArray;
-    
+
     [FieldOffset(0x78)] public int NumItems;
     [FieldOffset(0x90)] public int SelectedTab;
 }

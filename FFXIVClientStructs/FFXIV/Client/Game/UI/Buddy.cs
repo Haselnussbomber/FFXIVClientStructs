@@ -43,12 +43,14 @@ public unsafe partial struct Buddy
     [FieldOffset(0xEA0)] public BuddyMember* PetPtr;
     [FieldOffset(0xEB0)] public BuddyMember* SquadronTrustPtr;
 
-    public bool IsBuddyEquipUnlocked(uint buddyEquipId) {
-        fixed(byte* p = BuddyEquipUnlock) {
+    public bool IsBuddyEquipUnlocked(uint buddyEquipId)
+    {
+        fixed (byte* p = BuddyEquipUnlock)
+        {
             return IsBuddyEquipUnlockedInternal(p, buddyEquipId);
         }
     }
-    
+
     [MemberFunction("E9 ?? ?? ?? ?? 0F B7 50 02 41 B8")]
     private static partial bool IsBuddyEquipUnlockedInternal(void* ptr, uint buddyEquipId);
 }

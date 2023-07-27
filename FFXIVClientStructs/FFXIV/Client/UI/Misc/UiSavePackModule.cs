@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.Framework;
+using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc.UserFileManager;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Misc;
@@ -16,7 +16,7 @@ public unsafe partial struct UiSavePackModule
     [VirtualFunction(13)]
     public partial nint GetSegment(byte segment);
 
-    public nint GetSegment(DataSegment segment) => GetSegment((byte) segment);
+    public nint GetSegment(DataSegment segment) => GetSegment((byte)segment);
 }
 
 public enum DataSegment : byte

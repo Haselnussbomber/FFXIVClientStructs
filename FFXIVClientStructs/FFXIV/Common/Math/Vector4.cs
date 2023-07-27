@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Common.Math;
+namespace FFXIVClientStructs.FFXIV.Common.Math;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x10)]
 public struct Vector4 : IEquatable<Vector4>, IFormattable

@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.Interop;
+namespace FFXIVClientStructs.Interop;
 
 public class Address
 {

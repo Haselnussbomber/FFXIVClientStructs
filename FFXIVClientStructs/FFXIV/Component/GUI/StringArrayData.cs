@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Component.GUI;
+namespace FFXIVClientStructs.FFXIV.Component.GUI;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x30)]
 public unsafe partial struct StringArrayData
@@ -32,15 +32,18 @@ public unsafe partial struct StringArrayData
     [GenerateCStrOverloads]
     public partial void SetValueForced(int index, byte* value, bool notify);
 
-    public void SetValue(int index, byte* value, bool notify) {
-	    SetValueForced(index, value, notify);
+    public void SetValue(int index, byte* value, bool notify)
+    {
+        SetValueForced(index, value, notify);
     }
 
-    public void SetValue(int index, string value, bool notify) {
-	    SetValueForced(index, value, notify);
+    public void SetValue(int index, string value, bool notify)
+    {
+        SetValueForced(index, value, notify);
     }
 
-    public void SetValue(int index, byte[] value, bool notify) {
-	    SetValueForced(index, value, notify);
+    public void SetValue(int index, byte[] value, bool notify)
+    {
+        SetValueForced(index, value, notify);
     }
 }

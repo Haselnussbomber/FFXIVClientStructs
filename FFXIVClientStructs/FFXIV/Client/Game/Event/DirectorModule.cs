@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
+using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
 
 namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
 

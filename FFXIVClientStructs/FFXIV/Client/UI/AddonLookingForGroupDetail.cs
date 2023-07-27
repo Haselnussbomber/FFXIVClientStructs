@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.String;
+using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
@@ -26,7 +26,7 @@ public unsafe partial struct AddonLookingForGroupDetail
     [FieldOffset(0x2F0)] public AtkTextNode* ItemLevelTextNode;
     [FieldOffset(0x2F0)] public AtkTextNode* StatusTextNode;
     [FieldOffset(0x300)] public AtkTextNode* DescriptionTextNode;
-    
+
     [FieldOffset(0x308)] public Utf8String DescriptionString;
     [FieldOffset(0x370)] public Utf8String CategoriesString; // Duty Complete, Loot, One Player Per Job
 }

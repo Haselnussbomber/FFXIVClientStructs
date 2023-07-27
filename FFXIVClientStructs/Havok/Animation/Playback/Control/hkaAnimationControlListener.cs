@@ -1,6 +1,6 @@
-﻿namespace FFXIVClientStructs.Havok;
+namespace FFXIVClientStructs.Havok;
 
 public unsafe struct hkaAnimationControlListener
 {
-	public void* vtbl;
+    public void* vtbl;
 }

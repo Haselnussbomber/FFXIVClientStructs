@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.Interop.Attributes;
+namespace FFXIVClientStructs.Interop.Attributes;
 
 [AttributeUsage(AttributeTargets.Field)]
 public class FixedSizeArrayAttribute<T> : Attribute where T : unmanaged

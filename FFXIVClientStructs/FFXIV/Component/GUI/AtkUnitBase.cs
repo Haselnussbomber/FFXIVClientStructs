@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Component.GUI;
+namespace FFXIVClientStructs.FFXIV.Component.GUI;
 // Component::GUI::AtkUnitBase
 //   Component::GUI::AtkEventListener
 
@@ -31,7 +31,8 @@ public unsafe partial struct AtkUnitBase
     [FieldOffset(0x1D2)] public ushort ContextMenuParentID;
     [FieldOffset(0x1D5)] public byte Alpha;
 
-    [FieldOffset(0x1D8)] public AtkResNode**
+    [FieldOffset(0x1D8)]
+    public AtkResNode**
         CollisionNodeList; // seems to be all collision nodes in tree, may be something else though
 
     [FieldOffset(0x1E0)] public uint CollisionNodeListCount;
@@ -59,7 +60,7 @@ public unsafe partial struct AtkUnitBase
 
     [MemberFunction("E8 ?? ?? ?? ?? 4C 8D 34 ED")]
     public partial AtkResNode* GetNodeById(uint nodeId);
-    
+
     [MemberFunction("E8 ?? ?? ?? ?? 8D 56 1E")]
     public partial AtkTextNode* GetTextNodeById(uint nodeId);
 

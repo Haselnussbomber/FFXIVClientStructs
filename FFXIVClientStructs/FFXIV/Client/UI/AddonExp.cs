@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -17,5 +17,5 @@ public struct AddonExp
     [FieldOffset(0x27C)] public uint RequiredExp;
     [FieldOffset(0x280)] public uint RestedExp;
 
-    public float CurrentExpPercent => (float) CurrentExp / RequiredExp * 100;
+    public float CurrentExpPercent => (float)CurrentExp / RequiredExp * 100;
 }

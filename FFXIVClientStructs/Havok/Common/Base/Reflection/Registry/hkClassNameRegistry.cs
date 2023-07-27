@@ -1,7 +1,7 @@
-﻿namespace FFXIVClientStructs.Havok;
+namespace FFXIVClientStructs.Havok;
 
 // NOTE: this is actually a hkStaticClassNameRegistry : hkClassNameRegistry, which the game uses
-[StructLayout(LayoutKind.Explicit, Size=0x28)]
+[StructLayout(LayoutKind.Explicit, Size = 0x28)]
 public unsafe partial struct hkClassNameRegistry
 {
     [FieldOffset(0x0)] public hkReferencedObject hkReferencedObject;

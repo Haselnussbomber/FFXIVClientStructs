@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.Object;
+namespace FFXIVClientStructs.FFXIV.Client.Game.Object;
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe partial struct ClientObjectManager

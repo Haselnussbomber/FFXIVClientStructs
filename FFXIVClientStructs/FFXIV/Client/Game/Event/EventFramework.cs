@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
+using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
 using FFXIVClientStructs.FFXIV.Common.Lua;
 
 namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
@@ -30,14 +30,15 @@ public unsafe partial struct EventFramework
     [MemberFunction("E8 ?? ?? ?? ?? 48 8B D0 48 85 C0 74 ?? 0F B6 88")]
     public partial PublicContentDirector* GetPublicContentDirector();
 
-    public InstanceContentDeepDungeon* GetInstanceContentDeepDungeon() {
-	    var director = (EventHandler*)GetContentDirector();
-	    if (director == null || director->Info.EventId.Type != EventHandlerType.InstanceContentDirector)
-		    return null;
-	    var instanceDirector = (InstanceContentDirector*)director;
-	    if (instanceDirector->InstanceContentType != InstanceContentType.DeepDungeon)
-		    return null;
-	    return (InstanceContentDeepDungeon*)director;
+    public InstanceContentDeepDungeon* GetInstanceContentDeepDungeon()
+    {
+        var director = (EventHandler*)GetContentDirector();
+        if (director == null || director->Info.EventId.Type != EventHandlerType.InstanceContentDirector)
+            return null;
+        var instanceDirector = (InstanceContentDirector*)director;
+        if (instanceDirector->InstanceContentType != InstanceContentType.DeepDungeon)
+            return null;
+        return (InstanceContentDeepDungeon*)director;
     }
 
     [MemberFunction("E8 ?? ?? ?? ?? 32 C9 0F B6 D9")]

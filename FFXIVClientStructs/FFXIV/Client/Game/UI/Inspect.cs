@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.Character;
+using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 
 namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -17,7 +17,7 @@ public unsafe struct Inspect
     [FieldOffset(0x54)] public fixed byte PSNOnlineID[17];
     [FieldOffset(0x66)] public byte ClassJobId;
     [FieldOffset(0x67)] public byte Level;
-	[FieldOffset(0x68)] public byte SyncedLevel;
+    [FieldOffset(0x68)] public byte SyncedLevel;
 
     [FieldOffset(0x6A)] public ushort AverageItemLevel;
     [FieldOffset(0x6C)] public ushort TitleId;

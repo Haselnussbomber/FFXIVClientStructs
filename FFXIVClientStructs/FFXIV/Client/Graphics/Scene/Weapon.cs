@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Graphics.Scene; 
+namespace FFXIVClientStructs.FFXIV.Client.Graphics.Scene;
 
 // Client::Graphics::Scene::Weapon
 //   Client::Graphics::Scene::CharacterBase
@@ -9,7 +9,8 @@
 // ctor E8 ?? ?? ?? ?? 48 8D 54 24 ?? 48 89 44 3E
 
 [StructLayout(LayoutKind.Explicit, Size = 0x920)]
-public struct Weapon {
+public struct Weapon
+{
     [FieldOffset(0x0)] public CharacterBase CharacterBase;
 
     [FieldOffset(0x8F0)] public ushort ModelSetId;

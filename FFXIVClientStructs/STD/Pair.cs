@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.STD;
+namespace FFXIVClientStructs.STD;
 
 [StructLayout(LayoutKind.Sequential, Pack = 8)]
 public struct StdPair<T1, T2>

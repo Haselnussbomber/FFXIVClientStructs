@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
+namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 /// <summary>
 /// A struct representing the UIState Achievement
@@ -29,9 +29,9 @@ public unsafe partial struct Achievement
     /// <summary> Represents the loaded state of Achievement </summary>
     public enum AchievementState : int
     {
-        Invalid   = 0, // Achievement is initialized at this state
+        Invalid = 0, // Achievement is initialized at this state
         Requested = 1, // This state is set between the client request and receiving the data from the server
-        Loaded    = 2, // Set upon data being received
+        Loaded = 2, // Set upon data being received
     }
 
     [StaticAddress("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 04 30", 3)]

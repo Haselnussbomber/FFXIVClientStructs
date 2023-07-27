@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
@@ -24,6 +24,6 @@ public unsafe struct AddonGcArmyExpedition
     [FieldOffset(0x2C0)] public AtkResNode* SquadronSergeantImageResNode;
     [FieldOffset(0x2C8)] public AtkResNode* SquadronSergeantChatMessageResNode;
     [FieldOffset(0x2D0)] public AtkTextNode* SquadronSergeantChatMessageTextNode;
-    
+
     [FieldOffset(0x2D8)] public int SelectedTab;
 }

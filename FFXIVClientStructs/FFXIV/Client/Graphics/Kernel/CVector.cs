@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Graphics.Kernel;
+namespace FFXIVClientStructs.FFXIV.Client.Graphics.Kernel;
 // Client::Graphics::Kernel::CVector
 //   std::vector
 

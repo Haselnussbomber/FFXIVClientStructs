@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Graphics;
+namespace FFXIVClientStructs.FFXIV.Client.Graphics;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x10)]
 public unsafe struct ReferencedClassBase

@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.String;
+using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -17,27 +17,27 @@ public unsafe partial struct AgentContentsFinder
     [FieldOffset(0x38)] public Utf8String Description;
 
     [FieldOffset(0x86), Obsolete("Use Description instead")] public byte* DescriptionString; // null-terminated cstring representing the currently displayed duty description
-    
+
     [FieldOffset(0x1B8), Obsolete("Poorly mapped")] public ContentsFinderRewards Reward;
     [FieldOffset(0x408), Obsolete("Poorly mapped")] public ContentsFinderRewards BonusReward;
-    
+
     // These seem to be duplicates of the above reward structs
     [FieldOffset(0x5C8), Obsolete("Poorly mapped")] public ContentsFinderRewards Reward2;
     [FieldOffset(0x810), Obsolete("Poorly mapped")] public ContentsFinderRewards BonusReward2;
 
     // TODO split into 3 separate arrays, (8F0, EE0, 14D0), each with 5 entries, 8F0 seems to be the top row of rewards while 14D0 is the bottom row, EE0 is unknown
-    [FixedSizeArray<ItemReward>(15)] 
+    [FixedSizeArray<ItemReward>(15)]
     [FieldOffset(0x8F0)] public fixed byte ItemRewardArray[0x130 * 15]; // E8 ?? ?? ?? ?? 41 B8 ?? ?? ?? ?? 89 5E 2C
-    
+
     [FieldOffset(0x1B6C)] public int SelectedDutyId; // ContentFinderCondition rowId for duties, ContentRoulette rowId for roulette
     [FieldOffset(0x1B78)] public byte NumCollectedRewards; // Value used for "Reward already received"
 
-    [FixedSizeArray<Utf8String>(10)] 
+    [FixedSizeArray<Utf8String>(10)]
     [FieldOffset(0x1BC8)] public fixed byte Strings[0x68 * 10]; // Tooltips and Category headers, ie "Gil", "Trials (Endwalker)"
 
     [FixedSizeArray<ContentsRouletteRole>(11)]
     [FieldOffset(0x2007)] public fixed byte ContentRouletteRoleBonus[11];
-    
+
     [FieldOffset(0x2014)] public uint DutyPenaltyMinutes;
     [FieldOffset(0x2018)] public uint UnkPenaltyMinutes;
 
@@ -74,7 +74,8 @@ public struct ItemReward
     [FieldOffset(0x84)] public Utf8String UnkString; // This string seems to be unused?
 }
 
-public enum ContentsRouletteRole : byte {
+public enum ContentsRouletteRole : byte
+{
     Tank = 0,
     Healer = 1,
     DPS = 2,

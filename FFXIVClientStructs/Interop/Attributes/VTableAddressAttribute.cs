@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.Interop.Attributes;
+namespace FFXIVClientStructs.Interop.Attributes;
 
 [AttributeUsage(AttributeTargets.Struct)]
 public class VTableAddressAttribute : Attribute

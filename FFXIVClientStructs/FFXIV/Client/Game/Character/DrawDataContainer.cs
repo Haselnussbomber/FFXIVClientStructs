@@ -1,11 +1,11 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.Character;
+namespace FFXIVClientStructs.FFXIV.Client.Game.Character;
 
 // ctor: E8 ?? ?? ?? ?? 48 8D 8F ?? ?? ?? ?? 48 8D 05 ?? ?? ?? ?? 48 89 59 ?? 48 89 01 E8 
 [StructLayout(LayoutKind.Explicit, Size = 0x190)]
 public unsafe partial struct DrawDataContainer
 {
     [FieldOffset(0x000)] public void** Vtable;
-    [FieldOffset(0x008)] public Character*  Parent;
+    [FieldOffset(0x008)] public Character* Parent;
 
     [FieldOffset(0x010)] public WeaponModelId MainHandModel;
     [FieldOffset(0x020)] public DrawObjectData MainHand;
@@ -19,7 +19,7 @@ public unsafe partial struct DrawDataContainer
     [FieldOffset(0x0DA)] public ushort OffHandFlags1;
     [FieldOffset(0x0DC)] public byte OffHandFlags2;
 
-    [FieldOffset(0x0E0)] public WeaponModelId  UnkE0Model;
+    [FieldOffset(0x0E0)] public WeaponModelId UnkE0Model;
     [FieldOffset(0x0F0)] public DrawObjectData UnkF0;
     [FieldOffset(0x142)] public ushort Unk144Flags1;
     [FieldOffset(0x144)] public byte Unk144Flags2;
@@ -79,7 +79,7 @@ public unsafe partial struct DrawDataContainer
         Feet = 4,
         Ears = 5,
         Neck = 6,
-        Wrists  = 7,
+        Wrists = 7,
         RFinger = 8,
         LFinger = 9,
     }
@@ -94,7 +94,7 @@ public unsafe partial struct DrawDataContainer
     public bool IsHatHidden
     {
         get => (Flags1 & 0x01) == 0x01;
-        set => Flags1 = (byte) (value ? Flags1 | 0x01 : Flags1 & ~0x01);
+        set => Flags1 = (byte)(value ? Flags1 | 0x01 : Flags1 & ~0x01);
     }
 
     public bool IsWeaponHidden
@@ -165,7 +165,7 @@ public struct WeaponModelId
     [FieldOffset(0)] public ulong Value;
 }
 
-[StructLayout(LayoutKind.Explicit, Size=4)]
+[StructLayout(LayoutKind.Explicit, Size = 4)]
 public struct EquipmentModelId
 {
     [FieldOffset(0)] public ushort Id;

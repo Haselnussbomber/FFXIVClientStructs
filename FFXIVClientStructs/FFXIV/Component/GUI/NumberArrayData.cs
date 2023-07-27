@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Component.GUI;
+namespace FFXIVClientStructs.FFXIV.Component.GUI;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x28)]
 public unsafe partial struct NumberArrayData
@@ -14,7 +14,8 @@ public unsafe partial struct NumberArrayData
     [MemberFunction("3B 51 08 7D 28")]
     public partial void SetValue(int index, int value, bool force, bool silent);
 
-    public void SetValue(int index, int value) {
+    public void SetValue(int index, int value)
+    {
         SetValue(index, value, false, false);
     }
 }

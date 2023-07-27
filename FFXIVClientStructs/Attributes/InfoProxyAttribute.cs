@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.UI.Info;
+using FFXIVClientStructs.FFXIV.Client.UI.Info;
 
 namespace FFXIVClientStructs.Attributes;
 

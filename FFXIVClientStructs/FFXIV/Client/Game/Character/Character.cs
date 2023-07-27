@@ -17,9 +17,9 @@ public unsafe partial struct Character
     [FieldOffset(0x0)] public GameObject GameObject;
 
     [FieldOffset(0x1A8)] public CharacterData CharacterData;
-    
+
     #region This is inside a new 0x48 byte class at offset 0x1A8
-    
+
     [FieldOffset(0x1B0), Obsolete("Use CharacterData.ModelScale", false)] public float ModelScale;
     [FieldOffset(0x1B4), Obsolete("Use CharacterData.ModelCharaId", false)] public int ModelCharaId;
     [FieldOffset(0x1B8), Obsolete("Use CharacterData.ModelSkeletonId", false)] public int ModelSkeletonId;
@@ -62,7 +62,7 @@ public unsafe partial struct Character
 
     [FieldOffset(0x17C0)] public Balloon Balloon;
 
-    [FieldOffset(0x19C8)] public VfxData* VfxData; 
+    [FieldOffset(0x19C8)] public VfxData* VfxData;
     [FieldOffset(0x19D0)] public VfxData* VfxData2;
     [FieldOffset(0x19F8)] public VfxData* Omen;
 
@@ -116,7 +116,7 @@ public unsafe partial struct Character
     public bool IsGPoseWet
     {
         get => (StatusFlags4 & 0x20) == 0x20;
-        set => StatusFlags4 = (byte) (value ? StatusFlags4 | 0x20 : StatusFlags4 & ~0x20);
+        set => StatusFlags4 = (byte)(value ? StatusFlags4 | 0x20 : StatusFlags4 & ~0x20);
     }
 
     [MemberFunction("E8 ?? ?? ?? ?? 49 3B C7 0F 84")]
@@ -125,7 +125,7 @@ public unsafe partial struct Character
     // Seemingly used for cutscenes and GPose.
     [MemberFunction("E8 ?? ?? ?? ?? 0F B6 9F ?? ?? ?? ?? 48 8D 8F")]
     public partial ulong CopyFromCharacter(Character* source, CopyFlags flags);
-    
+
     [Obsolete("Use CopyFromCharacter(Character*, CopyFlags)")]
     public ulong CopyFromCharacter(Character* source, uint flags) => CopyFromCharacter(source, (CopyFlags)flags);
 
@@ -151,7 +151,7 @@ public unsafe partial struct Character
 
     [VirtualFunction(87)]
     public partial bool IsMount();
-    
+
     [StructLayout(LayoutKind.Explicit, Size = 0x170)]
     public struct CastInfo
     {
@@ -181,46 +181,51 @@ public unsafe partial struct Character
     public struct ForayInfo
     {
         [FieldOffset(0x00)] public byte ForayRank;
-        
+
         //bozja
-        public byte ResistanceRank {
+        public byte ResistanceRank
+        {
             get => ForayRank;
             set => ForayRank = value;
         }
 
         //eureka
-        public byte ElementalLevel  {
+        public byte ElementalLevel
+        {
             get => ForayRank;
             set => ForayRank = value;
         }
         [FieldOffset(0x01)] public EurekaElement Element; //only on enemies
     }
-    
+
     //0x10 bytes are from the base class which is just vtable + gameobject ptr (same as Companion-/DrawDataContainer)
     [StructLayout(LayoutKind.Explicit, Size = 0x60)]
-    public struct MountContainer {
-	    [FieldOffset(0x08)] public BattleChara* OwnerObject;
-	    [FieldOffset(0x10)] public Character* MountObject;
-	    [FieldOffset(0x18)] public ushort MountId;
-	    [FieldOffset(0x1C)] public float DismountTimer;
-	    //1 in dismount animation, 4 = instant delete mount when dismounting (used for npcs and such)
-	    [FieldOffset(0x20)] public byte Flags;
-	    [FieldOffset(0x24)] public fixed uint MountedObjectIds[7];
+    public struct MountContainer
+    {
+        [FieldOffset(0x08)] public BattleChara* OwnerObject;
+        [FieldOffset(0x10)] public Character* MountObject;
+        [FieldOffset(0x18)] public ushort MountId;
+        [FieldOffset(0x1C)] public float DismountTimer;
+        //1 in dismount animation, 4 = instant delete mount when dismounting (used for npcs and such)
+        [FieldOffset(0x20)] public byte Flags;
+        [FieldOffset(0x24)] public fixed uint MountedObjectIds[7];
     }
 
     [StructLayout(LayoutKind.Explicit, Size = 0x20)]
-    public struct CompanionContainer {
-	    [FieldOffset(0x08)] public BattleChara* OwnerObject;
-	    [FieldOffset(0x10)] public Companion* CompanionObject;
-	    //used if minion is summoned but the object slot is taken by a mount
-	    [FieldOffset(0x18)] public ushort CompanionId;
+    public struct CompanionContainer
+    {
+        [FieldOffset(0x08)] public BattleChara* OwnerObject;
+        [FieldOffset(0x10)] public Companion* CompanionObject;
+        //used if minion is summoned but the object slot is taken by a mount
+        [FieldOffset(0x18)] public ushort CompanionId;
     }
 
     [StructLayout(LayoutKind.Explicit, Size = 0x28)]
-    public struct OrnamentContainer {
-	    [FieldOffset(0x08)] public BattleChara* OwnerObject;
-	    [FieldOffset(0x10)] public Ornament* OrnamentObject;
-	    [FieldOffset(0x18)] public ushort OrnamentId;
+    public struct OrnamentContainer
+    {
+        [FieldOffset(0x08)] public BattleChara* OwnerObject;
+        [FieldOffset(0x10)] public Ornament* OrnamentObject;
+        [FieldOffset(0x18)] public ushort OrnamentId;
     }
 
     public enum EurekaElement : byte
@@ -235,7 +240,7 @@ public unsafe partial struct Character
     }
 
     // Seems similar to ConditionFlag in Dalamud but not all flags are valid on the character
-    public enum CharacterModes : byte 
+    public enum CharacterModes : byte
     {
         None = 0, // Mode is never used
         Normal = 1, // Param always 0
@@ -246,11 +251,12 @@ public unsafe partial struct Character
         InPositionLoop = 11, // Param is an EmoteMode entry
         Performance = 16, // Unknown
     }
-    
+
     [Flags]
-    public enum CopyFlags : uint {
+    public enum CopyFlags : uint
+    {
         None = 0x00,
-        
+
         Mount = 0x2,
         ClassJob = 0x4,
         Companion = 0x20,
@@ -260,7 +266,7 @@ public unsafe partial struct Character
         Position = 0x10000, // includes rotation
         UseSecondaryCharaId = 0x200000,
         Ornament = 0x400000,
-        
+
         // Unknowns included to improve readability of ToString, not to be used.
         [Obsolete("do not use")] Unk000001 = 0x1,
         [Obsolete("do not use")] Unk000008 = 0x8, // Copies Character+0x1B24
@@ -277,5 +283,5 @@ public unsafe partial struct Character
         [Obsolete("do not use")] Unk080000 = 0x80000,
         [Obsolete("do not use")] Unk100000 = 0x100000,
     }
-    
+
 }

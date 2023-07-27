@@ -7,30 +7,30 @@ namespace FFXIVClientStructs.FFXIV.Client.Game;
 [StructLayout(LayoutKind.Explicit, Size = 0xF40)]
 public unsafe partial struct QuestManager
 {
-	[FieldOffset(0x10)] public QuestListArray Quest;
+    [FieldOffset(0x10)] public QuestListArray Quest;
 
-	[FixedSizeArray<QuestWork>(30)]
-	[FieldOffset(0x10)] public fixed byte NormalQuests[0x18 * 30];
-	[FixedSizeArray<DailyQuestWork>(12)]
-	[FieldOffset(0x5B8)] public fixed byte DailyQuests[0x10 * 12];
-	[FixedSizeArray<TrackingWork>(5)]
-	[FieldOffset(0x6A8)] public fixed byte TrackedQuests[0x10 * 5];
-	[FixedSizeArray<BeastReputationWork>(17)]
-	[FieldOffset(0xBC8)] public fixed byte BeastReputation[0x10 * 17];
-	[FixedSizeArray<LeveWork>(16)]
-	[FieldOffset(0xCD8)] public fixed byte LeveQuests[0x18 * 16];
+    [FixedSizeArray<QuestWork>(30)]
+    [FieldOffset(0x10)] public fixed byte NormalQuests[0x18 * 30];
+    [FixedSizeArray<DailyQuestWork>(12)]
+    [FieldOffset(0x5B8)] public fixed byte DailyQuests[0x10 * 12];
+    [FixedSizeArray<TrackingWork>(5)]
+    [FieldOffset(0x6A8)] public fixed byte TrackedQuests[0x10 * 5];
+    [FixedSizeArray<BeastReputationWork>(17)]
+    [FieldOffset(0xBC8)] public fixed byte BeastReputation[0x10 * 17];
+    [FixedSizeArray<LeveWork>(16)]
+    [FieldOffset(0xCD8)] public fixed byte LeveQuests[0x18 * 16];
     [FieldOffset(0xE58)] public byte NumLeveAllowances;
 
     [FieldOffset(0xF40)] public byte NumAcceptedQuests;
     [FieldOffset(0xF50)] public byte NumAcceptedLeveQuests;
 
-	[MemberFunction("E8 ?? ?? ?? ?? 66 BA 10 0C")]
+    [MemberFunction("E8 ?? ?? ?? ?? 66 BA 10 0C")]
     public static partial QuestManager* Instance();
 
     [MemberFunction("E8 ?? ?? ?? ?? 41 88 84 2C")]
     public static partial bool IsQuestComplete(ushort questId);
     public static bool IsQuestComplete(uint questId) => IsQuestComplete((ushort)(questId & 0xFFFF));
-    
+
     /**
      * Get the current step in a specific quest. Will return 0 if the quest is not active (even if the quest has been
      * completed prior).
@@ -39,7 +39,7 @@ public unsafe partial struct QuestManager
      */
     [MemberFunction("E8 ?? ?? ?? ?? 3A 43 06")]
     public static partial byte GetQuestSequence(ushort questId);
-    
+
     /**
      * <inheritdoc cref="QuestManager.GetQuestSequence(ushort)"/>
      * <remarks>This is a helper method to handle trimming uints down to the game-requested ushort.</remarks>
@@ -54,12 +54,12 @@ public unsafe partial struct QuestManager
      */
     [MemberFunction("45 33 C0 48 8D 41 18 66 39 10")]
     public partial bool IsQuestAccepted(ushort questId);
-    
+
     /**
      * <inheritdoc cref="QuestManager.IsQuestAccepted(ushort)"/>
      * <remarks>This is a helper method to handle trimming uints down to the game-requested ushort.</remarks>
      */
-    public bool IsQuestAccepted(uint questId) => this.IsQuestAccepted((ushort) (questId & 0xFFFF));
+    public bool IsQuestAccepted(uint questId) => this.IsQuestAccepted((ushort)(questId & 0xFFFF));
 
     /// <summary>
     /// Check if a specific levequest has been completed.
@@ -94,46 +94,53 @@ public unsafe partial struct QuestManager
     [MemberFunction("45 33 C9 48 81 C1 ?? ?? ?? ?? 45 8D 51 02")]
     public partial uint GetBeastTribeAllowance();
 
-    public bool IsDailyQuestCompleted(ushort questId) {
-	    var quest = GetDailyQuestById(questId);
-	    return quest != null && (quest->Flags & 1) != 0;
+    public bool IsDailyQuestCompleted(ushort questId)
+    {
+        var quest = GetDailyQuestById(questId);
+        return quest != null && (quest->Flags & 1) != 0;
     }
 
-    public QuestWork* GetQuestById(ushort questId) {
-	    var span = NormalQuestsSpan;
-	    for (var i = 0; i < span.Length; i++) {
-		    if (span[i].QuestId == questId)
-			    return (QuestWork*)Unsafe.AsPointer(ref span[i]);
-	    }
-	    return null;
+    public QuestWork* GetQuestById(ushort questId)
+    {
+        var span = NormalQuestsSpan;
+        for (var i = 0; i < span.Length; i++)
+        {
+            if (span[i].QuestId == questId)
+                return (QuestWork*)Unsafe.AsPointer(ref span[i]);
+        }
+        return null;
     }
 
-    public DailyQuestWork* GetDailyQuestById(ushort questId) {
-	    var span = DailyQuestsSpan;
-	    for (var i = 0; i < span.Length; i++) {
-		    if (span[i].QuestId == questId)
-			    return (DailyQuestWork*)Unsafe.AsPointer(ref span[i]);
-	    }
-	    return null;
+    public DailyQuestWork* GetDailyQuestById(ushort questId)
+    {
+        var span = DailyQuestsSpan;
+        for (var i = 0; i < span.Length; i++)
+        {
+            if (span[i].QuestId == questId)
+                return (DailyQuestWork*)Unsafe.AsPointer(ref span[i]);
+        }
+        return null;
     }
 
-    public LeveWork* GetLeveQuestById(ushort leveId) {
+    public LeveWork* GetLeveQuestById(ushort leveId)
+    {
         var span = LeveQuestsSpan;
-	    for (var i = 0; i < span.Length; i++) {
-		    if (span[i].LeveId == leveId)
-			    return (LeveWork*)Unsafe.AsPointer(ref span[i]);
-	    }
-	    return null;
+        for (var i = 0; i < span.Length; i++)
+        {
+            if (span[i].LeveId == leveId)
+                return (LeveWork*)Unsafe.AsPointer(ref span[i]);
+        }
+        return null;
     }
 
     public BeastReputationWork* GetBeastReputationById(uint beastTribeId)
     {
-	    var index = beastTribeId - 1;
-	    var span = BeastReputationSpan;
-	    if (index >= span.Length) return null; 
-	    return (BeastReputationWork*)Unsafe.AsPointer(ref span[(int)index]);
+        var index = beastTribeId - 1;
+        var span = BeastReputationSpan;
+        if (index >= span.Length) return null;
+        return (BeastReputationWork*)Unsafe.AsPointer(ref span[(int)index]);
     }
-    
+
     [StructLayout(LayoutKind.Explicit)]
     public struct QuestListArray
     {
@@ -147,7 +154,7 @@ public unsafe partial struct QuestManager
 
                 fixed (byte* pointer = data)
                 {
-                    return (Quest*) (pointer + sizeof(Quest) * index);
+                    return (Quest*)(pointer + sizeof(Quest) * index);
                 }
             }
         }

@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
+namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 // Client::Game::UI::RelicNote
 // size = 0x18
@@ -16,7 +16,7 @@ public unsafe partial struct RelicNote
 
     public byte GetMonsterProgress(int index)
     {
-        return index is > 9 or < 0 ? (byte) 0 : MonsterProgress[index];
+        return index is > 9 or < 0 ? (byte)0 : MonsterProgress[index];
     }
 
     public bool IsDungeonComplete(int index)

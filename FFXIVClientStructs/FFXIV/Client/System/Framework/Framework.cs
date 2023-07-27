@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.Configuration;
+using FFXIVClientStructs.FFXIV.Client.System.Configuration;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Common.Component.BGCollision;
@@ -18,7 +18,7 @@ public unsafe partial struct Framework
     [FieldOffset(0x460)] public DevConfig DevConfig;
 
     [FieldOffset(0x570)] public SavedAppearanceManager* SavedAppearanceData;
-    
+
     [FieldOffset(0x1678)] public bool IsNetworkModuleInitialized;
     [FieldOffset(0x1679)] public bool EnableNetworking;
     [FieldOffset(0x1680)] public long ServerTime;
@@ -39,7 +39,7 @@ public unsafe partial struct Framework
     [FieldOffset(0x2BC8)] public LuaState LuaState;
 
     [FieldOffset(0x2BF0)] public GameVersion GameVersion;
-    
+
     [StaticAddress("44 0F B6 C0 48 8B 0D ?? ?? ?? ??", 7, isPointer: true)]
     public static partial Framework* Instance();
 
@@ -49,9 +49,12 @@ public unsafe partial struct Framework
     [MemberFunction("E8 ?? ?? ?? ?? 89 47 2C")]
     public static partial long GetServerTime();
 
-    public string UserPath {
-        get {
-            fixed (char* p = userPath) {
+    public string UserPath
+    {
+        get
+        {
+            fixed (char* p = userPath)
+            {
                 return new string(p);
             }
         }

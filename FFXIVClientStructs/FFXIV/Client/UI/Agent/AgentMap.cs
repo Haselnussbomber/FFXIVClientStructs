@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -83,7 +83,8 @@ public unsafe partial struct AgentMap
     [MemberFunction("E8 ?? ?? ?? ?? 40 B6 01 C7 44 24 ?? ?? ?? ?? ?? BA ?? ?? ?? ?? 48 8B CF E8 ?? ?? ?? ?? 84 C0 74 15")]
     public partial void ShowMap(bool a1, bool a2); // native code calls a1 as true always, a2 is used both true and false
 
-    public bool AddMiniMapMarker(Vector3 position, uint icon, int scale = 0) {
+    public bool AddMiniMapMarker(Vector3 position, uint icon, int scale = 0)
+    {
         if (MiniMapMarkerCount >= 100) return false;
         var marker = stackalloc MiniMapMarker[1];
         marker->MapMarker.Index = MiniMapMarkerCount;
@@ -95,7 +96,8 @@ public unsafe partial struct AgentMap
         return true;
     }
 
-    public bool AddMapMarker(Vector3 position, uint icon, int scale = 0, byte* text = null, byte textPosition = 3, byte textStyle = 0) {
+    public bool AddMapMarker(Vector3 position, uint icon, int scale = 0, byte* text = null, byte textPosition = 3, byte textStyle = 0)
+    {
         if (MapMarkerCount >= 132) return false;
         if (textPosition is > 0 and < 12)
             position *= CurrentMapSizeFactorFloat;
@@ -115,8 +117,8 @@ public unsafe partial struct AgentMap
     public void SetFlagMapMarker(uint territoryId, uint mapId, Vector3 worldPosition, uint iconId = 0xEC91)
     {
         IsFlagMarkerSet = 0;
-        var mapX = (int) (MathF.Round(worldPosition.X, 3, MidpointRounding.AwayFromZero) * 1000) * 0.001f;
-        var mapY = (int) (MathF.Round(worldPosition.Z, 3, MidpointRounding.AwayFromZero) * 1000) * 0.001f;
+        var mapX = (int)(MathF.Round(worldPosition.X, 3, MidpointRounding.AwayFromZero) * 1000) * 0.001f;
+        var mapY = (int)(MathF.Round(worldPosition.Z, 3, MidpointRounding.AwayFromZero) * 1000) * 0.001f;
         SetFlagMapMarker(territoryId, mapId, mapX, mapY, iconId);
     }
 

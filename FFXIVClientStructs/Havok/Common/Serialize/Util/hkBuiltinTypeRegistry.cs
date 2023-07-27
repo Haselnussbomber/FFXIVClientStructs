@@ -1,6 +1,6 @@
-﻿namespace FFXIVClientStructs.Havok;
+namespace FFXIVClientStructs.Havok;
 
-[StructLayout(LayoutKind.Explicit, Size=0x10)]
+[StructLayout(LayoutKind.Explicit, Size = 0x10)]
 public unsafe partial struct hkBuiltinTypeRegistry
 {
     [FieldOffset(0x0)] public hkReferencedObject hkReferencedObject;

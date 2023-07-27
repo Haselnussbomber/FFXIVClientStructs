@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Graphics.Scene;
+namespace FFXIVClientStructs.FFXIV.Client.Graphics.Scene;
 // Client::Graphics::Scene::DrawObject
 //   Client::Graphics::Scene::Object
 // base class for all drawn graphics objects
@@ -9,12 +9,12 @@
 public unsafe struct DrawObject
 {
     [FieldOffset(0x0)] public Object Object;
-    [FieldOffset(0x88)] public byte Flags; 
+    [FieldOffset(0x88)] public byte Flags;
 
     public bool IsCoveredFromRain
     {
         get => (Flags & 0x10) == 0x10;
-        set => Flags = (byte) (value ? Flags | 0x10 : Flags & ~0x10);
+        set => Flags = (byte)(value ? Flags | 0x10 : Flags & ~0x10);
     }
 
     public bool IsVisible

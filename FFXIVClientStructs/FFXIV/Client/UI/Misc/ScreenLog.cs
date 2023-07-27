@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.UI.Misc;
+namespace FFXIVClientStructs.FFXIV.Client.UI.Misc;
 
 public unsafe partial struct ScreenLog
 {

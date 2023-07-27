@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game;
+namespace FFXIVClientStructs.FFXIV.Client.Game;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x2E8)]
 public unsafe partial struct RetainerManager
@@ -22,19 +22,19 @@ public unsafe partial struct RetainerManager
     [MemberFunction("E8 ?? ?? ?? ?? 48 85 C0 74 05 4C 39 20")]
     public partial RetainerList.Retainer* GetRetainerBySortedIndex(uint sortedIndex);
 
-    
+
     /// <summary>
     /// Counts the number of Retainers that have an assigned ID.
     /// </summary>
     [MemberFunction("E8 ?? ?? ?? ?? 48 8B CB 8B E8 E8 ?? ?? ?? FF 8B")]
     public partial byte GetRetainerCount();
-    
+
     /// <summary>
     /// Will return the Retainer referenced by LastSelectedRetainerId.
     /// </summary>
     [MemberFunction("E8 ?? ?? ?? ?? 0F B6 78 29")]
     public partial RetainerList.Retainer* GetActiveRetainer();
-    
+
     [StructLayout(LayoutKind.Explicit, Size = 0x2D0)]
     public struct RetainerList
     {
@@ -57,7 +57,7 @@ public unsafe partial struct RetainerManager
                 if (index is < 0 or >= 10) return null;
                 fixed (byte* p = Retainers)
                 {
-                    var r = (Retainer*) p;
+                    var r = (Retainer*)p;
                     return r + index;
                 }
             }

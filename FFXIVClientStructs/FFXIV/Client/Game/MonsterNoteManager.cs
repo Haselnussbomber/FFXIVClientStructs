@@ -1,11 +1,11 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game;
+namespace FFXIVClientStructs.FFXIV.Client.Game;
 
 [StructLayout(LayoutKind.Explicit, Size = 0x460)]
 public unsafe partial struct MonsterNoteManager
 {
     [StaticAddress("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 84 C0 E9", 3)]
     public static partial MonsterNoteManager* Instance();
-    
+
     [FixedSizeArray<MonsterNoteRankInfo>(12)]
     [FieldOffset(0x00)] public fixed byte RankDataArray[0x40 * 12];
 }

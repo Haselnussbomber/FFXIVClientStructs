@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
+namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe partial struct EventGPoseController

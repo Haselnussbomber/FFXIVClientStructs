@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.System.String;
+using FFXIVClientStructs.FFXIV.Client.System.String;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -68,7 +68,7 @@ public unsafe partial struct AgentSatisfactionSupply
         [FieldOffset(0x0A)] public ushort Bonus;
         [FieldOffset(0x0C)] public uint Reward1Id;
         [FieldOffset(0x10)] public uint Reward2Id;
-        
+
         // These 2 are only set for Fishing items
         [FieldOffset(0x38)] public ushort FishingSpotId;
         [FieldOffset(0x3A)] public ushort SpearFishingSpotId;

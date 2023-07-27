@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
+namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 // Client::Game::UI::ContentsNote
 // size = 0xA8
@@ -18,7 +18,7 @@ public unsafe partial struct ContentsNote
     public bool IsContentNoteComplete(int index)
     {
         var offsetIndex = index - 1;
-            
+
         return (CompletionFlags[offsetIndex / 8] & (1 << (offsetIndex % 8))) != 0;
     }
 }

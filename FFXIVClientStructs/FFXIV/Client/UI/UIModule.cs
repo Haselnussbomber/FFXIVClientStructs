@@ -95,12 +95,12 @@ public unsafe partial struct UIModule
     [VirtualFunction(23)]
     public partial void* GetFlagStatusModule();
 
-    [VirtualFunction(26)] 
+    [VirtualFunction(26)]
     public partial RaptureUiDataModule* GetRaptureUiDataModule();
 
     [VirtualFunction(30)]
     public partial void* GetRaptureTeleportHistory();
-    
+
     [VirtualFunction(32)]
     public partial RecommendEquipModule* GetRecommendEquipModule();
 
@@ -148,7 +148,7 @@ public unsafe partial struct UIModule
 
     [VirtualFunction(141)]
     public partial void ToggleUi(UiFlags flags, bool enable, bool unknown = true);
-    
+
     [VirtualFunction(151)]
     public partial void ShowGoldSaucerReward(byte type, uint mgp, uint rewardItemId, uint rewardItemCount);
 
@@ -218,12 +218,12 @@ public unsafe partial struct UIModule
 
     [VirtualFunction(190)]
     public partial void ExecuteMainCommand(uint command);
-    
+
     [VirtualFunction(191)]
     public partial bool IsMainCommandUnlocked(uint command);
 
     [VirtualFunction(205)]
-    public partial void Test205(nint a1,nint a2,nint a3,nint a4);
+    public partial void Test205(nint a1, nint a2, nint a3, nint a4);
 
     [MemberFunction("E8 ?? ?? ?? ?? 4D 39 BE")]
     public static partial bool PlaySound(uint effectId, long a2, long a3, byte a4);

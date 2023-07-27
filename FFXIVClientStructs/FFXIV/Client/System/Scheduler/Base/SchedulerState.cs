@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.System.Scheduler.Base;
+namespace FFXIVClientStructs.FFXIV.Client.System.Scheduler.Base;
 
 // Client::System::Scheduler::Base::SchedulerState
 

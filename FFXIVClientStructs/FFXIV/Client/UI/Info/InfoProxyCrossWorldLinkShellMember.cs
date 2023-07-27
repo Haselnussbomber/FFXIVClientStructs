@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Client.UI.Info;
+namespace FFXIVClientStructs.FFXIV.Client.UI.Info;
 
 [InfoProxy(InfoProxyId.CrossWorldLinkShellMember)]
 [StructLayout(LayoutKind.Explicit, Size = 0xD0)]

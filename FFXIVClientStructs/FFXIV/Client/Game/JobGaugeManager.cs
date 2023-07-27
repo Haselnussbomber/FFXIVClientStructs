@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
+using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 
 namespace FFXIVClientStructs.FFXIV.Client.Game;
 

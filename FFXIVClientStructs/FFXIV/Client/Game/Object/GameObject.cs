@@ -15,13 +15,15 @@ public struct GameObjectID
     [FieldOffset(0x0)] public uint ObjectID;
     [FieldOffset(0x4)] public byte Type;
 
-    public static unsafe implicit operator long(GameObjectID id) {
-        var objid = stackalloc GameObjectID[] {id};
+    public static unsafe implicit operator long(GameObjectID id)
+    {
+        var objid = stackalloc GameObjectID[] { id };
         return *(long*)objid;
     }
 
-    public static unsafe implicit operator GameObjectID(long id) {
-        var objid = stackalloc long[] {id};
+    public static unsafe implicit operator GameObjectID(long id)
+    {
+        var objid = stackalloc long[] { id };
         return *(GameObjectID*)objid;
     }
 }
@@ -101,7 +103,7 @@ public unsafe partial struct GameObject
 
     [VirtualFunction(58)]
     public partial bool IsNotMounted();
-    
+
     [VirtualFunction(61)]
     public partial bool IsCharacter();
 

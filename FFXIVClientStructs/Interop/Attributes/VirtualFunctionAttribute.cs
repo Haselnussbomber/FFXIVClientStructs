@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.Interop.Attributes;
+namespace FFXIVClientStructs.Interop.Attributes;
 
 [AttributeUsage(AttributeTargets.Method)]
 public class VirtualFunctionAttribute : Attribute
@@ -7,6 +7,6 @@ public class VirtualFunctionAttribute : Attribute
     {
         this.Index = index;
     }
-    
+
     public uint Index { get; }
 }

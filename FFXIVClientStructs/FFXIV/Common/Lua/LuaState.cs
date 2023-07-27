@@ -1,4 +1,4 @@
-﻿namespace FFXIVClientStructs.FFXIV.Common.Lua;
+namespace FFXIVClientStructs.FFXIV.Common.Lua;
 
 //ctor 48 8D 05 ?? ?? ?? ?? C6 41 10 01 48 89 01 33 C0
 [StructLayout(LayoutKind.Explicit, Size = 0x28)]
@@ -116,7 +116,7 @@ public unsafe partial struct lua_State
     {
         lua_getfield(-10002, s);
     }
-    
+
 
     public void lua_pushcfunction(delegate*<lua_State*, int> f)
     {
@@ -125,14 +125,14 @@ public unsafe partial struct lua_State
 
     public string? lua_tostring(int idx)
     {
-        return Marshal.PtrToStringUTF8((nint) lua_tolstring(idx, null));
+        return Marshal.PtrToStringUTF8((nint)lua_tolstring(idx, null));
     }
 
     public void lua_pop(int n)
     {
         lua_settop(-n - 1);
     }
-    
+
     public void lua_register(string n, delegate*<lua_State*, int> f)
     {
         lua_pushcfunction(f);

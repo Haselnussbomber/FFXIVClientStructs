@@ -1,6 +1,6 @@
-﻿namespace FFXIVClientStructs.Havok;
+namespace FFXIVClientStructs.Havok;
 
-[StructLayout(LayoutKind.Explicit, Size=0x30)]
+[StructLayout(LayoutKind.Explicit, Size = 0x30)]
 public struct hkTypeInfoRegistry
 {
     [FieldOffset(0x0)] public hkReferencedObject hkReferencedObject;
