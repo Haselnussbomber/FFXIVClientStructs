@@ -10,7 +10,7 @@ jobs:
     name: Check and Format
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: read|write
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -38,7 +38,4 @@ jobs:
           if [ -z "$prNumber" ]; then
             echo "No PR found, creating one"
             gh pr create --head format-branch --title "Auto-format code" --body "This PR was automatically created to fix formatting issues." --base main
-          else
-            echo "PR already exists, updating it"
-            gh pr update $prNumber --body "This PR was automatically updated to fix formatting issues."
           fi
