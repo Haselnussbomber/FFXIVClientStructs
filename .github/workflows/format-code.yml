@@ -1,0 +1,43 @@
+name: Check and Auto-format .NET Code
+
+on:
+  #schedule:
+  #  - cron: "0 0,12,18 */1 * *"
+  workflow_dispatch:
+
+jobs:
+  format-code:
+    name: Check and Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Check for formatting issues
+      - name: Check Formatting
+        run: dotnet format FFXIVClientStructs/FFXIVClientStructs.csproj --verify-no-changes || echo "Formatting issues found"
+
+      # If there are formatting issues, create/update the PR
+      - name: Create/Update PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email noreply@github.com
+
+          git checkout -b format-branch
+          dotnet format FFXIVClientStructs/FFXIVClientStructs.csproj
+          git add .
+          git commit -m "Auto-format code"
+          git push origin format-branch
+
+          # Create PR if it doesn't exist
+          prNumber=$(gh pr list --base main --head format-branch --state open --json number --template "{{range .}}{{.number}}{{end}}")
+          if [ -z "$prNumber" ]; then
+            echo "No PR found, creating one"
+            gh pr create --head format-branch --title "Auto-format code" --body "This PR was automatically created to fix formatting issues." --base main
+          else
+            echo "PR already exists, updating it"
+            gh pr update $prNumber --body "This PR was automatically updated to fix formatting issues."
+          fi
