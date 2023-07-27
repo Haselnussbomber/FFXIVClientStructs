@@ -22,7 +22,7 @@ jobs:
       # If there are formatting issues, create/update the PR
       - name: Create/Update PR
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email noreply@github.com
