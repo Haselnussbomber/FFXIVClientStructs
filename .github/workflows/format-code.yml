@@ -5,6 +5,9 @@ on:
   #  - cron: "0 0,12,18 */1 * *"
   workflow_dispatch:
 
+permissions:
+  pull-requests: read|write
+
 jobs:
   format-code:
     name: Check and Format
