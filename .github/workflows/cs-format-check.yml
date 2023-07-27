@@ -1,0 +1,29 @@
+name: CS Format Check
+
+on:
+  push:
+    paths:
+      - FFXIVClientStructs/**.cs
+  workflow_dispatch:
+
+jobs:
+  cs-format-check:
+    name: CS Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+
+      - run: echo "::add-matcher::.github/workflows/dotnet-format-problem-matcher.json"
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v37
+        with:
+          files: FFXIVClientStructs/**.cs
+
+      - name: Restore dependencies
+        run: dotnet restore FFXIVClientStructs/FFXIVClientStructs.csproj --locked-mode
+
+      - name: Format Check
+        run: dotnet format FFXIVClientStructs/FFXIVClientStructs.csproj --verify-no-changes --include ${{ steps.changed-files.outputs.all_changed_files }}
