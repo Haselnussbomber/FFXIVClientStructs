@@ -4,7 +4,7 @@ namespace FFXIVClientStructs.FFXIV.Client.Game;
 
 // Client::Game::GcArmyManager
 // Squadron
-// ctor "48 83 EC 28 48 83 3D ?? ?? ?? ?? ?? 75 2E 33 D2"
+// ctor "48 83 EC ?? 48 83 3D ?? ?? ?? ?? ?? 75 ?? 33 D2 45 33 C0 8D 4A ?? E8 ?? ?? ?? ?? 33 C9 48 85 C0 74 ?? 48 89 08 48 89 48 ?? 48 89 05"
 [GenerateInterop]
 [StructLayout(LayoutKind.Explicit, Size = 0x10)]
 public unsafe partial struct GcArmyManager {
@@ -24,7 +24,7 @@ public unsafe partial struct GcArmyManager {
 }
 
 [GenerateInterop]
-[StructLayout(LayoutKind.Explicit, Size = 0xB18)]
+[StructLayout(LayoutKind.Explicit, Size = 0xF28)] // TODO: size changed, fix offsets
 public unsafe partial struct GcArmyData {
     [FieldOffset(0), FixedSizeArray] internal FixedSizeArray8<GcArmyMember> _members;
     /// <remarks> RowId of GcArmyProgress </remarks>
@@ -45,10 +45,10 @@ public unsafe partial struct GcArmyData {
 
     [FieldOffset(0x3C0)] public GcArmyMember RecruitMember;
 
-    [FieldOffset(0x470)] public byte MemberCount;
+    [FieldOffset(0x4C0)] public byte MemberCount;
 }
 
-[StructLayout(LayoutKind.Explicit, Size = 0x50)]
+[StructLayout(LayoutKind.Explicit, Size = 0x58)] // TODO: size changed, fix offsets
 public unsafe partial struct GcArmyMember {
     [FieldOffset(0x00)] public uint Face;
     [FieldOffset(0x04)] public uint ENpcResidentId;
