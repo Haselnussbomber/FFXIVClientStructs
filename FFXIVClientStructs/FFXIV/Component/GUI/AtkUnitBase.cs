@@ -4,7 +4,7 @@ namespace FFXIVClientStructs.FFXIV.Component.GUI;
 
 // Component::GUI::AtkUnitBase
 //   Component::GUI::AtkEventListener
-// ctor "E8 ?? ?? ?? ?? 83 8B ?? ?? ?? ?? ?? 33 C0"
+// ctor "E8 ?? ?? ?? ?? 33 D2 48 8D 9F"
 // base class for all AddonXXX classes (visible UI objects)
 [GenerateInterop(isInherited: true)]
 [Inherits<AtkEventListener>]
@@ -56,62 +56,6 @@ public unsafe partial struct AtkUnitBase {
 
     /// <summary> <c>true</c> when Setup is complete. </summary>
     public bool IsReady => (UnkFlags189 & 0x01) != 0;
-
-    [MemberFunction("E8 ?? ?? ?? ?? 0F BF CB 0F 28 F8")]
-    public partial float GetScale();
-
-    [MemberFunction("E8 ?? ?? ?? ?? 48 8B 46 EC")]
-    public partial void SetSize(ushort width, ushort height);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 40 2A C7")]
-    public partial float GetScaledWidth(bool getScaledWidth); // False returns unscaled width
-
-    [MemberFunction("E8 ?? ?? ?? ?? 66 2B DE")]
-    public partial float GetScaledHeight(bool getScaledHeight); // False returns unscaled height
-
-    [MemberFunction("E8 ?? ?? ?? ?? 66 45 2B E6")]
-    public partial float GetGlobalUIScale();
-
-    [MemberFunction("E8 ?? ?? ?? ?? 8D 57 5B")]
-    public partial AtkResNode* GetNodeById(uint nodeId);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 8D 56 1E")]
-    public partial AtkTextNode* GetTextNodeById(uint nodeId);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 8D 53 16")]
-    public partial AtkImageNode* GetImageNodeById(uint nodeId);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 8D 53 1B")]
-    public partial AtkComponentButton* GetButtonNodeById(uint nodeId);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 0F BF 57 30")]
-    public partial AtkComponentList* GetComponentListById(uint nodeId);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 8D 55 9F")]
-    public partial AtkComponentNode* GetComponentNodeById(uint nodeId);
-
-    [MemberFunction("E9 ?? ?? ?? ?? 83 C3 F9")]
-    public partial byte FireCallbackInt(int callbackValue);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 0F B6 E8 8B 44 24 20")]
-    public partial void FireCallback(int valueCount, AtkValue* values, bool close = false);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 32 C0 88 45 67")]
-    public partial void UpdateCollisionNodeList(bool clearFocus);
-
-    [MemberFunction("E8 ?? ?? ?? ?? 48 8D 5E 35")]
-    public partial bool SetFocusNode(AtkResNode* node, bool a3 = false, uint a4 = 0);
-
-    /// <param name="arrayType">0 for StringArrayData or 1 for NumberArrayData</param>
-    /// <param name="arrayIndex">The index in AtkArrayDataHolder</param>
-    [MemberFunction("E8 ?? ?? ?? ?? 41 8B 45 30")]
-    public partial void SubscribeAtkArrayData(byte arrayType, byte arrayIndex);
-
-    /// <param name="arrayType">0 for StringArrayData or 1 for NumberArrayData</param>
-    /// <param name="arrayIndex">The index in AtkArrayDataHolder</param>
-    /// <param name="clean">Resets all values to default, also frees managed strings</param>
-    [MemberFunction("E8 ?? ?? ?? ?? 45 33 C9 8D 56 01")]
-    public partial void UnsubscribeAtkArrayData(byte arrayType, byte arrayIndex, bool clean = false);
 
     [VirtualFunction(3)]
     public partial bool Open(uint depthLayer);
@@ -213,6 +157,62 @@ public unsafe partial struct AtkUnitBase {
     [VirtualFunction(62)]
     public partial void OnMouseOut();
 
+    [MemberFunction("E8 ?? ?? ?? ?? 0F BF CB 0F 28 F8")]
+    public partial float GetScale();
+
+    [MemberFunction("E8 ?? ?? ?? ?? 48 8B 46 EC")]
+    public partial void SetSize(ushort width, ushort height);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 40 2A C7")]
+    public partial float GetScaledWidth(bool getScaledWidth); // False returns unscaled width
+
+    [MemberFunction("E8 ?? ?? ?? ?? 66 2B DE")]
+    public partial float GetScaledHeight(bool getScaledHeight); // False returns unscaled height
+
+    [MemberFunction("E8 ?? ?? ?? ?? 66 45 2B E6")]
+    public partial float GetGlobalUIScale();
+
+    [MemberFunction("E8 ?? ?? ?? ?? 8D 57 5B")]
+    public partial AtkResNode* GetNodeById(uint nodeId);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 8D 56 1E")]
+    public partial AtkTextNode* GetTextNodeById(uint nodeId);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 8D 53 16")]
+    public partial AtkImageNode* GetImageNodeById(uint nodeId);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 8D 53 1B")]
+    public partial AtkComponentButton* GetButtonNodeById(uint nodeId);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 0F BF 57 30")]
+    public partial AtkComponentList* GetComponentListById(uint nodeId);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 8D 55 9F")]
+    public partial AtkComponentNode* GetComponentNodeById(uint nodeId);
+
+    [MemberFunction("E9 ?? ?? ?? ?? 83 C3 F9")]
+    public partial byte FireCallbackInt(int callbackValue);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 0F B6 E8 8B 44 24 20")]
+    public partial void FireCallback(int valueCount, AtkValue* values, bool close = false);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 32 C0 88 45 67")]
+    public partial void UpdateCollisionNodeList(bool clearFocus);
+
+    [MemberFunction("E8 ?? ?? ?? ?? 48 8D 5E 35")]
+    public partial bool SetFocusNode(AtkResNode* node, bool a3 = false, uint a4 = 0);
+
+    /// <param name="arrayType">0 for StringArrayData or 1 for NumberArrayData</param>
+    /// <param name="arrayIndex">The index in AtkArrayDataHolder</param>
+    [MemberFunction("E8 ?? ?? ?? ?? 41 8B 45 30")]
+    public partial void SubscribeAtkArrayData(byte arrayType, byte arrayIndex);
+
+    /// <param name="arrayType">0 for StringArrayData or 1 for NumberArrayData</param>
+    /// <param name="arrayIndex">The index in AtkArrayDataHolder</param>
+    /// <param name="clean">Resets all values to default, also frees managed strings</param>
+    [MemberFunction("E8 ?? ?? ?? ?? 45 33 C9 8D 56 01")]
+    public partial void UnsubscribeAtkArrayData(byte arrayType, byte arrayIndex, bool clean = false);
+
     [MemberFunction("E9 ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 41 B9 ?? ?? ?? ??"), GenerateStringOverloads]
     public partial bool LoadUldByName(byte* name, byte a3 = 0, uint a4 = 6);
 
@@ -222,7 +222,7 @@ public unsafe partial struct AtkUnitBase {
     [MemberFunction("E8 ?? ?? ?? ?? 41 8D 57 47 48 8B CE")]
     public partial void SetCloseTransition(float duration, short offsetX, short offsetY, float scale);
 
-    [MemberFunction("E8 ?? ?? ?? ?? 4D 8B C6 48 8B D3 48 8B CF")]
+    [MemberFunction("E8 ?? ?? ?? ?? 48 8B 03 8B D7 4C 8B 83")]
     public partial bool SetAtkValues(uint numValues, AtkValue* values);
 
     [MemberFunction("E8 ?? ?? ?? ?? 0F BF 94 24 ?? ?? ?? ?? 03 96 ?? ?? ?? ??")]
