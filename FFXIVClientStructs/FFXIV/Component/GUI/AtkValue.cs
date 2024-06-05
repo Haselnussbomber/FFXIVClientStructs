@@ -4,23 +4,22 @@ using FFXIVClientStructs.FFXIV.Client.System.Memory;
 
 namespace FFXIVClientStructs.FFXIV.Component.GUI;
 
-// TODO: In Dawntrail 2 new types were introduced. TypeMask and Managed are still the same.
 [Flags]
 public enum ValueType {
     Undefined = 0,
     Null = 0x1,
     Bool = 0x2,
     Int = 0x3,
-    // Dawntrail adds Int64 = 0x4 here, everything afterwards +1
-    UInt = 0x4,
-    // Dawntrail adds UInt64 = 0x6 here, everything afterwards +1 again
-    Float = 0x5,
-    String = 0x6, // 1 byte per character (ASCII/UTF-8)
-    WideString = 0x7, // 2 bytes per character (UTF-16)
-    String8 = 0x8, // assumed to be a const char*
-    Vector = 0x9,
-    Texture = 0xA,
-    AtkValues = 0xB,
+    Int64 = 0x4,
+    UInt = 0x5,
+    UInt64 = 0x6,
+    Float = 0x7,
+    String = 0x8, // 1 byte per character (ASCII/UTF-8)
+    WideString = 0x9, // 2 bytes per character (UTF-16)
+    String8 = 0xA, // assumed to be a const char*
+    Vector = 0xB,
+    Texture = 0xC,
+    AtkValues = 0xD,
 
     TypeMask = 0xF,
 
@@ -80,7 +79,7 @@ public unsafe partial struct AtkValue : ICreatable, IDisposable {
     [MemberFunction("E8 ?? ?? ?? ?? 42 88 B4")]
     public partial void ChangeType(ValueType type);
 
-    [MemberFunction("E8 ?? ?? ?? ?? 83 0E 20"), GenerateStringOverloads]
+    [MemberFunction("E8 ?? ?? ?? ?? 41 83 4D"), GenerateStringOverloads]
     public partial void SetString(byte* value);
 
     [MemberFunction("E8 ?? ?? ?? ?? 41 03 ED"), GenerateStringOverloads]
@@ -107,7 +106,7 @@ public unsafe partial struct AtkValue : ICreatable, IDisposable {
     [MemberFunction("E8 ?? ?? ?? ?? 8B 44 24 60 4E 8D 24 3E")]
     public partial bool CopyVectorValue(uint index, AtkValue* outValue);
 
-    [MemberFunction("E8 ?? ?? ?? ?? 8B 5D A0 C1 EB 05")]
+    [MemberFunction("E8 ?? ?? ?? ?? 8B 55 9C")]
     private partial void ReleaseManagedMemoryInternal();
 
     // The game probably uses a macro for this, because it always
