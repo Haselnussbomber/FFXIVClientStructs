@@ -13,7 +13,7 @@ namespace FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
 public partial struct ContentDirector {
     [FieldOffset(0x536)] public byte ContentTypeRowId;
 
-    [FieldOffset(0xC08)] public float ContentTimeLeft;
+    [FieldOffset(0xCF0)] public float ContentTimeLeft;
 
     /// <summary>
     /// Gets the max time for the content in seconds
