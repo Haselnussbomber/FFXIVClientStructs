@@ -28,22 +28,22 @@ public unsafe partial struct GcArmyManager {
 public unsafe partial struct GcArmyData {
     [FieldOffset(0), FixedSizeArray] internal FixedSizeArray8<GcArmyMember> _members;
     /// <remarks> RowId of GcArmyProgress </remarks>
-    [FieldOffset(0x280)] public byte Progress;
+    [FieldOffset(0x2C0)] public byte Progress; // 0x2c0
 
     /// <remarks> RowId of GcArmyExpedition </remarks>
-    [FieldOffset(0x282)] public ushort CurrentExpedition;
+    [FieldOffset(0x2C2)] public ushort CurrentExpedition;
 
-    [FieldOffset(0x288)] public ushort BonusPhysical;
-    [FieldOffset(0x28A)] public ushort BonusMental;
-    [FieldOffset(0x28C)] public ushort BonusTactical;
+    [FieldOffset(0x288)] public ushort BonusPhysical; // maybe +0x40?
+    [FieldOffset(0x28A)] public ushort BonusMental; // maybe +0x40?
+    [FieldOffset(0x28C)] public ushort BonusTactical; // maybe +0x40?
 
-    [FieldOffset(0x2FC)] public uint MissionRewardExperience;
+    [FieldOffset(0x2FC)] public uint MissionRewardExperience; // maybe +0x40?
 
-    [FieldOffset(0x370)] public uint RecruitENpcResidentId;
+    [FieldOffset(0x370)] public uint RecruitENpcResidentId; // maybe +0x40?
 
-    [FieldOffset(0x378)] public CustomizeData RecruitCustomizeData;
+    [FieldOffset(0x378)] public CustomizeData RecruitCustomizeData; // maybe +0x40?
 
-    [FieldOffset(0x3C0)] public GcArmyMember RecruitMember;
+    [FieldOffset(0x408)] public GcArmyMember RecruitMember;
 
     [FieldOffset(0x4C0)] public byte MemberCount;
 }
@@ -93,10 +93,12 @@ public unsafe partial struct GcArmyMember {
     [FieldOffset(0x48)] public byte StainHands;
     [FieldOffset(0x49)] public byte StainLegs;
     [FieldOffset(0x4A)] public byte StainFeet;
-    [FieldOffset(0x4B)] public byte MasteryIndependent;
-    [FieldOffset(0x4C)] public byte MasteryOffensive;
-    [FieldOffset(0x4D)] public byte MasteryDefensive;
-    [FieldOffset(0x4E)] public byte MasteryBalanced;
+    // TODO: Verify offsets above
+
+    [FieldOffset(0x52)] public byte MasteryIndependent;
+    [FieldOffset(0x53)] public byte MasteryOffensive;
+    [FieldOffset(0x54)] public byte MasteryDefensive;
+    [FieldOffset(0x55)] public byte MasteryBalanced;
 }
 
 [Flags]
