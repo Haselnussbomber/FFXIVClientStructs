@@ -14025,6 +14025,16 @@ classes:
         base: Client::Game::Event::Director
     funcs:
       0x140CAD360: ctor
+  Client::Game::EurekaStoryProgressManager:
+    instances:
+      - ea: 0x142932220
+        pointer: true
+    funcs:
+      0x140973710: Initialize
+      0x140973760: Destroy
+      0x1409737B0: HasInstance
+      0x1409737D0: GetInstance
+      0x1409737E0: Load
   Client::Game::DomanEnclaveManager:
     instances:
       - ea: 0x142932230
