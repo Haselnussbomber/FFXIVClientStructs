@@ -76,6 +76,11 @@ public unsafe partial struct AtkResNode : ICreatable {
     /// </summary>
     [FieldOffset(0xA0)] public uint DrawFlags;
 
+    public bool IsDirty {
+        get => (DrawFlags & 1) == 1;
+        set => DrawFlags |= 1;
+    }
+
     [MemberFunction("E8 ?? ?? ?? ?? 48 8B D8 48 83 C4 20")]
     public partial void Ctor();
 

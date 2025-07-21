@@ -30,29 +30,12 @@ public unsafe partial struct AtkUnitBase : ICreatable {
     [FieldOffset(0x180)] public StdVector<CStringPointer> CachedAtkValueStrings;
     /// <summary>
     /// <code>
-    /// DepthLayer:<br/>
-    ///   Getter: (Flags180 >> 16) &amp; 0xF<br/>
-    ///   Mask: 0b0000_0000_0000_1111_0000_0000_0000_0000<br/>
-    /// <br/>
-    /// Visibility(?) Flags:<br/>
-    ///   Getter: (Flags180 >> 20) &amp; 0xF<br/>
-    ///   Mask: 0b0000_0000_1111_0000_0000_0000_0000_0000<br/>
-    ///   Values:
-    ///     0b0010 = Is visible<br/>
-    ///     0b0100 = Is hidden due to modal (like Retainer Menu)<br/>
-    /// <br/>
-    /// Applied Visibility(?) Flags:<br/>
-    ///   Getter: (Flags180 >> 24) &amp; 0xF<br/>
-    ///   Mask: 0b0000_1111_0000_0000_0000_0000_0000_0000<br/>
-    ///   Values: same as above<br/>
-    /// <br/>
-    /// UldLoadState:<br/>
-    ///   Getter: (Flags180 >> 28) &amp; 0xF<br/>
-    ///   Mask: 0b1111_0000_0000_0000_0000_0000_0000_0000<br/>
-    ///   Values:
-    ///     0 = Not loaded<br/>
-    ///     1 = UldResource loaded<br/>
-    ///     2 = UldManager finished loading the uld
+    /// Bits 0-7: Unknown
+    /// Bits 8-15: Applied values of 0-7
+    /// Bits 16-19: <see cref="DepthLayer"/><br/>
+    /// Bits 20-23: <see cref="VisibilityState"/><br/>
+    /// Bits 24-27: <see cref="AppliedVisibilityState"/><br/>
+    /// Bits 28-31: <see cref="LoadState"/>
     /// </code>
     /// </summary>
     [FieldOffset(0x198)] public uint Flags198;
@@ -157,13 +140,27 @@ public unsafe partial struct AtkUnitBase : ICreatable {
     [FieldOffset(0x1FC), FixedSizeArray] internal FixedSizeArray5<OperationGuide> _operationGuides; // the little button hints in controller mode
 
     public uint DepthLayer {
-        get => (Flags198 >> 16) & 0xF;
+        get => BitfieldHelper.GetBits(Flags198, 16, 0xFu);
         set => SetDepthLayer(value);
     }
 
+    public AtkUnitBaseVisibilityState VisibilityState {
+        get => (AtkUnitBaseVisibilityState)BitfieldHelper.GetBits(Flags198, 20, 0xFu);
+        set => BitfieldHelper.SetBits(ref Flags198, 20, 0xFu, (uint)value);
+    }
+
+    public AtkUnitBaseVisibilityState AppliedVisibilityState {
+        get => (AtkUnitBaseVisibilityState)BitfieldHelper.GetBits(Flags198, 24, 0xFu);
+        set => BitfieldHelper.SetBits(ref Flags198, 24, 0xFu, (uint)value);
+    }
+
+    public AtkUnitBaseLoadState LoadState {
+        get => (AtkUnitBaseLoadState)BitfieldHelper.GetBits(Flags198, 28, 0xFu);
+    }
+
     public bool IsVisible {
-        get => (Flags198 & 0x200000) != 0;
-        set => Flags198 = value ? Flags198 |= 0x200000 : Flags198 &= 0xFFDFFFFF;
+        get => VisibilityState.HasFlag(AtkUnitBaseVisibilityState.IsVisible);
+        set => VisibilityState = VisibilityState.WithFlag(AtkUnitBaseVisibilityState.IsVisible, value);
     }
 
     /// <summary>
@@ -171,7 +168,7 @@ public unsafe partial struct AtkUnitBase : ICreatable {
     /// </summary>
     public bool IsReady => (Flags1A1 & 0x01) != 0;
 
-    public Span<AtkValue> AtkValuesSpan => new Span<AtkValue>(AtkValues, AtkValuesCount);
+    public Span<AtkValue> AtkValuesSpan => new(AtkValues, AtkValuesCount);
 
     [MemberFunction("E8 ?? ?? ?? ?? 33 D2 48 8D 9F")]
     public partial void Ctor();
@@ -404,6 +401,33 @@ public unsafe partial struct AtkUnitBase : ICreatable {
 
     [VirtualFunction(71)]
     public partial bool HandleBackButtonInput(int inputId, bool a3);
+}
+
+[Flags]
+public enum AtkUnitBaseVisibilityState : byte {
+    Unk1 = 0b0001,
+    IsVisible = 0b0010,
+    /// <remarks> Seen on Retainer Menu </remarks>
+    IsHiddenDueToModal = 0b0100,
+    Unk4 = 0b1000,
+}
+
+public enum AtkUnitBaseLoadState : byte {
+    /// <remarks>
+    /// <see cref="AtkUnitBase.LoadUldResourceHandle"/> will be called, which loads the uld file, and optionally scds.
+    /// </remarks>
+    LoadingUldResource = 0,
+
+    /// <remarks>
+    /// AtkUldManager.LoadResourceAndTextures will be called, which creates nodes and loads textures.<br/>
+    /// Refer to <see cref="AtkUldManager.LoadedState"/>.
+    /// </remarks>
+    LoadingResources = 1,
+
+    /// <remarks>
+    /// <see cref="AtkUnitBase.IsFullyLoaded"/> returned <see langword="true"/>.
+    /// </remarks>
+    FullyLoaded = 2,
 }
 
 [StructLayout(LayoutKind.Explicit, Size = 0xC)]
