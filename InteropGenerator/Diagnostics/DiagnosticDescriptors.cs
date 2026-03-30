@@ -305,4 +305,33 @@ internal static class DiagnosticDescriptors {
         DiagnosticSeverity.Error,
         true,
         "A bit field of type bool is required to have a length of 1 bit.");
+
+    public static readonly DiagnosticDescriptor StructFieldOffsetOutOfBounds = new(
+        "CSIG0501",
+        "Field offset exceeds struct size",
+        "The field offset of '{0}' in '{1}' is exceeding the structs size",
+        "InteropGenerator.Field",
+        DiagnosticSeverity.Warning,
+        true,
+        "A fields offset must be within the structs size.");
+
+    public static readonly DiagnosticDescriptor StructFieldOutOfBounds = new(
+        "CSIG0502",
+        "Field size exceeds struct size",
+        "The field of '{0}' in '{1}' is exceeding the structs size",
+        "InteropGenerator.Field",
+        DiagnosticSeverity.Warning,
+        true,
+        "A field must be within the structs size.");
+
+    /*
+    public static readonly DiagnosticDescriptor StructFieldOverlap = new(
+        "CSIG0503",
+        "Field overlaps with another field",
+        "The field '{0}' in '{1}' overlaps with another field",
+        "InteropGenerator.Field",
+        DiagnosticSeverity.Warning,
+        true,
+        "A fields can not overlap with another field.");
+    */
 }
