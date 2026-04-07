@@ -324,9 +324,18 @@ internal static class DiagnosticDescriptors {
         true,
         "A field must be within the structs size.");
 
+    public static readonly DiagnosticDescriptor StructFieldTypeNoSize = new(
+        "CSIG0503",
+        "Field size could not be determined",
+        "The field of '{0}' in '{1}' has an unknown size",
+        "InteropGenerator.Field",
+        DiagnosticSeverity.Warning,
+        true,
+        "A fields size must be able to be calculated.");
+
     /*
     public static readonly DiagnosticDescriptor StructFieldOverlap = new(
-        "CSIG0503",
+        "CSIG0504",
         "Field overlaps with another field",
         "The field '{0}' in '{1}' overlaps with another field",
         "InteropGenerator.Field",

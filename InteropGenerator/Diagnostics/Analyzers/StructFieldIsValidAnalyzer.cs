@@ -13,6 +13,7 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [
         StructFieldOffsetOutOfBounds,
         StructFieldOutOfBounds,
+        StructFieldTypeNoSize,
         // StructFieldOverlap,
     ];
 
@@ -57,8 +58,14 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
                     }
 
                     int fieldSize = fieldSymbol.SizeOf(context.Compilation);
-                    if (fieldSize == 0)
+                    if (fieldSize == 0) {
+                        context.ReportDiagnostic(Diagnostic.Create(
+                            StructFieldTypeNoSize,
+                            fieldSymbol.Locations.FirstOrDefault(),
+                            fieldSymbol.Name,
+                            structSymbol.Name));
                         continue;
+                    }
 
                     if (fieldOffset + fieldSize > structSize) {
                         context.ReportDiagnostic(Diagnostic.Create(
