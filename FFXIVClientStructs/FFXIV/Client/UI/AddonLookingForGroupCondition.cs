@@ -2,7 +2,7 @@
 
 namespace FFXIVClientStructs.FFXIV.Client.UI;
 
-// Client::UI::AddonLookingForGroup
+// Client::UI::AddonLookingForGroupCondition
 //   Component::GUI::AtkUnitBase
 //     Component::GUI::AtkEventListener
 [Addon("LookingForGroupCondition")]
