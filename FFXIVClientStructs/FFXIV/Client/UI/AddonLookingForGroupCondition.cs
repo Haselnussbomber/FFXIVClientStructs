@@ -9,7 +9,7 @@ namespace FFXIVClientStructs.FFXIV.Client.UI;
 [GenerateInterop]
 [Inherits<AtkUnitBase>]
 [StructLayout(LayoutKind.Explicit, Size = 0x770)]
-public unsafe partial struct LookingForGroupCondition {
+public unsafe partial struct AddonLookingForGroupCondition {
     [FieldOffset(0x238)] public AtkComponentDropDownList* DutyCategoryDropDown;
     [FieldOffset(0x240)] public AtkComponentDropDownList* DutyDropDown;
     [FieldOffset(0x248)] public AtkComponentTextInput* CommentTextInput;
