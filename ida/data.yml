@@ -7655,6 +7655,7 @@ classes:
       0x140470C30: CreateInstance
       0x140470EF0: ctor
       0x140472A70: CreateCutSceneController
+      0x140472050: IsCutScenePlaying
     instances:
       - ea: 0x142A92EF8
         pointer: true
