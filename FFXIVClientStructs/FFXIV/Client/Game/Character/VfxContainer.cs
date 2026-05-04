@@ -25,7 +25,7 @@ public partial struct VfxContainer {
         ulong autoRelease, // TODO: change type to bool
         int weaponDataIndex,
         int unk6, // TODO: change type to SoundVolumeCategory
-        ulong unk7); // TODO: change type to byte, maybe bool
+        ulong unk7); // TODO: change type to bool
 
     [StructLayout(LayoutKind.Explicit, Size = 0x18)]
     public struct Tether {
