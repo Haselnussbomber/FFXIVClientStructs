@@ -17542,6 +17542,9 @@ classes:
         base: Client::Game::InstanceContent::InstanceContentDirector
     funcs:
       0x141A2F750: ctor
+      0x141A30C80: IsOceanFishingFinished # static
+      0x141A30CC0: GetMissionType # static
+      0x141A30D10: GetMissionProgress # static
   Client::Game::InstanceContent::InstanceContentTripleTriad: # Triple Triad Open Tournament / Triple Triad Invitational Parlor
     vtbls:
       - ea: 0x1423E7A48
