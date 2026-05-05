@@ -1888,6 +1888,7 @@ classes:
       0x140848130: Terminate
       0x1408481C0: Update
       0x14084D730: ProcessPacket
+      0x140850140: AddChapter
   Client::Game::InventoryManager:
     instances:
       - ea: 0x142AC3810
@@ -3480,6 +3481,9 @@ classes:
     vtbls:
       - ea: 0x1421B9AD8
         base: Component::GUI::AtkModuleInterface::AtkEventInterface
+    funcs:
+      0x140C428A0: Activate
+      0x140C42A40: Deactivate
   Client::Game::UI::Emj:
     instances:
       - ea: 0x142AE3680
@@ -4932,6 +4936,7 @@ classes:
       0x1400ED450: OpenSelectOk2
       0x1400F1700: ShowScreenImage
       0x1400F47B0: ShowTextGimmickHint
+      0x1400F81D0: ToggleQTE
       0x1400F8890: SetCursorVisibility
       0x1400FD8D0: OpenDawnStory
       0x1400FD900: OpenDawn
@@ -15268,6 +15273,7 @@ classes:
       6: Terminate
       7: IsUnlocked
       40: ProcessYield
+      61: ProcessDirectorUpdate
       159: CancelInteraction
       205: GetTitle # lua function "GetEventHandlerTitle"
       207: GetEventId
