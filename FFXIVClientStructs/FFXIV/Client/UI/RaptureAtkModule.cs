@@ -61,22 +61,24 @@ public unsafe partial struct RaptureAtkModule {
     [FieldOffset(0x2A810)] public uint InventoryItemCacheSlotCount;
     [FieldOffset(0x2A814)] public uint GilCap;
 
-    [FieldOffset(0x2A858)] public uint LocalPlayerClassJobId;
-    [FieldOffset(0x2A85C)] public uint LocalPlayerLevel;
+    [FieldOffset(0x2A878)] public uint LocalPlayerClassJobId;
+    [FieldOffset(0x2A87C)] public uint LocalPlayerLevel;
 
-    [FieldOffset(0x2A865)] public bool QuickGatheringEnabled;
+    [FieldOffset(0x2A885)] public bool QuickGatheringEnabled;
 
-    [FieldOffset(0x2A8D0)] internal ExcelSheet* AddonParamSheet;
-    [FieldOffset(0x2A8D8)] public AtkTexture CharaViewDefaultBackgroundTexture; // "ui/common/CharacterBg.tex" (or _hr1 variant)
+    [FieldOffset(0x2A88B)] public bool QTEActive;
 
-    [FieldOffset(0x2A8F4)] public uint LoginSummonCompanionId;
-    [FieldOffset(0x2A8F8)] public float LoginSummonCompanionCountdown;
+    [FieldOffset(0x2A8F0)] internal ExcelSheet* AddonParamSheet;
+    [FieldOffset(0x2A8F8)] public AtkTexture CharaViewDefaultBackgroundTexture; // "ui/common/CharacterBg.tex" (or _hr1 variant)
+
+    [FieldOffset(0x2A914)] public uint LoginSummonCompanionId;
+    [FieldOffset(0x2A918)] public float LoginSummonCompanionCountdown;
     /// <remarks> Only for Region 5 </remarks>
-    [FieldOffset(0x2A8FC)] public float HourTimer;
+    [FieldOffset(0x2A91C)] public float HourTimer;
     /// <remarks> Only for Region 5 </remarks>
-    [FieldOffset(0x2A900)] public int HoursPlayed;
+    [FieldOffset(0x2A920)] public int HoursPlayed;
 
-    [FieldOffset(0x2A918)] internal nint ShellCommands; // only 1 function to open links?
+    [FieldOffset(0x2A938)] internal nint ShellCommands; // only 1 function to open links?
 
     [MemberFunction("48 89 5C 24 ?? 57 48 83 EC ?? 0F BF 81 ?? ?? ?? ?? 8B FA")]
     public partial bool ChangeUiMode(uint uiMode);
