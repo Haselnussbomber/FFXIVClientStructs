@@ -9675,8 +9675,8 @@ classes:
       223: SetLinkshellCycle
       224: RotateCrossLinkshellHistory
       225: SetCrossWorldLinkshellCycle
-      242: ShowRaceCountdownStart
-      243: ShowRaceCountdownEnd_2
+      239: ShowRaceCountdownStart
+      240: ShowRaceCountdownEnd_2
       248: ShouldLimitFps # new in 7.3
   Client::UI::UIModule:
     vtbls:
