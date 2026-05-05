@@ -9671,10 +9671,10 @@ classes:
       216: ShowTalkSubtitle
       217: HideTalkSubtitle
       218: ShowAdventureNotice
+      222: RotateLinkshellHistory
       223: SetLinkshellCycle
-      224: RotateLinkshellHistory
+      224: RotateCrossLinkshellHistory
       225: SetCrossWorldLinkshellCycle
-      226: RotateCrossLinkshellHistory
       242: ShowRaceCountdownStart
       243: ShowRaceCountdownEnd_2
       248: ShouldLimitFps # new in 7.3
