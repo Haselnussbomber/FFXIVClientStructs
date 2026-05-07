@@ -148,24 +148,24 @@ public unsafe partial struct EventFramework {
 
     [StructLayout(LayoutKind.Explicit, Size = 0x38)]
     public struct QueuedActionTimelineCallback {
-        [FieldOffset(0x00)] public AnimationDataStruct AnimationData;
-        [FieldOffset(0x10)] public HandlerDataStruct HandlerData;
-        [FieldOffset(0x20)] public CallbackDataStruct CallbackData;
+        [FieldOffset(0x00)] public AnimationData Animation;
+        [FieldOffset(0x10)] public HandlerData Handler;
+        [FieldOffset(0x20)] public CallbackData Callback;
 
         [StructLayout(LayoutKind.Explicit, Size = 0x10)]
-        public struct AnimationDataStruct {
+        public struct AnimationData {
             [FieldOffset(0x00)] public Character.Character* Character;
             [FieldOffset(0x08)] public ushort ActionTimelineId;
         }
 
         [StructLayout(LayoutKind.Explicit, Size = 0x10)]
-        public struct HandlerDataStruct {
+        public struct HandlerData {
             [FieldOffset(0x00)] public ActionTimelineCallbackInterface* Callback;
             [FieldOffset(0x08)] public ulong CallbackParam;
         }
 
         [StructLayout(LayoutKind.Explicit, Size = 0x10)]
-        public struct CallbackDataStruct {
+        public struct CallbackData {
             [FieldOffset(0x00)] public bool IsCallbackCalled; // if this is true, the handler was called
             [FieldOffset(0x02)] public bool IsComplete; // if this is true, it will remove it from the list and free its memory
         }
