@@ -161,7 +161,7 @@ public unsafe partial struct EventFramework {
         [StructLayout(LayoutKind.Explicit, Size = 0x10)]
         public struct HandlerDataStruct {
             [FieldOffset(0x00)] public ActionTimelineCallbackInterface* Callback;
-            [FieldOffset(0x08)] public ulong Param;
+            [FieldOffset(0x08)] public ulong CallbackParam;
         }
 
         [StructLayout(LayoutKind.Explicit, Size = 0x10)]
