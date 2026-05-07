@@ -29,7 +29,7 @@ public unsafe partial struct BonePhysicsModule {
     /// <remarks> If true, returns OverrideSimulationTime when GetSimulationTime is called and FrameDeltaTime is above ~0.01667 (60 FPS.) </remarks>
     [FieldOffset(0x588)] public bool UseOverrideSimulationTime;
 
-    /// <summary> Used to set BoneSimulator.SimulationTimeInv. </summary>
+    /// <summary> Used to set BoneSimulator.SimulationTimeInv, and in turn calls GetSimulationTime. </summary>
     [MemberFunction("E8 ?? ?? ?? ?? 0F 2F C6 76 ?? 48 8B CE")]
     public partial float GetSimulationTimeInv();
 
