@@ -139,7 +139,7 @@ public unsafe partial struct EventFramework {
     public partial struct QueuedFormatStringCallback {
         [FieldOffset(0x00)] public Utf8String String;
         [FieldOffset(0x68)] public StdDeque<TextParameter> Parameters;
-        [FieldOffset(0x90)] public FormatStringCallback* Callback;
+        [FieldOffset(0x90)] public FormatStringCallbackInterface* Callback;
         [FieldOffset(0x98)] public ulong CallbackParam;
         [BitField<bool>(nameof(IsCallbackCalled), 0)]
         [BitField<bool>(nameof(IsComplete), 1)] // unsure. most likely like how QueuedActionTimelineCallback does it. it checks for & 3, so both flags
@@ -160,7 +160,7 @@ public unsafe partial struct EventFramework {
 
         [StructLayout(LayoutKind.Explicit, Size = 0x10)]
         public struct HandlerDataStruct {
-            [FieldOffset(0x00)] public ActionTimelineCallback* Callback;
+            [FieldOffset(0x00)] public ActionTimelineCallbackInterface* Callback;
             [FieldOffset(0x08)] public ulong Param;
         }
 
