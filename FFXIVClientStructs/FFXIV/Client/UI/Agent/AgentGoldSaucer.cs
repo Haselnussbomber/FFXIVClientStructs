@@ -19,7 +19,7 @@ public unsafe partial struct AgentGoldSaucer {
     [FieldOffset(0x124)] public byte FilterDeckSorting;
 
     [MemberFunction("E8 ?? ?? ?? ?? 84 C0 75 ?? EB ?? 83 F8")]
-    public partial void RefreshDeckEdit();
+    public partial bool RefreshDeckEdit();
 }
 
 public enum CardListFilterMode : byte {
