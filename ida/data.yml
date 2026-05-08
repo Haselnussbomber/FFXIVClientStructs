@@ -13023,7 +13023,7 @@ classes:
         base: Client::UI::Agent::AgentInterface
     funcs:
       0x1410B3740: ctor
-      0x14097F230: RefreshDeckEdit
+      0x1410B8B80: RefreshDeckEdit
   Client::UI::Agent::AgentTripleTriadCoinExchange:
     vtbls:
       - ea: 0x1421F4530
