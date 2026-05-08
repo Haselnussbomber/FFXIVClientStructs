@@ -17638,6 +17638,7 @@ classes:
         base: Client::Game::InstanceContent::PublicContentDirector
     funcs:
       0x140BB3290: ctor
+      0x140BB1F60: GetState # static
   Client::Game::InstanceContent::PublicContentRising:
     vtbls:
       - ea: 0x1421ACD80
