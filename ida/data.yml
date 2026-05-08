@@ -4968,6 +4968,7 @@ classes:
       0x140104590: OnUpdate_NameplateCastbars
       0x1401056F0: IncRefNumberArrayData
       0x140105740: IncRefStringArrayData
+      0x140108860: FormatSeIconCharNumber
       0x1401092F0: GetStaticAddonName
       0x14010A4A0: RegisterAddonAllocators
       0x140117390: UpdateBattleCharaNameplates
@@ -16387,11 +16388,22 @@ classes:
       0x140B80DB0: GetCrystallineConflictDirector
       0x140B80DE0: GetFrontlinesDirector
       0x140B80E10: GetRivalWingDirector
+      0x140B80E40: GetDeepDungeonDirector
       0x140B80E70: GetTreasureHuntDungeonDirector
       0x140B80EA0: GetTourismDirector
       0x140B80ED0: GetTripleTriadDirector
       0x140B80FB0: GetSkyIslandDirector
+      0x140B80F00: GetInstanceContentDirectorType22 # related to XBM
+      0x140B80F30: GetInstanceContentDirectorType23
+      0x140B80F60: GetPvPInstanceContentDirector # either of: CrystallineConflict, Frontlines or RivalWing
       0x140B80FE0: GetPublicContentDirector
+      0x140B81010: GetPublicContentEureka
+      0x140B81040: GetPublicContentFallGuys
+      0x140B811D0: GetCraftLeveClientEventHandler
+      0x140B811E0: GetCraftEventHandler
+      0x140B811F0: GetExitRangeEventHandler
+      0x140B81200: GetFishingEventHandler
+      0x140B81210: HasQuestBattleDirector
       0x140B81070: GetContentDirector
       0x140B81080: GetQuestBattleDirector
       0x140B810D0: GetGoldSaucerDirector
