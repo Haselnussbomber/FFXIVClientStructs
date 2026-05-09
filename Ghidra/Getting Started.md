@@ -45,11 +45,13 @@ We use [..\ida\ffxiv_idarename.py](../ida/ffxiv_idarename.py) to apply data.yml.
 - Install a copy of [Python 3](https://www.python.org/downloads/).<br>
 Note: it has to be major version 3, so something like [Python 3.14.3](https://www.python.org/downloads/release/python-3143/) works.<br>
 
-- Check your PyGhidra log for "virtual environment" and copy the path. It should be something similar to this:<br>
-`/home/user/.config/ghidra/ghidra_VERSION/venv`
+- **Check your PyGhidra log for which environment is being used.** For example, if you've using a "virtual environment", it should be something similar to either of the following two paths:<br>
+Windows: `%AppData%\ghidra\ghidra_VERSION\venv`<br>
+Linux: `/home/user/.config/ghidra/ghidra_VERSION/venv`
 
-- Execute the following, using the venv path from the log:<br>
-`.../venv/bin/python -m pip install pyyaml==6.0.3 anytree==2.13.0`
+- Execute the following in your terminal, using Python from the same environment as PyGhidra:<br>
+venv: `.../venv/bin/python -m pip install pyyaml==6.0.3 anytree==2.13.0`<br>
+system: `python -m pip install pyyaml==6.0.3 anytree==2.13.0`
 
 - Open the Script Manager <p align="center"><img src=".\images\Open Script Manager.png"></p>
 
