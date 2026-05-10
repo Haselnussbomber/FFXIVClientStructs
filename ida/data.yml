@@ -2192,6 +2192,7 @@ classes:
       0x140E17B80: GetMovingHousingObject
       0x140E18180: SetTemporaryObject
       0x140E18240: SetTemporaryObjectStain
+      0x140E17390: DepositItemInStoreroom
   Client::Game::HouseId:
     funcs:
       0x140E1EF60: GetWardIndex
@@ -11971,6 +11972,9 @@ classes:
   Client::UI::Agent::AgentInventoryContext::InventoryContextEvent:
     vtbls:
       - ea: 0x142164CD0
+    vfuncs:
+      0: HandleCallback
+      1: HandleClose
   Client::UI::Agent::AgentInventoryContext:
     vtbls:
       - ea: 0x142164CE0
@@ -11984,6 +11988,10 @@ classes:
       0x140496180: OpenForItemSlot
       0x1404964E0: DiscardItem
       0x1404981A0: LowerItemQuality
+      0x1404963A0: SetContextCallbackInfo
+      0x1404976E0: GetContextCallbackInfo
+      0x140496480: TryOpenCustomItemContextMenu
+      0x1404977B0: AddContextItem
   Client::UI::Agent::AgentGlassesContext:
     vtbls:
       - ea: 0x142165960
