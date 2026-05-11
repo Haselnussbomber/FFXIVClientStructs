@@ -2815,8 +2815,10 @@ classes:
       0x140314420: Update # inlined in static since 7.0
       0x140314AC0: GetResourceAsync
       0x140314D70: GetResourceSync
-      0x1403192D0: FindResourceHandle
       0x140319EC0: Initialize
+  Client::System::Resource::ResourceGraph:
+    funcs:
+      0x1403192D0: FindResourceHandle
   Client::Game::UI::DirectorTodo:
     funcs:
       0x140C0D490: SetDirector
