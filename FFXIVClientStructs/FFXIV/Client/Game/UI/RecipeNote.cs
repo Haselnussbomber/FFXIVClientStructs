@@ -1,3 +1,5 @@
+using FFXIVClientStructs.FFXIV.Common.Component.Excel;
+
 namespace FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 // Client::Game::UI::RecipeNote
@@ -9,6 +11,15 @@ public unsafe partial struct RecipeNote {
     public static partial RecipeNote* Instance();
 
     [FieldOffset(0x00), FixedSizeArray] internal FixedSizeArray8<uint> _jobs;  // CraftType -> ClassJob
+
+    // [0] Item
+    // [1] RecipeNotebookList
+    // [2] Recipe
+    // [3] Item
+    // [4] SecretRecipeBook
+    // [5] NotebookDivisionCategory
+    [FieldOffset(0x50), FixedSizeArray] internal FixedSizeArray6<Pointer<ExcelSheet>> _excelSheets;
+    [FieldOffset(0x80), FixedSizeArray] internal FixedSizeArray6<nint> _excelHandlers;
 
     [FieldOffset(0xB8)] public RecipeData* RecipeList;
     // ActiveCraft Ingredients info, structure with unions, dunno

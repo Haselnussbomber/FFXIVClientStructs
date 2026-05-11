@@ -9,6 +9,11 @@ namespace FFXIVClientStructs.FFXIV.Client.UI.Agent;
 [StructLayout(LayoutKind.Explicit, Size = 0x570)]
 public unsafe partial struct AgentRecipeNote {
 
+    [FieldOffset(0x170)] internal FixedSizeArray8<TabState> _tabStates;
+    [FieldOffset(0x220)] public Utf8String JobName;
+    [FieldOffset(0x2F0)] private Utf8String Unk2F0;
+    [FieldOffset(0x288)] private Utf8String Unk288;
+
     [FieldOffset(0x398)] public uint ContextMenuResultItemId;
 
     [FieldOffset(0x3B0)] public int SelectedCraftType;
@@ -16,7 +21,8 @@ public unsafe partial struct AgentRecipeNote {
     [FieldOffset(0x3B8)] public int SelectedRecipeCategory;
     [FieldOffset(0x3BC)] public int SelectedRecipeIndex;
     [FieldOffset(0x3D4)] public uint ActiveCraftRecipeId; // 0 when not actively crafting, does not include 0x10_000
-    [FieldOffset(0x3EC)] public bool RecipeSearchOpen;
+    [FieldOffset(0x3EC), Obsolete("Use RecipeSearchState")] public bool RecipeSearchOpen;
+    [FieldOffset(0x3EC)] public int RecipeSearchState; // 0 = not on search tab, 1 = on search tab but nothing selected, 2 = on search tab with selected search term
     [FieldOffset(0x406)] public bool RecipeSearchProcessing;
     [FieldOffset(0x408)] public Utf8String RecipeSearch;
 
@@ -25,6 +31,7 @@ public unsafe partial struct AgentRecipeNote {
 
     [FieldOffset(0x498)] public byte RecipeSearchHistorySelected;
     [FieldOffset(0x4A0)] public StdDeque<Utf8String> RecipeSearchHistory;
+    [FieldOffset(0x4C8)] public StdDeque<Utf8String> RecipeSearchRecipeHistory;
 
     // Add 0x10_000, differentiate duplicate recipes by the CraftType value + 8
     // Name           CraftType ClassJob
@@ -49,6 +56,19 @@ public unsafe partial struct AgentRecipeNote {
 
     [MemberFunction("E8 ?? ?? ?? ?? 33 ED 84 C0 75")]
     public partial bool IsNoteBookDivisionUnlocked(uint noteBookDivisionId, int craftType);
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x16)]
+    public struct TabState {
+        [FieldOffset(0x00)] public ushort Category;
+        [FieldOffset(0x02)] public ushort Index;
+        [FieldOffset(0x04)] private byte Unk4;
+        [FieldOffset(0x05)] public byte CategoryPage;
+        [FieldOffset(0x06)] private ulong Unk6;
+        [FieldOffset(0x0E)] private uint UnkE;
+        [FieldOffset(0x12)] private byte Unk12;
+        [FieldOffset(0x13)] private byte Unk13;
+        [FieldOffset(0x14)] private ushort Unk14;
+    }
 }
 
 [GenerateInterop]
