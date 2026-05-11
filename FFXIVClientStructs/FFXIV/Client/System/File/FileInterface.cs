@@ -17,7 +17,7 @@ public unsafe partial struct FileInterface {
     [FieldOffset(0x08)] public ulong CachedFileSize;
     [CExporterTypeForce("HANDLE", true)]
     [FieldOffset(0x10)] public nint PlatformHandle;
-    [CExporterTypeForce("LPWIN32_FIND_DATAW*", true)]
+    [CExporterTypeForce("LPWIN32_FIND_DATAW", true)]
     [FieldOffset(0x18)] public void* FindData;
     [FieldOffset(0x20)] public bool IsFileOpen; // PlatformHandle is a Win32 File Handle. Close with CloseHandle()
     [FieldOffset(0x21)] public bool IsFindOpen; // PlatformHande is a Win32 Find Handle. Close with FindClose()
