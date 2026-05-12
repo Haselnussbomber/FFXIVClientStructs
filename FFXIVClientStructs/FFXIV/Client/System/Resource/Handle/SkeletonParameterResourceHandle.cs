@@ -1,12 +1,19 @@
-﻿using FFXIVClientStructs.FFXIV.Common.Math;
 using FFXIVClientStructs.Havok.Common.Base.Math.Vector;
 
 namespace FFXIVClientStructs.FFXIV.Client.System.Resource.Handle;
 
+// Client::System::Resource::Handle::SkeletonParamResourceHandle
+//   Client::System::Resource::Handle::DefaultResourceHandle
+//     Client::System::Resource::Handle::ResourceHandle
+//       Client::System::Common::NonCopyable
 [GenerateInterop]
 [Inherits<DefaultResourceHandle>]
 [StructLayout(LayoutKind.Explicit, Size = 0x148)]
-public unsafe partial struct SkeletonParamResourceHandle  {
+public unsafe partial struct SkeletonParamResourceHandle {
+    // 0xC0: struct of size 0x20
+    // 0xE0: struct of size 0x20
+    // 0x100: struct of size 0x28
+    // 0x128: struct of size 0x20
 
     //E0 some sort of flag, I think E0 and E1 are byte counters for how many objects the arrays have
     //E8 pointer to E1 bytes representing the # of elements in each group
@@ -16,36 +23,35 @@ public unsafe partial struct SkeletonParamResourceHandle  {
     [FieldOffset(0xF0)] public LookAtParam* Parameters;
     [FieldOffset(0xF8)] public LookAtGroup* Groups;
 
-
-
-
-    [StructLayout(LayoutKind.Sequential, Size = 0x56)]
+    [StructLayout(LayoutKind.Explicit, Size = 0x38)]
     public struct LookAtParam {
-        public hkVector4f ForwardLookAtVector;
-        public Vector3 ForwardRotation;
-        public float Limit_Angle;
-        public Vector3 Eye_positions;
-        public uint Flags;
-        public float Gain;
-        public uint Index;
+        [FieldOffset(0x00)] public hkVector4f ForwardLookAtVector;
+        [FieldOffset(0x10)] public float ForwardRotationX;
+        [FieldOffset(0x14)] public float ForwardRotationY;
+        [FieldOffset(0x18)] public float ForwardRotationZ;
+        [FieldOffset(0x1C)] public float LimitAngle;
+        [FieldOffset(0x20)] public float EyePositionX;
+        [FieldOffset(0x24)] public float EyePositionY;
+        [FieldOffset(0x28)] public float EyePositionZ;
+        [FieldOffset(0x2C)] public uint Flags;
+        [FieldOffset(0x30)] public float Gain;
+        [FieldOffset(0x34)] public uint Index;
     }
 
-    [StructLayout(LayoutKind.Explicit, Size = 0x30)]
     [GenerateInterop]
+    [StructLayout(LayoutKind.Explicit, Size = 0x30)]
     public partial struct LookAtGroup {
-        [FieldOffset(0x00), FixedSizeArray(isString: true)] internal FixedSizeArray8<byte> _groupId; //char[8]
+        [FieldOffset(0x00), FixedSizeArray(isString: true)] internal FixedSizeArray8<byte> _groupId;
         [FieldOffset(0x20)] public byte ElementCount;
         [FieldOffset(0x28)] public LookAtElement* Elements;
     }
 
-    //written in +1784EF0 
+    [GenerateInterop]
     [StructLayout(LayoutKind.Explicit, Size = 0x42)]
-    public struct LookAtElement {
+    public partial struct LookAtElement {
         [FieldOffset(0x00)] public byte Priority;
         [FieldOffset(0x01)] public byte SetupParameterIndex;
         [FieldOffset(0x02), FixedSizeArray(isString: true)] internal FixedSizeArray14<byte> _boneName;
         [FieldOffset(0x22), FixedSizeArray(isString: true)] internal FixedSizeArray14<byte> _parentBoneName;
     }
-    
 }
-
