@@ -14,7 +14,7 @@ public unsafe partial struct SkeletonParamResourceHandle  {
     [FieldOffset(0xE1)] public byte GroupCount;
     [FieldOffset(0xE8)] public byte* GroupElementCount;
     [FieldOffset(0xF0)] public LookAtParam* Parameters;
-    [FieldOffset(0xF8)] public Group* Groups;
+    [FieldOffset(0xF8)] public LookAtGroup* Groups;
 
 
 
@@ -32,15 +32,15 @@ public unsafe partial struct SkeletonParamResourceHandle  {
 
     [StructLayout(LayoutKind.Explicit, Size = 0x30)]
     [GenerateInterop]
-    public partial struct Group {
+    public partial struct LookAtGroup {
         [FieldOffset(0x00), FixedSizeArray(isString: true)] internal FixedSizeArray8<byte> _groupId; //char[8]
         [FieldOffset(0x20)] public byte ElementCount;
-        [FieldOffset(0x28)] public Element* Elements;
+        [FieldOffset(0x28)] public LookAtElement* Elements;
     }
 
     //written in +1784EF0 
     [StructLayout(LayoutKind.Explicit, Size = 0x42)]
-    public struct Element {
+    public struct LookAtElement {
         [FieldOffset(0x00)] public byte Priority;
         [FieldOffset(0x01)] public byte SetupParameterIndex;
         [FieldOffset(0x02), FixedSizeArray(isString: true)] internal FixedSizeArray14<byte> _boneName;
