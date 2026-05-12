@@ -59,6 +59,8 @@ public unsafe partial struct SkeletonParamResourceHandle {
             [FieldOffset(0x00), FixedSizeArray(isString: true)] internal FixedSizeArray8<byte> _groupId;
             [FieldOffset(0x20)] public byte ElementCount;
             [FieldOffset(0x28)] public LookAtElement* Elements;
+
+            public Span<LookAtElement> ElementsSpan => new(Elements, ElementCount);
         }
 
         [GenerateInterop]
