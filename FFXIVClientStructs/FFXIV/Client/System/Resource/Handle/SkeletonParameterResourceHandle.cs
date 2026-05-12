@@ -19,12 +19,12 @@ public unsafe partial struct SkeletonParamResourceHandle {
     public struct SklpHeader {
         [FieldOffset(0x00), FixedSizeArray(isString: true)] internal FixedSizeArray4<byte> _magic;
         [FieldOffset(0x04), FixedSizeArray(isString: true)] internal FixedSizeArray4<byte> _version;
-        [FieldOffset(0x08)] private SkpFlag Flags;
-        [FieldOffset(0x0C)] private uint UnkC;
-        [FieldOffset(0x10)] private uint LookAtOffset;
-        [FieldOffset(0x14)] private uint Unk14;
-        [FieldOffset(0x18)] private uint FeetOffset;
-        [FieldOffset(0x1C)] private uint SlopeOffset;
+        [FieldOffset(0x08)] public SkpFlag Flags;
+        [FieldOffset(0x0C)] public uint HeaderSize;
+        [FieldOffset(0x10)] public uint LookAtOffset;
+        [FieldOffset(0x14)] public uint CCDOffset;
+        [FieldOffset(0x18)] public uint FeetOffset;
+        [FieldOffset(0x1C)] public uint SlopeOffset;
     }
 
     [StructLayout(LayoutKind.Explicit, Size = 0x20)]
@@ -79,7 +79,7 @@ public unsafe partial struct SkeletonParamResourceHandle {
 }
 
 [Flags]
-internal enum SkpFlag {
+public enum SkpFlag {
     Animation = 0x01,
     LookAt = 0x02,
     CCD = 0x04,
