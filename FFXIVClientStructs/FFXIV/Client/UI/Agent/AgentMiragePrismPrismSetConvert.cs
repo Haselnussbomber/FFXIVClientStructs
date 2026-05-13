@@ -13,15 +13,27 @@ public unsafe partial struct AgentMiragePrismPrismSetConvert {
     [FieldOffset(0x28)] public AgentData* Data;
 
     [MemberFunction("40 53 41 55 48 81 EC ?? ?? ?? ?? 0F B7 84 24")]
-    public partial void Open(uint itemId, InventoryType inventoryType, int slot, int openerAddonId, bool enableStoring);
+    public partial bool Open(uint itemId, InventoryType inventoryType, int slot, ushort crystallizeAddonId, ushort prismBoxAddonId, bool enableStoring);
+
+    [Obsolete("Missing a parameter. Please use other overload.", true)]
+    public void Open(uint itemId, InventoryType inventoryType, int slot, int openerAddonId, bool enableStoring)
+        => Open(itemId, inventoryType, slot, (ushort)openerAddonId, 0, enableStoring);
 
     // OpenPreview in data.yml
-    public void Open(uint itemId) => Open(itemId, InventoryType.Invalid, 0, 0, false);
+    public void Open(uint itemId) => Open(itemId, InventoryType.Invalid, 0, 0, 0, false);
 
     [GenerateInterop]
     [StructLayout(LayoutKind.Explicit, Size = 0x1940)]
     public partial struct AgentData {
+        [FieldOffset(0x00)] public uint SourceItemId;
+        [FieldOffset(0x04)] public InventoryType SourceContainer;
+        [FieldOffset(0x08)] public uint SourceSlot;
+        [FieldOffset(0x0C)] public ushort CrystallizeAddonId; // MiragePrismPrismBoxCrystallize, the opener
+        [FieldOffset(0x0E)] public ushort PrismBoxAddonId; // MiragePrismPrismBoxAddonId
+
         [FieldOffset(0x18)] public int ContextMenuItemIndex;
+
+        [FieldOffset(0x2C)] public bool EnableSorting;
 
         [FieldOffset(0x40), FixedSizeArray] internal FixedSizeArray5<ItemSet> _itemSets;
         [FieldOffset(0x2C0)] public uint NumItemsInSet;
