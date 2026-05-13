@@ -38,6 +38,10 @@ public unsafe partial struct AgentMiragePrismPrismSetConvert {
         [FieldOffset(0x40), FixedSizeArray] internal FixedSizeArray5<ItemSet> _itemSets;
         [FieldOffset(0x2C0)] public uint NumItemsInSet;
         [FieldOffset(0x2C4), FixedSizeArray] internal FixedSizeArray9<ItemSetItem> _items;
+        [FieldOffset(0x408)] private uint Unk408;
+        [FieldOffset(0x40C)] private uint Unk40C;
+        [FieldOffset(0x410), FixedSizeArray] internal FixedSizeArray190<HandInItem> _handIns;
+        [FieldOffset(0x18D8)] public Utf8String HandInItemName; // for tooltip?
 
         [StructLayout(LayoutKind.Explicit, Size = 0x80)]
         public struct ItemSet {
@@ -56,6 +60,23 @@ public unsafe partial struct AgentMiragePrismPrismSetConvert {
             [FieldOffset(0x0C)] public InventoryType InventoryType;
 
             [FieldOffset(0x14)] public uint Slot;
+        }
+
+        [GenerateInterop]
+        [StructLayout(LayoutKind.Explicit, Size = 0x1C)]
+        public partial struct HandInItem {
+            [FieldOffset(0x00)] public uint ItemId;
+            [FieldOffset(0x04)] public uint IconId;
+            [BitField<bool>(nameof(HasStain0), 0)]
+            [BitField<bool>(nameof(IsItemStainConditionLocked), 1)]
+            [BitField<uint>(nameof(Stain0Color), 8, 24)]
+            [FieldOffset(0x08)] private uint BitField1;
+            [BitField<bool>(nameof(HasStain1), 0)]
+            [BitField<uint>(nameof(Stain1Color), 8, 24)]
+            [FieldOffset(0x0C)] private uint BitField2;
+            [FieldOffset(0x10)] public InventoryType Container;
+            [FieldOffset(0x14)] public uint Slot;
+            [FieldOffset(0x18)] public bool IsLoaded;
         }
     }
 }
