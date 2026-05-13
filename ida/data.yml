@@ -14100,13 +14100,13 @@ classes:
       0x140D9B100: ctor
   Client::UI::Agent::AgentInclusionShop:
     vtbls:
-      - ea: 0x1421EE1B8
+      - ea: 0x1421F1DE8
         base: Client::UI::Agent::AgentInterface
     funcs:
       0x14102C830: ctor
   Client::UI::Agent::AgentCollectablesShop:
     vtbls:
-      - ea: 0x1421F1DE8
+      - ea: 0x1421EE1B8
         base: Client::UI::Agent::AgentInterface
     funcs:
       0x140F3B610: ctor
