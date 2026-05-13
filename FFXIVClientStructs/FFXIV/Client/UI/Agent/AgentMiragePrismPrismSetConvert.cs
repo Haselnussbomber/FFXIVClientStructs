@@ -37,7 +37,7 @@ public unsafe partial struct AgentMiragePrismPrismSetConvert {
 
         [FieldOffset(0x40), FixedSizeArray] internal FixedSizeArray5<ItemSet> _itemSets;
         [FieldOffset(0x2C0)] public uint NumItemsInSet;
-        [FieldOffset(0x2C4), FixedSizeArray] internal FixedSizeArray5<ItemSetItem> _items;
+        [FieldOffset(0x2C4), FixedSizeArray] internal FixedSizeArray9<ItemSetItem> _items;
 
         [StructLayout(LayoutKind.Explicit, Size = 0x80)]
         public struct ItemSet {
