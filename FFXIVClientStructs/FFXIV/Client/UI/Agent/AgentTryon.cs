@@ -62,7 +62,7 @@ public unsafe partial struct AgentTryon {
         [FieldOffset(0x04)] public byte GlamourStain0Id;
         [FieldOffset(0x05)] public byte GlamourStain1Id;
         [FieldOffset(0x06)] public byte ClassJobId;
-
+        [FieldOffset(0x07)] public bool ApplyCompanyCrest;
         [FieldOffset(0x08)] public bool HasStain0;
         [FieldOffset(0x09)] public bool HasStain1;
         [FieldOffset(0x0A)] public bool IsDyePreviewEnabled;
