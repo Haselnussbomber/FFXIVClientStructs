@@ -1985,6 +1985,7 @@ classes:
       0x140867DA0: GetLinkedItem
       0x1408682C0: GetConditionPercentage
       0x140868300: GetStain
+      0x1408683B0: SetStain
       0x1408683D0: GetMateriaCount
       0x1408684D0: IsMarketable
       0x140896530: GetCrafterContentId
