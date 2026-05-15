@@ -65,10 +65,10 @@ public unsafe partial struct LayoutWorld {
     /// </summary>
     /// <param name="floor">0: Ground Floor, 1: Second Floor, 2: Cellarage</param>
     /// <param name="part">0: Walls, 3: Floors, 4: Ceiling Light</param>
-    /// <param name="unknown">Only used if fixtureId is unset.</param>
+    /// <param name="a3">Only used if fixtureId is unset.</param>
     /// <param name="fixtureId">HousingInterior RowId</param>
-    /// <param name="unk"></param>
+    /// <param name="a5"></param>
     /// <returns></returns>
     [MemberFunction("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 56 41 57 48 83 EC ?? 48 8B 05 ?? ?? ?? ?? 41 8B F1")]
-    public static partial ulong SetInteriorFixture(uint floor, uint part, short unknown, uint fixtureId, sbyte unk = -1);
+    public static partial int SetInteriorFixture(uint floor, uint part, short a3, uint fixtureId, sbyte a5 = -1);
 }
