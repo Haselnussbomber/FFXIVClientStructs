@@ -141,7 +141,7 @@ public partial struct IndoorAreaLayoutData {
     [FieldOffset(0x3C)] public IndoorFloorLayoutData Floor1;
     [FieldOffset(0x50)] public IndoorFloorLayoutData Floor2;
     [FieldOffset(0x64)] public IndoorFloorLayoutData Exterior; // 1: Windows, 2: Door
-    [FieldOffset(0x78), FixedSizeArray] internal FixedSizeArray5<byte> _stains;
+    [FieldOffset(0x78), FixedSizeArray] internal FixedSizeArray5<byte> _exteriorStains;
     [FieldOffset(0x80)] public float LightLevel;
 }
 
