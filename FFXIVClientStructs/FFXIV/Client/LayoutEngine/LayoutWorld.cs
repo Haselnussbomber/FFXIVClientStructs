@@ -70,5 +70,5 @@ public unsafe partial struct LayoutWorld {
     /// <param name="unk"></param>
     /// <returns></returns>
     [MemberFunction("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 56 41 57 48 83 EC ?? 48 8B 05 ?? ?? ?? ?? 41 8B F1")]
-    public static partial ulong SetInteriorFixture(int floor, int part, short unknown, uint fixtureId, sbyte unk = -1);
+    public static partial ulong SetInteriorFixture(uint floor, uint part, short unknown, uint fixtureId, sbyte unk = -1);
 }
