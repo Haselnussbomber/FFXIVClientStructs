@@ -9111,6 +9111,7 @@ classes:
       0x1406F37D0: GetOutdoorPlotExteriorData # static
       0x1406F3850: SetOutdoorPlotExteriorData # static
       0x1406F38B0: SetOutdoorPlotExterior # static
+      0x1406F40C0: SetInteriorFixture # static
   Client::LayoutEngine::LayoutManager:
     vtbls:
       - ea: 0x1421760C0
