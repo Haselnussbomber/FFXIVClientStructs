@@ -59,7 +59,7 @@ public unsafe partial struct LayoutWorld {
 
     [MemberFunction("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 48 89 7C 24 ?? 41 56 48 83 EC 50 48 8B 99")]
     public partial bool AddRsfEntry(ulong indexHash, byte* rsfData);
-    
+
     /// <summary>
     /// Used for previewing fixtures in the 'Remodel Interior' interface.
     /// </summary>
