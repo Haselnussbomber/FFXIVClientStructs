@@ -4846,6 +4846,7 @@ classes:
     funcs:
       0x1400D9390: Finalizer
       0x1400D9F40: ExecuteCommandInner
+      0x1400DAAF0: EvaluateTextCommand
   Component::GUI::AtkEventListener:
     vtbls:
       - ea: 0x142128D60
