@@ -153,7 +153,7 @@ public struct CharaViewItem {
     [FieldOffset(0x4)] public byte Stain1Id;
     [FieldOffset(0x5)] public byte GlamourStain0Id;
     [FieldOffset(0x6)] public byte GlamourStain1Id;
-    //[FieldOffset(0x7)] private byte Unk7;
+    [FieldOffset(0x7)] public bool ApplyCompanyCrest;
     [FieldOffset(0x8)] public uint ItemId;
     [FieldOffset(0xC)] public uint GlamourItemId;
     [FieldOffset(0x10)] public ulong ModelMain; // WeaponModelId or EquipmentModelId

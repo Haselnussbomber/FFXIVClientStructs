@@ -19,8 +19,8 @@ public unsafe partial struct AgentTryon {
     [FieldOffset(0x358)] public uint OpenerAddonId;
     [FieldOffset(0x35C)] public uint YesNoAddonId;
     [FieldOffset(0x360)] public uint TryonGlassesSelectAddonId;
-    [FieldOffset(0x364)] private bool Unk364;
-    [FieldOffset(0x365)] private bool Unk365;
+    [FieldOffset(0x364)] public bool TryOnItemsChanged;
+    [FieldOffset(0x365)] public bool GearItemsChanged;
     [FieldOffset(0x366)] public bool SaveDeleteOutfit;
     [FieldOffset(0x367)] public bool DisplayGear;
     [FieldOffset(0x368)] private bool Unk368;
