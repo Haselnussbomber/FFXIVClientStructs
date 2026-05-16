@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.Graphics.Scene;
 using FFXIVClientStructs.FFXIV.Client.System.Memory;
@@ -87,7 +88,10 @@ public unsafe partial struct CharaView : ICreatable<CharaView> {
     public partial Character* GetCharacter();
 
     [MemberFunction("E8 ?? ?? ?? ?? 33 DB 48 8D 3D ?? ?? ?? ?? BD")]
-    public partial void UnequipGear(bool hasCharacterData = false, bool characterLoaded = true);
+    public partial void UnequipGear(byte freeCompanyCrestBitfield = 0, bool characterLoaded = true);
+
+    [Obsolete("Incorrect parameters. Use UnequipGear with freeCompanyCrestBitfield."), OverloadResolutionPriority(1)]
+    public void UnequipGear(bool hasCharacterData = false, bool characterLoaded = true) => UnequipGear(0, characterLoaded);
 
     [MemberFunction("E8 ?? ?? ?? ?? FF C5 48 83 C3 1C")]
     public partial void SetItemSlotData(byte slotId, uint itemId, byte stain0Id, byte stain1Id, uint glamourItemId = 0, bool applyCompanyCrest = true);
