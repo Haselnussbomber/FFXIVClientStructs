@@ -4,6 +4,11 @@ namespace FFXIVClientStructs.FFXIV.Client.Game.Event;
 [GenerateInterop]
 [StructLayout(LayoutKind.Explicit, Size = 0x3590)]
 public unsafe partial struct EventGPoseController {
+    [FieldOffset(0x3238), FixedSizeArray] internal FixedSizeArray30<CharacterEntry> _characters;
+    [FieldOffset(0x3508)] public Character.Character* LocalPlayer;
+    [FieldOffset(0x3510)] public Character.Character* PlaceholderCharacter; // ENpc 1023070
+    [FieldOffset(0x3518)] public Character.Character* PvpDuelEnemyCharacter;
+
     [MemberFunction("48 89 5C 24 ?? 57 41 54 41 56 48 83 EC 20 33 FF")]
     public partial void AddCharacterToGPose(Character.Character* character, ulong a1 = 0);
 
@@ -30,4 +35,12 @@ public unsafe partial struct EventGPoseController {
 
     [MemberFunction("48 83 EC 28 83 FA 03 73 43")]
     public partial void DisableCameraLight(uint index);
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x18)]
+    public struct CharacterEntry {
+        [FieldOffset(0x00)] public Character.Character* Character;
+        [FieldOffset(0x08)] private uint Unk8;
+        [FieldOffset(0x0C)] private uint UnkC;
+        [FieldOffset(0x10)] public byte Flags;
+    }
 }
