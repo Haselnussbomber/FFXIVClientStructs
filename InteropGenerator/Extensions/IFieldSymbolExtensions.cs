@@ -5,8 +5,13 @@ namespace InteropGenerator.Extensions;
 internal static class IFieldSymbolExtensions {
     public static int SizeOf(this IFieldSymbol fieldSymbol, Compilation compilation) {
         // fixed array
-        if (fieldSymbol.IsFixedSizeBuffer)
-            return fieldSymbol.FixedSize;
+        if (fieldSymbol.OriginalDefinition.IsFixedSizeBuffer) {
+            int length = fieldSymbol.OriginalDefinition.FixedSize;
+            if (fieldSymbol.Type is IPointerTypeSymbol pointerType) {
+                return length * pointerType.PointedAtType.SizeOf(compilation);
+            }
+            return length;
+        }
 
         if (fieldSymbol.Type is INamedTypeSymbol namedSymbol) {
             // FixedSizeArray

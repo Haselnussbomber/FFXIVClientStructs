@@ -54,7 +54,7 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
                             fieldSymbol.Locations.FirstOrDefault(),
                             fieldSymbol.Name,
                             structSymbol.Name));
-                        return;
+                        continue;
                     }
 
                     int fieldSize = fieldSymbol.SizeOf(context.Compilation);
@@ -73,7 +73,7 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
                             fieldSymbol.Locations.FirstOrDefault(),
                             fieldSymbol.Name,
                             structSymbol.Name));
-                        return;
+                        continue;
                     }
 
                     // Overlap check disabled because there is currently no way to define unions or ignore fields.

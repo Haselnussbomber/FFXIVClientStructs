@@ -187,7 +187,7 @@ internal static class ITypeSymbolExtensions {
                     int alignment = 1;
 
                     foreach (var field in namedType.GetMembers().OfType<IFieldSymbol>()) {
-                        if (field.IsStatic || !field.Locations.Any(loc => loc.IsInSource))
+                        if (field.IsStatic)
                             continue;
 
                         int fieldSize = field.SizeOf(compilation);
@@ -204,7 +204,8 @@ internal static class ITypeSymbolExtensions {
                         alignment = Math.Max(alignment, fieldAlignment);
                     }
 
-                    return (offset + alignment - 1) / alignment * alignment;
+                    int computedSize = (offset + alignment - 1) / alignment * alignment;
+                    return size > 0 ? Math.Max(size, computedSize) : computedSize;
                 }
             }
         }
