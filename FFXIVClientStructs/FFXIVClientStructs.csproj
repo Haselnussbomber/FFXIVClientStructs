@@ -25,6 +25,7 @@
     
     <!-- InteropGenerator -->
     <InteropGenerator_InteropNamespace>FFXIVClientStructs.Interop.Generated</InteropGenerator_InteropNamespace>
+    <InteropGenerator_IgnoreAttribute>FFXIVClientStructs.Attributes.CExporterIgnoreAttribute;FFXIVClientStructs.Attributes.CExporterUnionAttribute</InteropGenerator_IgnoreAttribute>
     
     <!-- GitInfo generator -->
     <ThisAssemblyNamespace>FFXIVClientStructs</ThisAssemblyNamespace>
@@ -51,6 +52,7 @@
 
   <ItemGroup>
     <CompilerVisibleProperty Include="InteropGenerator_InteropNamespace" />
+    <CompilerVisibleProperty Include="InteropGenerator_IgnoreAttribute" />
     <InternalsVisibleTo Include="CExporter" />
   </ItemGroup>
 
