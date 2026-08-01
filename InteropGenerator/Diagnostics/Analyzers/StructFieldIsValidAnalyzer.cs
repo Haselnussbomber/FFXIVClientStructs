@@ -14,7 +14,7 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
         StructFieldOffsetOutOfBounds,
         StructFieldOutOfBounds,
         StructFieldTypeNoSize,
-        // StructFieldOverlap,
+        StructFieldOverlap,
     ];
 
     public override void Initialize(AnalysisContext context) {
@@ -24,6 +24,23 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
         context.RegisterCompilationStartAction(static context => {
             if (context.Compilation.GetTypeByMetadataName("System.Runtime.InteropServices.StructLayoutAttribute") is not { } structLayoutAttribute)
                 return;
+
+            string[]? customIgnoreAttributes = null;
+            if (context.Options.AnalyzerConfigOptionsProvider.GlobalOptions.TryGetValue("build_property.InteropGenerator_IgnoreAttribute", out string? ignoreAttributeName) && !string.IsNullOrWhiteSpace(ignoreAttributeName)) {
+                customIgnoreAttributes = ignoreAttributeName.Split([';'], StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToArray();
+            }
+
+            bool HasCustomIgnoreAttribute(IFieldSymbol field) {
+                if (customIgnoreAttributes == null)
+                    return false;
+
+                foreach (string attr in customIgnoreAttributes) {
+                    if (field.TryGetAttributeWithFullyQualifiedMetadataName(attr, out _))
+                        return true;
+                }
+
+                return false;
+            }
 
             context.RegisterSymbolAction(context => {
                 if (context.Symbol is not INamedTypeSymbol { TypeKind: TypeKind.Struct } structSymbol)
@@ -42,6 +59,9 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
                     return;
 
                 foreach (var fieldSymbol in structSymbol.GetMembers().OfType<IFieldSymbol>()) {
+                    if (fieldSymbol.TryGetAttributeWithFullyQualifiedMetadataName("System.ObsoleteAttribute", out _) || HasCustomIgnoreAttribute(fieldSymbol))
+                        continue;
+
                     if (!fieldSymbol.TryGetAttributeWithFullyQualifiedMetadataName("System.Runtime.InteropServices.FieldOffsetAttribute", out var fieldOffsetAttribute))
                         continue;
 
@@ -76,10 +96,11 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
                         continue;
                     }
 
-                    // Overlap check disabled because there is currently no way to define unions or ignore fields.
-                    /*
                     foreach (var otherFieldSymbol in structSymbol.GetMembers().OfType<IFieldSymbol>()) {
                         if (SymbolEqualityComparer.Default.Equals(fieldSymbol, otherFieldSymbol))
+                            continue;
+
+                        if (otherFieldSymbol.TryGetAttributeWithFullyQualifiedMetadataName("System.ObsoleteAttribute", out _) || HasCustomIgnoreAttribute(otherFieldSymbol))
                             continue;
 
                         if (!otherFieldSymbol.TryGetAttributeWithFullyQualifiedMetadataName("System.Runtime.InteropServices.FieldOffsetAttribute", out var otherFieldOffsetAttribute))
@@ -98,10 +119,9 @@ public sealed class StructFieldIsValidAnalyzer : DiagnosticAnalyzer {
                                 fieldSymbol.Locations.FirstOrDefault(),
                                 fieldSymbol.Name,
                                 structSymbol.Name));
-                            return;
+                            break;
                         }
                     }
-                    */
                 }
             },
                 SymbolKind.NamedType);

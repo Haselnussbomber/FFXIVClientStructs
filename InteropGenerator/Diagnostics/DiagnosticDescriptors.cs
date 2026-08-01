@@ -333,7 +333,6 @@ internal static class DiagnosticDescriptors {
         true,
         "A fields size must be able to be calculated.");
 
-    /*
     public static readonly DiagnosticDescriptor StructFieldOverlap = new(
         "CSIG0504",
         "Field overlaps with another field",
@@ -342,5 +341,4 @@ internal static class DiagnosticDescriptors {
         DiagnosticSeverity.Warning,
         true,
         "A fields can not overlap with another field.");
-    */
 }
